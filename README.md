@@ -1,2 +1,2 @@
 # LeetCode_Easy
-My LeetCode daily practice
+All the LeetCode questions I did
