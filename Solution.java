@@ -14,142 +14,158 @@ import java.util.Stack;
 
 public class Solution {
 
+	static Map<String, Integer> library = new HashMap<>();
+
+	static {
+
+		library.put("I", 1);
+		library.put("V", 5);
+		library.put("X", 10);
+		library.put("L", 50);
+		library.put("C", 100);
+		library.put("D", 500);
+		library.put("M", 1000);
+
+	}
+
 	public static void main(String args[]) {
 		// System.out.println(mySqrt(11));
 		// System.out.println(11 / 2);
 		// System.out.println((int) Math.floor(2.35));
-//		TreeNode tree = new TreeNode(3);
-//		tree.left = new TreeNode(9);
-//		tree.left.left = new TreeNode(1);
-//		tree.left.right = new TreeNode(3);
-//		tree.right = new TreeNode(20);
-//		tree.right.left = new TreeNode(15);
-//		tree.right.right = new TreeNode(7);
-//		System.out.println(sumOfLeftLeaves(tree));
-//		System.out.println(lowestCommonAncestor(tree, tree.left, tree.right).val);
-//		levelOrderBottom(tree); 
-//		int num[] = { 2, 2, 1, 1, 1, 2, 2 };
-//		InsertionSort(num);
-//		for (int i : num) {
-//			System.out.println(i);
-//		}
-//		String s = "race a car";
-//		Stack<Integer> stack = new Stack<>();
-//		for (int i = 0; i < num.length; i++) {
-//			System.out.println(num[i]);
-//		}
-//		char c = 'A';
-//		System.out.println(3 / 2);
-//		System.out.println(trailingZeroes(4));
-//		ListNode l1 = new ListNode(1);
-//		l1.next = new ListNode(2);
-//		l1.next.next = new ListNode(6);
-//		l1.next.next.next = new ListNode(3);
-//		l1.next.next.next.next = new ListNode(4);
-//		l1.next.next.next.next.next = new ListNode(5);
-//		l1.next.next.next.next.next.next = new ListNode(6);
-//		removeElements(l1, 6);
+		// TreeNode tree = new TreeNode(3);
+		// tree.left = new TreeNode(9);
+		// tree.left.left = new TreeNode(1);
+		// tree.left.right = new TreeNode(3);
+		// tree.right = new TreeNode(20);
+		// tree.right.left = new TreeNode(15);
+		// tree.right.right = new TreeNode(7);
+		// System.out.println(sumOfLeftLeaves(tree));
+		// System.out.println(lowestCommonAncestor(tree, tree.left, tree.right).val);
+		// levelOrderBottom(tree);
+		// int num[] = { 2, 2, 1, 1, 1, 2, 2 };
+		// InsertionSort(num);
+		// for (int i : num) {
+		// System.out.println(i);
+		// }
+		// String s = "race a car";
+		// Stack<Integer> stack = new Stack<>();
+		// for (int i = 0; i < num.length; i++) {
+		// System.out.println(num[i]);
+		// }
+		// char c = 'A';
+		// System.out.println(3 / 2);
+		// System.out.println(trailingZeroes(4));
+		// ListNode l1 = new ListNode(1);
+		// l1.next = new ListNode(2);
+		// l1.next.next = new ListNode(6);
+		// l1.next.next.next = new ListNode(3);
+		// l1.next.next.next.next = new ListNode(4);
+		// l1.next.next.next.next.next = new ListNode(5);
+		// l1.next.next.next.next.next.next = new ListNode(6);
+		// removeElements(l1, 6);
 
-//		HashMap<Character, Character> map = new HashMap<>();
-//		map.put('a', 'c');
-//		if (map.containsKey('a') && !map.get('a').equals('c')) {
-//			System.out.println("wrong");
-//		} else {
-//			System.out.println("right");
-//		}
-//		int[] nums = { 0, 1, 2, 4, 5, 7 };
-//		for (int i = 0; i < 3; i++) {
-//			System.out.println(summaryRanges(nums).get(i));
-//		}
-//		System.out.println("---------------------------------");
-//		int[] num = { 0, 2, 3, 4, 6, 8, 9 };
-//		for (int i = 0; i < 4; i++) {
-//			System.out.println(summaryRanges(num).get(i));
-//		}
-//		System.out.println(isStrobogrammatic("69"));
-//		System.out.println(isStrobogrammatic("88"));
-//		System.out.println(isStrobogrammatic("962"));
-//		String[] words = { "practice", "makes", "perfect", "coding", "makes" };
-//		System.out.println(addDigits(38));
-//		System.out.println(addDigits(49));
-//		int A[] = { 9, 8, 7, 6, 5, 1, 2, 2, 1 };
-//		int B[] = { 9, 2 };
-//		mergeSort(A, 0, A.length - 1);
-//		for (int i = 0; i < A.length; i++) {
-//			System.out.println(A[i]);
-//		}
-//		int inversion[] = { 2, 3, 8, 6, 1 };
-//		System.out.println(numOfinversion(inversion, 0, inversion.length - 1));
-//		int[][] interval1 = { { 0, 30 }, { 5, 10 }, { 15, 20 } };
-//		int[][] interval2 = { { 7, 10 }, { 2, 4 } };
-//		int[][] interval3 = { { 8, 11 }, { 17, 20 }, { 17, 20 } };
-//		System.out.println(canAttendMeetings(interval1));
-//		System.out.println(38 / 10);
-//		System.out.println(canPermutePalindrome("code"));
-//		System.out.println(reverseVowels("hello"));
-//		char[] s = { 'h', 'e', 'l', 'l', 'o' };
-//		reverseStringRedo(s);
-//		for (int i = 0; i < s.length; i++) {
-//			System.out.println(s[i]);
-//		}
-//		for (int i = 0; i < intersect(A, B).length; i++) { 
-//			System.out.println(intersect(A, B)[i]);
-//		}
+		// HashMap<Character, Character> map = new HashMap<>();
+		// map.put('a', 'c');
+		// if (map.containsKey('a') && !map.get('a').equals('c')) {
+		// System.out.println("wrong");
+		// } else {
+		// System.out.println("right");
+		// }
+		// int[] nums = { 0, 1, 2, 4, 5, 7 };
+		// for (int i = 0; i < 3; i++) {
+		// System.out.println(summaryRanges(nums).get(i));
+		// }
+		// System.out.println("---------------------------------");
+		// int[] num = { 0, 2, 3, 4, 6, 8, 9 };
+		// for (int i = 0; i < 4; i++) {
+		// System.out.println(summaryRanges(num).get(i));
+		// }
+		// System.out.println(isStrobogrammatic("69"));
+		// System.out.println(isStrobogrammatic("88"));
+		// System.out.println(isStrobogrammatic("962"));
+		// String[] words = { "practice", "makes", "perfect", "coding", "makes" };
+		// System.out.println(addDigits(38));
+		// System.out.println(addDigits(49));
+		// int A[] = { 9, 8, 7, 6, 5, 1, 2, 2, 1 };
+		// int B[] = { 9, 2 };
+		// mergeSort(A, 0, A.length - 1);
+		// for (int i = 0; i < A.length; i++) {
+		// System.out.println(A[i]);
+		// }
+		// int inversion[] = { 2, 3, 8, 6, 1 };
+		// System.out.println(numOfinversion(inversion, 0, inversion.length - 1));
+		// int[][] interval1 = { { 0, 30 }, { 5, 10 }, { 15, 20 } };
+		// int[][] interval2 = { { 7, 10 }, { 2, 4 } };
+		// int[][] interval3 = { { 8, 11 }, { 17, 20 }, { 17, 20 } };
+		// System.out.println(canAttendMeetings(interval1));
+		// System.out.println(38 / 10);
+		// System.out.println(canPermutePalindrome("code"));
+		// System.out.println(reverseVowels("hello"));
+		// char[] s = { 'h', 'e', 'l', 'l', 'o' };
+		// reverseStringRedo(s);
+		// for (int i = 0; i < s.length; i++) {
+		// System.out.println(s[i]);
+		// }
+		// for (int i = 0; i < intersect(A, B).length; i++) {
+		// System.out.println(intersect(A, B)[i]);
+		// }
 		// System.out.println(isPerfectSquare(14));
 
 		// System.out.println(String.valueOf('a') + String.valueOf('a'));
 
-//		for (int i = 0; i < str.length; i++) {
-//			if (str[i] == " ") {
-//				System.out.println("yes");
-//			}
-//			
-//		}
+		// for (int i = 0; i < str.length; i++) {
+		// if (str[i] == " ") {
+		// System.out.println("yes");
+		// }
+		//
+		// }
 		// System.out.println(arrangeCoins(5));
-//		String s = "sdfs";
-//		System.out.println(licenseKeyFormatting("5F3Z-2e-9-w", 4));
-//		String a = "aba", b = "acdbcae";
-//		char[] A = a.toCharArray();
-//		char[] B = b.toCharArray();
-//		Arrays.sort(A);
-//		Arrays.sort(B);
-//		printCharArray(A);
-//		System.out.println("--------");
-//		printCharArray(B);
-//		String s = "Let's take LeetCode contest";
-//		// String[] word = s.split("\\s+");
-//		System.out.println(reverseWords(s));
+		// String s = "sdfs";
+		// System.out.println(licenseKeyFormatting("5F3Z-2e-9-w", 4));
+		// String a = "aba", b = "acdbcae";
+		// char[] A = a.toCharArray();
+		// char[] B = b.toCharArray();
+		// Arrays.sort(A);
+		// Arrays.sort(B);
+		// printCharArray(A);
+		// System.out.println("--------");
+		// printCharArray(B);
+		// String s = "Let's take LeetCode contest";
+		// // String[] word = s.split("\\s+");
+		// System.out.println(reverseWords(s));
 		// System.out.println(word[0].charAt(word[0].length() - 1));
 		// System.out.println(Character.toString('a') + Character.toString('a'));
-//		String b = "1s3 456";
-//		String[] A = { "looks", "pest", "stew", "show" };
-//		System.out.println("ans is" + shortestCompletingWord(b, A));
-//		char[] B = b.toCharArray();
-//		int[][] matrix = new int[7][7];
-//		for (int i = 1; i < matrix.length; i++) {
-//			matrix[0][i] = i;
-//			matrix[i][0] = i;
-//		}
-//		matrix[0][0] = 0;
-//		CS3340SampleMidterm_min(matrix, A, B);
-//		System.out.println(matrix[matrix.length - 1][matrix.length - 1]);
 
-//		String s = "abababc";
-//		System.out.println(CS3340SampleMidterm_next(s));
-//		int[] a = { 1, 2, 3, 4, 5, 6, 9, 20, 31 };
-//		int[] b = { 2, 4, 5, 6, 7, 8, 32, 45 };
-//		List<Integer> list = unionSortedSet(a, b);
-//		for (int i = 0; i < list.size(); i++) {
-//			System.out.println(list.get(i));
-//	}
-//		System.out.println('z' - 'a');
+		String[] A = { "looks", "pest", "stew", "show" };
+		String b = "1s3 456";
+		System.out.println("ans is" + shortestCompletingWord(b, A));
+		// char[] B = b.toCharArray();
+		// int[][] matrix = new int[7][7];
+		// for (int i = 1; i < matrix.length; i++) {
+		// matrix[0][i] = i;
+		// matrix[i][0] = i;
+		// }
+		// matrix[0][0] = 0;
+		// CS3340SampleMidterm_min(matrix, A, B);
+		// System.out.println(matrix[matrix.length - 1][matrix.length - 1]);
 
+		// String s = "abababc";
+		// System.out.println(CS3340SampleMidterm_next(s));
+		// int[] a = { 1, 2, 3, 4, 5, 6, 9, 20, 31 };
+		// int[] b = { 2, 4, 5, 6, 7, 8, 32, 45 };
+		// List<Integer> list = unionSortedSet(a, b);
+		// for (int i = 0; i < list.size(); i++) {
+		// System.out.println(list.get(i));
+		// }
+		// System.out.println('z' - 'a');
 	}
 
 	public static String shortestCompletingWord(String licensePlate, String[] words) {
+
 		List<String> ans = new ArrayList<>();
 		for (int i = 0; i < words.length; i++) {
 			boolean fit = true;
+
 			List<Character> list = new ArrayList<>();
 			for (char c : words[i].toCharArray()) {
 				list.add(c);
@@ -286,9 +302,9 @@ public class Solution {
 					si += Character.toString(s.charAt(l));
 					sj += Character.toString(s.charAt(i - j - 1));
 				}
-//				System.out.println("si: " + si);
-//				System.out.println("sj: " + sj);
-//				System.out.println("----------------------");
+				// System.out.println("si: " + si);
+				// System.out.println("sj: " + sj);
+				// System.out.println("----------------------");
 				if (si.equals(sj)) {
 					max = j;
 				}
@@ -1603,24 +1619,6 @@ public class Solution {
 		return false;
 	}
 
-	public ListNode reverseList(ListNode head) {
-		List<Integer> l = new ArrayList<>();
-		while (head != null) {
-			l.add(head.val);
-			head = head.next;
-		}
-		ListNode dummy = new ListNode(0);
-		ListNode cur = new ListNode(0);
-		dummy.next = cur;
-		int i = 1;
-		for (int j = l.size() - 1; j >= 0; j--) {
-			cur.next = new ListNode(l.get(l.size() - i));
-			i++;
-			cur = cur.next;
-		}
-		return dummy.next.next;
-	}
-
 	public static boolean isIsomorphic(String s, String t) {
 		if (s.length() != t.length()) {
 			return false;
@@ -2227,19 +2225,6 @@ public class Solution {
 
 	}
 
-	static Map<String, Integer> library = new HashMap<>();
-
-	static {
-		library.put("I", 1);
-		library.put("V", 5);
-		library.put("X", 10);
-		library.put("L", 50);
-		library.put("C", 100);
-		library.put("D", 500);
-		library.put("M", 1000);
-
-	}
-
 	public static int romanToInt(String s) {
 		int i = 0;
 		int ans = 0;
@@ -2300,5 +2285,23 @@ public class Solution {
 
 		}
 		return ans;
+	}
+
+	public ListNode reverseList(ListNode head) {
+		List<Integer> l = new ArrayList<>();
+		while (head != null) {
+			l.add(head.val);
+			head = head.next;
+		}
+		ListNode dummy = new ListNode(0);
+		ListNode cur = new ListNode(0);
+		dummy.next = cur;
+		int i = 1;
+		for (int j = l.size() - 1; j >= 0; j--) {
+			cur.next = new ListNode(l.get(l.size() - i));
+			i++;
+			cur = cur.next;
+		}
+		return dummy.next.next;
 	}
 }
