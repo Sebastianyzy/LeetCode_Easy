@@ -121,9 +121,9 @@ public class Solution {
 //		System.out.println(reverseWords(s));
 		// System.out.println(word[0].charAt(word[0].length() - 1));
 		// System.out.println(Character.toString('a') + Character.toString('a'));
-//		String a = "ababab";
-//		String b = "babaaa";
-//		char[] A = a.toCharArray();
+//		String b = "1s3 456";
+//		String[] A = { "looks", "pest", "stew", "show" };
+//		System.out.println("ans is" + shortestCompletingWord(b, A));
 //		char[] B = b.toCharArray();
 //		int[][] matrix = new int[7][7];
 //		for (int i = 1; i < matrix.length; i++) {
@@ -144,6 +144,43 @@ public class Solution {
 //	}
 //		System.out.println('z' - 'a');
 
+	}
+
+	public static String shortestCompletingWord(String licensePlate, String[] words) {
+		List<String> ans = new ArrayList<>();
+		for (int i = 0; i < words.length; i++) {
+			boolean fit = true;
+			List<Character> list = new ArrayList<>();
+			for (char c : words[i].toCharArray()) {
+				list.add(c);
+			}
+
+			for (int j = 0; j < licensePlate.length(); j++) {
+				char curr = licensePlate.charAt(j);
+
+				if (Character.isLetter(curr)) {
+					curr = Character.toLowerCase(curr);
+					if (list.contains(curr)) {
+						list.remove(list.indexOf(curr));
+					} else {
+						fit = false;
+					}
+				}
+
+			}
+			if (fit) {
+				ans.add(words[i]);
+			}
+		}
+		int len = Integer.MAX_VALUE;
+		String final_ans = "";
+		for (int i = 0; i < ans.size(); i++) {
+			if (len > ans.get(i).length()) {
+				len = ans.get(i).length();
+				final_ans = ans.get(i);
+			}
+		}
+		return final_ans;
 	}
 
 	public static int dominantIndex(int[] nums) {
