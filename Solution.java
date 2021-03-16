@@ -28,7 +28,7 @@ public class Solution {
 
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		// System.out.println(mySqrt(11));
 		// System.out.println(11 / 2);
 		// System.out.println((int) Math.floor(2.35));
@@ -135,10 +135,10 @@ public class Solution {
 		// System.out.println(reverseWords(s));
 		// System.out.println(word[0].charAt(word[0].length() - 1));
 		// System.out.println(Character.toString('a') + Character.toString('a'));
-
-		String[] A = { "looks", "pest", "stew", "show" };
-		String b = "1s3 456";
-		System.out.println("ans is" + shortestCompletingWord(b, A));
+//
+//		String[] A = { "looks", "pest", "stew", "show" };
+//		String b = "1s3 456";
+//		System.out.println("ans is" + shortestCompletingWord(b, A));
 		// char[] B = b.toCharArray();
 		// int[][] matrix = new int[7][7];
 		// for (int i = 1; i < matrix.length; i++) {
@@ -177,7 +177,7 @@ public class Solution {
 				if (Character.isLetter(curr)) {
 					curr = Character.toLowerCase(curr);
 					if (list.contains(curr)) {
-						list.remove(list.indexOf(curr));
+						list.remove(curr);
 					} else {
 						fit = false;
 					}
@@ -370,7 +370,7 @@ public class Solution {
 	public static String toLowerCase(String str) {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < str.length(); i++) {
-			s.append(Character.toString(Character.toLowerCase(str.charAt(i))));
+			s.append(Character.toLowerCase(str.charAt(i)));
 		}
 		return s.toString();
 	}
@@ -553,7 +553,7 @@ public class Solution {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < word.length; i++) {
 			for (int j = word[i].length() - 1; j >= 0; j--) {
-				sb.append(Character.toString(word[i].charAt(j)));
+				sb.append(word[i].charAt(j));
 			}
 			if (i != word.length - 1) {
 				sb.append(" ");
@@ -747,39 +747,30 @@ public class Solution {
 		if (j == 0) {
 			return true;
 		}
-		if (grid[i][j - 1] == 0) {
-			return true;
-		}
-		return false;
+		return grid[i][j - 1] == 0;
 
 	}
 
 	private static boolean checkRight(int i, int j, int[][] grid) {
 		if (j == grid[i].length - 1) {
 			return true;
-		} else if (grid[i][j + 1] == 0) {
-			return true;
-		}
-		return false;
+		} else
+			return grid[i][j + 1] == 0;
 
 	}
 
 	private static boolean checkUp(int i, int j, int[][] grid) {
 		if (i == 0) {
 			return true;
-		} else if (grid[i - 1][j] == 0) {
-			return true;
-		}
-		return false;
+		} else
+			return grid[i - 1][j] == 0;
 	}
 
 	private static boolean checkDown(int i, int j, int[][] grid) {
 		if (i == grid.length - 1) {
 			return true;
-		} else if (grid[i + 1][j] == 0) {
-			return true;
-		}
-		return false;
+		} else
+			return grid[i + 1][j] == 0;
 	}
 
 	public static void countSort(int[] A, int[] B) {
@@ -910,7 +901,7 @@ public class Solution {
 				carry = 1;
 				add -= 10;
 			}
-			s.append(String.valueOf(add));
+			s.append(add);
 			i--;
 		}
 		if (carry > 0) {
@@ -1068,10 +1059,7 @@ public class Solution {
 
 	public static boolean isPerfectSquare(int num) {
 		int square = (int) Math.sqrt(num);
-		if ((int) Math.pow(square, 2) != num) {
-			return false;
-		}
-		return true;
+		return (int) Math.pow(square, 2) == num;
 	}
 
 	public static int[] intersect(int[] nums1, int[] nums2) {
@@ -1365,10 +1353,7 @@ public class Solution {
 		if (int1[0] > int2[0] && int1[0] < int2[int2.length - 1]) {
 			return false;
 		}
-		if (int1[0] == int2[0] && int1[int1.length - 1] == int2[int2.length - 1]) {
-			return false;
-		}
-		return true;
+		return int1[0] != int2[0] || int1[int1.length - 1] != int2[int2.length - 1];
 	}
 
 	public static boolean isStrobogrammatic(String num) {
@@ -1389,7 +1374,7 @@ public class Solution {
 
 	}
 
-	public static int numOfinversion(int arr[], int start, int end) {
+	public static int numOfinversion(int[] arr, int start, int end) {
 		int inversion = 0;
 		if (start < end) {
 			int mid = (start + end) / 2;
@@ -1400,13 +1385,13 @@ public class Solution {
 		return inversion;
 	}
 
-	public static int Merge(int arr[], int start, int mid, int end) {
+	public static int Merge(int[] arr, int start, int mid, int end) {
 		int n1 = mid - start + 1;
 		int n2 = end - mid;
 		int inversion = 0;
 		/* Create temp arrays */
-		int L[] = new int[n1];
-		int R[] = new int[n2];
+		int[] L = new int[n1];
+		int[] R = new int[n2];
 
 		/* Copy data to temp arrays */
 		for (int i = 0; i < n1; ++i) {
@@ -1453,7 +1438,7 @@ public class Solution {
 
 	}
 
-	public static void merge(int arr[], int start, int mid, int end) {
+	public static void merge(int[] arr, int start, int mid, int end) {
 		// Find sizes of two subarrays to be merged
 		int n1 = mid - start + 1;
 		System.out.println("start is " + start + " " + "mid is " + mid + " " + "n1 is " + n1);
@@ -1461,8 +1446,8 @@ public class Solution {
 		System.out.println("end is " + end + " " + "n2 is " + n2);
 
 		/* Create temp arrays */
-		int L[] = new int[n1];
-		int R[] = new int[n2];
+		int[] L = new int[n1];
+		int[] R = new int[n2];
 
 		/* Copy data to temp arrays */
 		for (int i = 0; i < n1; ++i) {
@@ -1517,7 +1502,7 @@ public class Solution {
 
 	// Main function that sorts arr[l..r] using
 	// merge()
-	public static void mergeSort(int arr[], int start, int end) {
+	public static void mergeSort(int[] arr, int start, int end) {
 		if (start < end) {
 			// Find the middle point
 			int m = (start + end) / 2;
@@ -1593,13 +1578,13 @@ public class Solution {
 			}
 			// put the range [nums[i], nums[j]] into the list
 			if (i == j) {
-				s.append(Integer.toString(nums[i]));
+				s.append(nums[i]);
 				l.add(s.toString());
 				s.setLength(0);
 			} else {
-				s.append(Integer.toString(nums[i]));
+				s.append(nums[i]);
 				s.append("->");
-				s.append(Integer.toString(nums[j]));
+				s.append(nums[j]);
 				l.add(s.toString());
 				s.setLength(0);
 			}
@@ -2251,10 +2236,7 @@ public class Solution {
 		if (x < 0) {
 			return false;
 		}
-		if (reverse(x) == x) {
-			return true;
-		}
-		return false;
+		return reverse(x) == x;
 
 	}
 
