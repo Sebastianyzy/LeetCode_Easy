@@ -151,13 +151,28 @@ public class Solution {
 
 		// String s = "abababc";
 		// System.out.println(CS3340SampleMidterm_next(s));
-		// int[] a = { 1, 2, 3, 4, 5, 6, 9, 20, 31 };
-		// int[] b = { 2, 4, 5, 6, 7, 8, 32, 45 };
+//		int[] a = { 12, 28, 46, 32, 50 };
+//		int[] b = { 50, 12, 32, 46, 28 };
+//		int[] P = anagramMappings(a, b);
+//		printIntArray(P);
 		// List<Integer> list = unionSortedSet(a, b);
 		// for (int i = 0; i < list.size(); i++) {
 		// System.out.println(list.get(i));
 		// }
 		// System.out.println('z' - 'a');
+
+	}
+
+	public static int[] anagramMappings(int[] A, int[] B) {
+		int[] P = new int[A.length];
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < B.length; j++) {
+				if (B[j] == A[i]) {
+					P[i] = j;
+				}
+			}
+		}
+		return P;
 	}
 
 	public static String shortestCompletingWord(String licensePlate, String[] words) {
