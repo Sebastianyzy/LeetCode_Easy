@@ -151,7 +151,7 @@ public class Solution {
 
 		// String s = "abababc";
 		// System.out.println(CS3340SampleMidterm_next(s));
-//		int[] a = { 12, 28, 46, 32, 50 };
+		int[] a = { 12, 28, 46, 32, 50 };
 //		int[] b = { 50, 12, 32, 46, 28 };
 //		int[] P = anagramMappings(a, b);
 //		printIntArray(P);
@@ -160,6 +160,16 @@ public class Solution {
 		// System.out.println(list.get(i));
 		// }
 		// System.out.println('z' - 'a');
+
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i : a) {
+			if (!map.containsKey(i)) {
+				map.put(i, 1);
+			} else {
+				map.put(i, map.get(i + 1));
+			}
+		}
+		System.out.println(map.get(12));
 
 	}
 
@@ -2303,6 +2313,25 @@ public class Solution {
 
 		}
 		return ans;
+	}
+
+	public int findSpecialInteger(int[] arr) {
+		Map<Integer, Integer> map = new HashMap<>();
+		double ans = 0.25 * arr.length;
+		for (int k : arr) {
+			if (!map.containsKey(k)) {
+				map.put(k, 1);
+			} else {
+				map.put(k, map.get(k) + 1);
+			}
+		}
+		for (int j : arr) {
+			if (map.get(j) > ans) {
+				return j;
+			}
+		}
+		return 0;
+
 	}
 
 	public ListNode reverseList(ListNode head) {
