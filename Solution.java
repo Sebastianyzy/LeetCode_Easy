@@ -163,6 +163,27 @@ public class Solution {
 
 	}
 
+	public static boolean isToeplitzMatrix(int[][] matrix) {
+		int i = 0;
+		int j = 0;
+		while (i < matrix.length) {
+			while (j < matrix[i].length) {
+				try {
+					if (matrix[i][j] != matrix[i + 1][j + 1]) {
+						return false;
+					}
+					j++;
+				} catch (Exception e) {
+					break;
+				}
+			}
+			i++;
+			j = 0;
+		}
+		return true;
+
+	}
+
 	public static int[] anagramMappings(int[] A, int[] B) {
 		int[] P = new int[A.length];
 		for (int i = 0; i < A.length; i++) {
