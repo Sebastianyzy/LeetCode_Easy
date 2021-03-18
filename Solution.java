@@ -161,16 +161,30 @@ public class Solution {
 		// }
 		// System.out.println('z' - 'a');
 
-		Map<Integer, Integer> map = new HashMap<>();
-		for (int i : a) {
-			if (!map.containsKey(i)) {
-				map.put(i, 1);
-			} else {
-				map.put(i, map.get(i + 1));
+//		Map<Integer, Integer> map = new HashMap<>();
+//		for (int i : a) {
+//			if (!map.containsKey(i)) {
+//				map.put(i, 1);
+//			} else {
+//				map.put(i, map.get(i + 1));
+//			}
+//		}
+//		System.out.println(map.get(12));
+
+	}
+
+	public static int numJewelsInStones(String jewels, String stones) {
+		int count = 0;
+		Set<Character> set = new HashSet<>();
+		for (char c : jewels.toCharArray()) {
+			set.add(c);
+		}
+		for (char c : stones.toCharArray()) {
+			if (set.contains(c)) {
+				count++;
 			}
 		}
-		System.out.println(map.get(12));
-
+		return count;
 	}
 
 	public static boolean isToeplitzMatrix(int[][] matrix) {
