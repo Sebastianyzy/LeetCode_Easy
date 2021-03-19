@@ -32,13 +32,14 @@ public class Solution {
 		// System.out.println(mySqrt(11));
 		// System.out.println(11 / 2);
 		// System.out.println((int) Math.floor(2.35));
-		// TreeNode tree = new TreeNode(3);
-		// tree.left = new TreeNode(9);
-		// tree.left.left = new TreeNode(1);
-		// tree.left.right = new TreeNode(3);
-		// tree.right = new TreeNode(20);
-		// tree.right.left = new TreeNode(15);
-		// tree.right.right = new TreeNode(7);
+//		TreeNode tree = new TreeNode(3);
+//		tree.left = new TreeNode(9);
+//		tree.left.left = new TreeNode(1);
+//		tree.left.right = new TreeNode(3);
+//		tree.right = new TreeNode(20);
+//		tree.right.left = new TreeNode(15);
+//		tree.right.right = new TreeNode(7);
+//		List<Integer> list = new ArrayList<>();
 		// System.out.println(sumOfLeftLeaves(tree));
 		// System.out.println(lowestCommonAncestor(tree, tree.left, tree.right).val);
 		// levelOrderBottom(tree);
@@ -150,8 +151,8 @@ public class Solution {
 		// System.out.println(matrix[matrix.length - 1][matrix.length - 1]);
 
 		// String s = "abababc";
-		// System.out.println(CS3340SampleMidterm_next(s));
-		int[] a = { 12, 28, 46, 32, 50 };
+//		// System.out.println(CS3340SampleMidterm_next(s));
+//		int[] a = { 12, 28, 46, 32, 50 };
 //		int[] b = { 50, 12, 32, 46, 28 };
 //		int[] P = anagramMappings(a, b);
 //		printIntArray(P);
@@ -160,16 +161,40 @@ public class Solution {
 		// System.out.println(list.get(i));
 		// }
 		// System.out.println('z' - 'a');
+//
+//		Map<Integer, Integer> map = new HashMap<>();
+//		for (int i : a) {
+//			if (!map.containsKey(i)) {
+//				map.put(i, 1);
+//			} else {
+//				map.put(i, map.get(i + 1));
+//			}
+//		}
+//		System.out.println(map.get(12));
 
-		Map<Integer, Integer> map = new HashMap<>();
-		for (int i : a) {
-			if (!map.containsKey(i)) {
-				map.put(i, 1);
-			} else {
-				map.put(i, map.get(i + 1));
+	}
+
+	public static int minDiffInBST(TreeNode root) {
+		List<Integer> list = new ArrayList<>();
+		minDiffInBSTPreOrder(root, list);
+		int min = Integer.MAX_VALUE;
+		for (int i = 0; i + 1 < list.size(); i++) {
+			for (int j = i + 1; j < list.size(); j++) {
+				int diff = Math.abs(list.get(j) - list.get(i));
+				min = Math.min(min, diff);
 			}
 		}
-		System.out.println(map.get(12));
+		return (min == Integer.MAX_VALUE) ? 0 : min;
+
+	}
+
+	private static void minDiffInBSTPreOrder(TreeNode root, List<Integer> list) {
+		if (root == null) {
+			return;
+		}
+		list.add(root.val);
+		minDiffInBSTPreOrder(root.left, list);
+		minDiffInBSTPreOrder(root.right, list);
 
 	}
 
