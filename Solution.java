@@ -35,11 +35,13 @@ public class Solution {
 //		TreeNode tree = new TreeNode(3);
 //		tree.left = new TreeNode(9);
 //		tree.left.left = new TreeNode(1);
-//		tree.left.right = new TreeNode(3);
+//		tree.left.right = new TreeNode(2);
 //		tree.right = new TreeNode(20);
 //		tree.right.left = new TreeNode(15);
 //		tree.right.right = new TreeNode(7);
-//		List<Integer> list = new ArrayList<>();
+//		System.out.println(minDiffInBST(tree));
+
+//		List<Integer> list = new ArrayList<>(); 
 		// System.out.println(sumOfLeftLeaves(tree));
 		// System.out.println(lowestCommonAncestor(tree, tree.left, tree.right).val);
 		// levelOrderBottom(tree);
