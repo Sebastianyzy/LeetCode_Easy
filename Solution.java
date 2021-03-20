@@ -176,6 +176,37 @@ public class Solution {
 
 	}
 
+	public static int rotatedDigits(int N) {
+		int count = 0;
+		for (int i = 0; i <= N; i++) {
+			if (rotatedDigitsisGood(i)) {
+				count++;
+			}
+		}
+		return count;
+
+	}
+
+	private static boolean rotatedDigitsisGood(int n) {
+		Map<String, String> map = new HashMap<>();
+		map.put("0", "0");
+		map.put("1", "1");
+		map.put("2", "5");
+		map.put("5", "2");
+		map.put("6", "9");
+		map.put("8", "8");
+		map.put("9", "6");
+		String s = Integer.toString(n);
+		String rotate = "";
+		for (int i = 0; i < s.length(); i++) {
+			if (!map.containsKey(Character.toString(s.charAt(i)))) {
+				return false;
+			}
+			rotate += map.get(Character.toString(s.charAt(i)));
+		}
+		return !rotate.equals(s);
+	}
+
 	public static int minDiffInBST(TreeNode root) {
 		List<Integer> list = new ArrayList<>();
 		minDiffInBSTPreOrder(root, list);
