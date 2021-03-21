@@ -173,7 +173,23 @@ public class Solution {
 //			}
 //		}
 //		System.out.println(map.get(12));
+	}
 
+	public static boolean rotateString(String A, String B) {
+		if (A.equals(B)) {
+			return true;
+		}
+		if (A.equals("")) {
+			return false;
+		}
+		String s = A.substring(1) + A.charAt(0);
+		while (!s.equals(A)) {
+			if (s.equals(B)) {
+				return true;
+			}
+			s = s.substring(1) + s.charAt(0);
+		}
+		return false;
 	}
 
 	public static int rotatedDigits(int N) {
