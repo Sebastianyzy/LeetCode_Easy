@@ -172,7 +172,21 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
-//		System.out.println(map.get(12));
+
+	}
+
+	public static int uniqueMorseRepresentations(String[] words) {
+		String[] code = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
+				"-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.." };
+		Set<String> set = new HashSet<>();
+		for (String s : words) {
+			StringBuilder sb = new StringBuilder();
+			for (char c : s.toCharArray()) {
+				sb.append(code[c - 'a']);
+			}
+			set.add(sb.toString());
+		}
+		return set.size();
 	}
 
 	public static boolean rotateString(String A, String B) {
