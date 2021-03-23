@@ -1,16 +1,6 @@
+import javax.swing.text.html.HTMLDocument;
 import java.math.BigInteger;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution {
 
@@ -172,7 +162,20 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
+	}
 
+	public static int[] numberOfLines(int[] widths, String S) {
+		int lines = 1, width = 0;
+		for (char c : S.toCharArray()) {
+			int w = widths[c - 'a'];
+			width += w;
+			if (width > 100) {
+				lines++;
+				width = w;
+			}
+		}
+
+		return new int[] { lines, width };
 	}
 
 	public static int uniqueMorseRepresentations(String[] words) {
