@@ -162,6 +162,27 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
+
+	}
+
+	public static String mostCommonWord(String paragraph, String[] banned) {
+		HashSet<String> ban = new HashSet<>();
+		HashMap<String, Integer> map = new HashMap<>();
+		String normalizedStr = paragraph.replaceAll("[^a-zA-Z0-9 ]", " ").toLowerCase();
+		String[] words = normalizedStr.split("\\s+");
+		Collections.addAll(ban, banned);
+		for (String word : words) {
+			map.put(word, map.getOrDefault(word, 0) + 1);
+		}
+		String ans = "";
+		int freq = 0;
+		for (String s : words) {
+			if (map.get(s) > freq && !ban.contains(s)) {
+				ans = s;
+				freq = map.get(s);
+			}
+		}
+		return ans;
 	}
 
 	public static double largestTriangleArea(int[][] points) {
