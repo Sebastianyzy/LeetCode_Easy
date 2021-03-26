@@ -162,7 +162,38 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
+		System.out.println(toGoatLatin("I speak Goat Latin"));
 
+	}
+
+	public static String toGoatLatin(String S) {
+		String[] word = S.split("\\s+");
+		String sb = "";
+		int round = 1;
+		for (int i = 0; i < word.length; i++) {
+			if (toGoatLatin_isVowel(Character.toLowerCase(word[i].charAt(0)))) {
+				sb += word[i];
+				sb += "ma";
+				for (int j = 0; j < round; j++) {
+					sb += "a";
+
+				}
+			} else {
+				sb += word[i].substring(1);
+				sb += Character.toString(word[i].charAt(0));
+				sb += "ma";
+				for (int j = 0; j < round; j++) {
+					sb += "a";
+				}
+			}
+			sb += i == word.length - 1 ? "" : " ";
+			round++;
+		}
+		return sb;
+	}
+
+	private static boolean toGoatLatin_isVowel(char c) {
+		return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
 	}
 
 	public static String mostCommonWord(String paragraph, String[] banned) {
