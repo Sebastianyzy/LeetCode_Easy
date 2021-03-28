@@ -162,8 +162,26 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
-		System.out.println(toGoatLatin("I speak Goat Latin"));
+		String s = "aa";
+		List<List<Integer>> list = largeGroupPositions(s);
+		for (List l : list) {
+			System.out.println(l);
+		}
 
+	}
+
+	public static List<List<Integer>> largeGroupPositions(String s) {
+		List<List<Integer>> ans = new ArrayList<>();
+		int i = 0;
+		for (int j = 0; j < s.length(); j++) {
+			if (j == s.length() - 1 || s.charAt(j) != s.charAt(j + 1)) {
+				if (j - i + 1 >= 3) {
+					ans.add(Arrays.asList(i, j));
+				}
+				i = j + 1;
+			}
+		}
+		return ans;
 	}
 
 	public static String toGoatLatin(String S) {
