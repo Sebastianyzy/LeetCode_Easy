@@ -162,12 +162,38 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
-		String s = "aa";
-		List<List<Integer>> list = largeGroupPositions(s);
-		for (List l : list) {
-			System.out.println(l);
-		}
+		System.out.println("3" + 4);
 
+	}
+
+	public static int[][] flipAndInvertImage(int[][] image) {
+		for (int[] ints : image) {
+			flipAndInvertImage_flip(ints);
+			flipAndInvertImage_Invert(ints);
+		}
+		return image;
+	}
+
+	private static void flipAndInvertImage_flip(int[] image) {
+		int i = 0;
+		int j = image.length - 1;
+		while (j >= i) {
+			int cur = image[i];
+			image[i] = image[j];
+			image[j] = cur;
+			i++;
+			j--;
+		}
+	}
+
+	private static void flipAndInvertImage_Invert(int[] image) {
+		for (int i = 0; i < image.length; i++) {
+			if (image[i] == 0) {
+				image[i] = 1;
+			} else {
+				image[i] = 0;
+			}
+		}
 	}
 
 	public static List<List<Integer>> largeGroupPositions(String s) {
