@@ -166,6 +166,13 @@ public class Solution {
 
 	}
 
+	public static boolean isRectangleOverlap(int[] rec1, int[] rec2) {
+		if (rec1[0] == rec1[2] || rec1[1] == rec1[3] || rec2[0] == rec2[2] || rec2[1] == rec2[3]) {
+			return false;
+		}
+		return !(rec1[2] <= rec2[0] || rec1[3] <= rec2[1] || rec1[0] >= rec2[2] || rec1[1] >= rec2[3]);
+	}
+
 	public static int[][] flipAndInvertImage(int[][] image) {
 		for (int[] ints : image) {
 			flipAndInvertImage_flip(ints);
@@ -188,11 +195,7 @@ public class Solution {
 
 	private static void flipAndInvertImage_Invert(int[] image) {
 		for (int i = 0; i < image.length; i++) {
-			if (image[i] == 0) {
-				image[i] = 1;
-			} else {
-				image[i] = 0;
-			}
+			image[i] = image[i] == 0 ? 1 : 0;
 		}
 	}
 
