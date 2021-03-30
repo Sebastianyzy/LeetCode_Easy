@@ -162,8 +162,26 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
-		System.out.println("3" + 4);
+	}
 
+	public static boolean backspaceCompare(String S, String T) {
+		String s = backspaceCompare_Trim(S);
+		String t = backspaceCompare_Trim(T);
+		return s.equals(t);
+	}
+
+	private static String backspaceCompare_Trim(String S) {
+		String s = "";
+		for (int i = 0; i < S.length(); i++) {
+			if (!Character.toString(S.charAt(i)).equals("#")) {
+				s += Character.toString(S.charAt(i));
+			} else {
+				if (s.length() != 0) {
+					s = s.substring(0, s.length() - 1);
+				}
+			}
+		}
+		return s;
 	}
 
 	public static boolean isRectangleOverlap(int[] rec1, int[] rec2) {
