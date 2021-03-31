@@ -164,6 +164,34 @@ public class Solution {
 //		}
 	}
 
+	public static boolean lemonadeChange(int[] bills) {
+		int five = 0;
+		int ten = 0;
+		int twenty = 0;
+		for (int bill : bills) {
+			if (bill == 5) {
+				five++;
+			}
+			if (bill == 10) {
+				ten++;
+				five--;
+			}
+			if (bill == 20) {
+				twenty++;
+				if (ten != 0) {
+					ten--;
+					five--;
+				} else {
+					five -= 3;
+				}
+			}
+			if (five < 0 || ten < 0 || twenty < 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static int peakIndexInMountainArray(int[] arr) {
 		int i = 0;
 		while (arr[i] < arr[i + 1]) {
