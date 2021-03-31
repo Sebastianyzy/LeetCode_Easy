@@ -164,6 +164,14 @@ public class Solution {
 //		}
 	}
 
+	public static int peakIndexInMountainArray(int[] arr) {
+		int i = 0;
+		while (arr[i] < arr[i + 1]) {
+			i++;
+		}
+		return i;
+	}
+
 	public static boolean backspaceCompare(String S, String T) {
 		String s = backspaceCompare_Trim(S);
 		String t = backspaceCompare_Trim(T);
