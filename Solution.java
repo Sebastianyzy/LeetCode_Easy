@@ -164,6 +164,23 @@ public class Solution {
 //		}
 	}
 
+	public static int binaryGap(int n) {
+		String s = Integer.toBinaryString(n);
+		int count = 0;
+		for (int i = 0; i < s.length() - 1; i++) {
+			if (s.charAt(i) == '1') {
+				for (int j = i + 1; j < s.length(); j++) {
+					if (s.charAt(j) == '1') {
+						count = Math.max(j - i, count);
+						break;
+					}
+				}
+			}
+		}
+		return count;
+
+	}
+
 	public static int[][] transpose(int[][] matrix) {
 		int[][] transpose = new int[matrix[0].length][matrix.length];
 		for (int i = 0; i < transpose.length; i++) {
