@@ -23,12 +23,19 @@ public class Solution {
 		// System.out.println(11 / 2);
 		// System.out.println((int) Math.floor(2.35));
 //		TreeNode tree = new TreeNode(3);
-//		tree.left = new TreeNode(9);
-//		tree.left.left = new TreeNode(1);
+//		tree.left = new TreeNode(5);
+//		tree.left.left = new TreeNode(6);
 //		tree.left.right = new TreeNode(2);
-//		tree.right = new TreeNode(20);
-//		tree.right.left = new TreeNode(15);
-//		tree.right.right = new TreeNode(7);
+//		tree.left.right.left = new TreeNode(7);
+//		tree.left.right.right = new TreeNode(4);
+//		tree.right = new TreeNode(1);
+//		tree.right.left = new TreeNode(9);
+//		tree.right.right = new TreeNode(8);
+//		List<Integer> list = new ArrayList<>();
+//		leafSimilar_loadLeaf(tree, list);
+//		for (int i = 0; i < list.size(); i++) {
+//			System.out.println(list.get(i));
+//		}
 //		System.out.println(minDiffInBST(tree));
 
 //		List<Integer> list = new ArrayList<>(); 
@@ -162,6 +169,24 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
+	}
+
+	public static boolean leafSimilar(TreeNode root1, TreeNode root2) {
+		List<Integer> l1 = new ArrayList<>();
+		List<Integer> l2 = new ArrayList<>();
+		leafSimilar_loadLeaf(root1, l1);
+		leafSimilar_loadLeaf(root2, l2);
+		return l1.equals(l2);
+	}
+
+	private static void leafSimilar_loadLeaf(TreeNode r, List<Integer> list) {
+		if (r != null) {
+			if (r.left == null && r.right == null)
+				list.add(r.val);
+			leafSimilar_loadLeaf(r.left, list);
+			leafSimilar_loadLeaf(r.right, list);
+		}
+
 	}
 
 	public static int binaryGap(int n) {
