@@ -169,9 +169,17 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
-		String s = "3";
-		System.out.println(Integer.parseInt(s) + 3);
+		System.out.println(5 / 2);
 
+	}
+
+	public static ListNode middleNode(ListNode head) {
+		List<ListNode> list = new ArrayList<>();
+		while (head != null) {
+			list.add(head);
+			head = head.next;
+		}
+		return list.get(list.size() / 2);
 	}
 
 	public static int robotSim(int[] commands, int[][] obstacles) {
