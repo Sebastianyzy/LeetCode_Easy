@@ -173,6 +173,23 @@ public class Solution {
 
 	}
 
+	public static int projectionArea(int[][] grid) {
+		int count = 0;
+		for (int i = 0; i < grid.length; i++) {
+			int row = 0;
+			int col = 0;
+			for (int j = 0; j < grid.length; j++) {
+				if (grid[i][j] > 0) {
+					count++;
+				}
+				row = Math.max(row, grid[i][j]);
+				col = Math.max(col, grid[j][i]);
+			}
+			count += row + col;
+		}
+		return count;
+	}
+
 	public static ListNode middleNode(ListNode head) {
 		List<ListNode> list = new ArrayList<>();
 		while (head != null) {
