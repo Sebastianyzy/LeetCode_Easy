@@ -169,7 +169,44 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		}
-		System.out.println(5 / 2);
+
+	}
+
+	public static String[] uncommonFromSentences(String A, String B) {
+		String[] a = A.split("\\s+");
+		String[] b = B.split("\\s+");
+		HashMap<String, Integer> adup = new HashMap<>();
+		HashMap<String, Integer> bdup = new HashMap<>();
+		List<String> ans = new ArrayList<>();
+		for (String s : a) {
+			if (adup.containsKey(s)) {
+				adup.put(s, adup.get(s) + 1);
+			} else {
+				adup.put(s, 1);
+			}
+		}
+		for (String s : b) {
+			if (bdup.containsKey(s)) {
+				bdup.put(s, bdup.get(s) + 1);
+			} else {
+				bdup.put(s, 1);
+			}
+		}
+		for (String s : a) {
+			if (adup.get(s) == 1 && !bdup.containsKey(s) && !ans.contains(s)) {
+				ans.add(s);
+			}
+		}
+		for (String s : b) {
+			if (bdup.get(s) == 1 && !adup.containsKey(s) && !ans.contains(s)) {
+				ans.add(s);
+			}
+		}
+		String[] final_ans = new String[ans.size()];
+		for (int i = 0; i < final_ans.length; i++) {
+			final_ans[i] = ans.get(i);
+		}
+		return final_ans;
 
 	}
 
