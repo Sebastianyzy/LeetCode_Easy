@@ -168,7 +168,7 @@ public class Solution {
 //			} else {
 //				map.put(i, map.get(i + 1));
 //			}
-//		}
+//		 }
 
 	}
 
@@ -1430,7 +1430,7 @@ public class Solution {
 		for (int j = 0; j < i; j++) {
 			s.append("0");
 		}
-		return s.toString() + num;
+		return s + num;
 
 	}
 
