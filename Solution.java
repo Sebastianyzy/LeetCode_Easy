@@ -172,6 +172,27 @@ public class Solution {
 
 	}
 
+	public static int[] fairCandySwap(int[] A, int[] B) {
+		int a = 0, b = 0;
+		for (int i : A) {
+			a += i;
+		}
+		for (int i : B) {
+			b += i;
+		}
+		int delta = (b - a) / 2;
+		Set<Integer> setB = new HashSet<>();
+		for (int i : B) {
+			setB.add(i);
+		}
+		for (int i : A) {
+			if (setB.contains(i + delta)) {
+				return new int[] { i, i + delta };
+			}
+		}
+		throw null;
+	}
+
 	public static String[] uncommonFromSentences(String A, String B) {
 		String[] a = A.split("\\s+");
 		String[] b = B.split("\\s+");
