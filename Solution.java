@@ -172,6 +172,18 @@ public class Solution {
 
 	}
 
+	public static int numSpecialEquivGroups(String[] A) {
+		Set<String> seen = new HashSet<>();
+		for (String s : A) {
+			int[] count = new int[52];
+			for (int i = 0; i < s.length(); i++) {
+				count[s.charAt(i) - 'a' + 26 * (i % 2)]++;
+			}
+			seen.add(Arrays.toString(count));
+		}
+		return seen.size();
+	}
+
 	public static int surfaceArea(int[][] grid) {
 		int[] dr = new int[] { 0, 1, 0, -1 };
 		int[] dc = new int[] { 1, 0, -1, 0 };
