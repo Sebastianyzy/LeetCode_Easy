@@ -172,6 +172,10 @@ public class Solution {
 
 	}
 
+	public static boolean isMonotonic(int[] A) {
+		return isMonotonic_increase(A) || isMonotonic_decrease(A);
+	}
+
 	public static int numSpecialEquivGroups(String[] A) {
 		Set<String> seen = new HashSet<>();
 		for (String s : A) {
@@ -2818,6 +2822,24 @@ public class Solution {
 
 		}
 		return ans;
+	}
+
+	private static boolean isMonotonic_increase(int[] A) {
+		for (int i = 1; i < A.length; i++) {
+			if (A[i - 1] > A[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean isMonotonic_decrease(int[] A) {
+		for (int i = 1; i < A.length; i++) {
+			if (A[i - 1] < A[i]) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public int findSpecialInteger(int[] arr) {
