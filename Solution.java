@@ -172,6 +172,27 @@ public class Solution {
 
 	}
 
+	public static TreeNode increasingBST(TreeNode root) {
+		List<Integer> list = new ArrayList<>();
+		increasingBST_inOrder(root, list);
+		TreeNode ans = new TreeNode(list.get(0)), cur = ans;
+		for (int i : list) {
+			cur.right = new TreeNode(i);
+			cur = cur.right;
+		}
+		return ans.right;
+
+	}
+
+	private static void increasingBST_inOrder(TreeNode root, List<Integer> list) {
+		if (root == null) {
+			return;
+		}
+		increasingBST_inOrder(root.left, list);
+		list.add(root.val);
+		increasingBST_inOrder(root.right, list);
+	}
+
 	public static boolean isMonotonic(int[] A) {
 		return isMonotonic_increase(A) || isMonotonic_decrease(A);
 	}
