@@ -172,6 +172,35 @@ public class Solution {
 
 	}
 
+	public static int smallestRangeI(int[] A, int K) {
+		int min = A[0], max = A[0];
+		for (int i : A) {
+			min = Math.min(min, i);
+			max = Math.max(max, i);
+		}
+		return Math.max(0, max - min - 2 * K);
+	}
+
+	public static int[] sortArrayByParity(int[] A) {
+		List<Integer> Even = new ArrayList<>(), Odd = new ArrayList<>();
+		for (int i : A) {
+			if (i % 2 == 0) {
+				Even.add(i);
+			} else {
+				Odd.add(i);
+			}
+		}
+		for (int i = 0; i < Even.size(); i++) {
+			A[i] = Even.get(i);
+		}
+		int j = 0;
+		for (int i = Even.size(); i < A.length; i++) {
+			A[i] = Odd.get(j);
+			j++;
+		}
+		return A;
+	}
+
 	public static TreeNode increasingBST(TreeNode root) {
 		List<Integer> list = new ArrayList<>();
 		increasingBST_inOrder(root, list);
