@@ -172,6 +172,53 @@ public class Solution {
 
 	}
 
+	public static int[] sortArrayByParityII(int[] nums) {
+		List<Integer> even = new ArrayList<>(), odd = new ArrayList<>();
+		for (int i : nums) {
+			if (i % 2 == 0) {
+				even.add(i);
+			} else {
+				odd.add(i);
+			}
+		}
+		int e = 0, o = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (i % 2 == 0) {
+				nums[i] = even.get(e);
+				e++;
+			} else {
+				nums[i] = odd.get(o);
+				o++;
+			}
+		}
+		return nums;
+
+	}
+
+	public static HashMap<Integer, String> probability_distribution(int t, HashMap<Integer, String> map) {
+		HashMap<Integer, String> ans = new HashMap<>();
+		for (int i = 1; i <= 6; i++) {
+			if (i <= t) {
+				ans.put(i, "0.00");
+			} else {
+				ans.put(i, map.get(i));
+			}
+		}
+		int sum = 0;
+		for (int i = 0; i < map.size(); i++) {
+			if (i + 1 <= t) {
+				sum += Integer.parseInt(map.get(i));
+			}
+		}
+		int part = sum / (6 - t);
+		for (int i = t + 1; i < ans.size(); i++) {
+			ans.put(i, ans.get(i) + part);
+		}
+
+		return ans;
+
+	}
+
 	public static String reverseOnlyLetters(String S) {
 		Stack<Character> letters = new Stack();
 		for (char c : S.toCharArray())
