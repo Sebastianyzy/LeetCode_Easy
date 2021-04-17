@@ -172,6 +172,43 @@ public class Solution {
 
 	}
 
+	public static boolean isLongPressedName(String name, String typed) {
+		Stack<Character> name_stack = new Stack<>(), typed_stack = new Stack<>();
+		for (char c : name.toCharArray()) {
+			name_stack.push(c);
+		}
+		for (char c : typed.toCharArray()) {
+			typed_stack.push(c);
+		}
+		char last_pop_type = ' ';
+		while (!name_stack.isEmpty() && !typed_stack.isEmpty()) {
+			char cur_name = name_stack.peek(), cur_type = typed_stack.peek();
+			if (cur_name == cur_type) {
+				name_stack.pop();
+				last_pop_type = typed_stack.pop();
+			} else {
+				if (cur_type != last_pop_type) {
+					return false;
+				}
+				while (cur_type == last_pop_type) {
+					last_pop_type = typed_stack.pop();
+					cur_type = typed_stack.peek();
+				}
+				if (cur_type != cur_name) {
+					return false;
+				}
+			}
+		}
+		while (!typed_stack.isEmpty()) {
+			char cur = typed_stack.peek();
+			if (last_pop_type != cur) {
+				return false;
+			}
+			last_pop_type = typed_stack.pop();
+		}
+		return name_stack.isEmpty();
+	}
+
 	public static int[] sortArrayByParityII(int[] nums) {
 		List<Integer> even = new ArrayList<>(), odd = new ArrayList<>();
 		for (int i : nums) {
