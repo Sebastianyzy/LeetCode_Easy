@@ -169,7 +169,42 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
 
+	public static int numUniqueEmails(String[] emails) {
+		HashSet<String> set = new HashSet<>();
+		StringBuilder sb = new StringBuilder();
+		for (String s : emails) {
+			boolean end_loop = true;
+			boolean include = false;
+			for (int i = 0; i < s.length(); i++) {
+				char cur = s.charAt(i);
+				if (cur == '.' && include) {
+					sb.append(cur);
+				} else if (cur == '@') {
+					end_loop = false;
+					include = true;
+					sb.append(cur);
+				} else if (cur == '+' && end_loop) {
+					int j = i;
+					while (s.charAt(j) != '@') {
+						j++;
+					}
+					while (j < s.length()) {
+						sb.append(s.charAt(j));
+						j++;
+					}
+					break;
+				} else {
+					if (cur != '.') {
+						sb.append(cur);
+					}
+				}
+			}
+			set.add(sb.toString());
+			sb.setLength(0);
+		}
+		return set.size();
 	}
 
 	public static boolean isLongPressedName(String name, String typed) {
