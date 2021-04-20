@@ -171,6 +171,63 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean validMountainArray(int[] arr) {
+		if (arr.length < 3) {
+			return false;
+		}
+		int max = validMountainArray_getPeak(arr);
+		if (arr[0] == max) {
+			return false;
+		}
+		int i = 1;
+		while (i < arr.length && arr[i] != max) {
+			if (arr[i] <= arr[i - 1]) {
+				return false;
+			}
+			i++;
+		}
+		if (i == arr.length - 1) {
+			return false;
+		}
+		for (int j = i; j < arr.length - 1; j++) {
+			if (arr[j] <= arr[j + 1]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static int validMountainArray_getPeak(int[] arr) {
+		int i = Integer.MIN_VALUE;
+		for (int k : arr) {
+			if (k > i) {
+				i = k;
+			}
+		}
+		return i;
+	}
+
+	public static int rangeSumBST(TreeNode root, int low, int high) {
+		List<Integer> list = new ArrayList<>();
+		rangeSumBST_preOrder(list, root);
+		int ans = 0;
+		for (Integer integer : list) {
+			if (integer >= low && integer <= high) {
+				ans += integer;
+			}
+		}
+		return ans;
+	}
+
+	private static void rangeSumBST_preOrder(List<Integer> list, TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		list.add(root.val);
+		rangeSumBST_preOrder(list, root.left);
+		rangeSumBST_preOrder(list, root.right);
+	}
+
 	public static String[] reorderLogFiles(String[] logs) {
 		Comparator<String> myComp = new Comparator<String>() {
 			@Override
@@ -299,7 +356,6 @@ public class Solution {
 			}
 		}
 		return nums;
-
 	}
 
 	public static HashMap<Integer, String> probability_distribution(int t, HashMap<Integer, String> map) {
