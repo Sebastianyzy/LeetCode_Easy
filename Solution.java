@@ -169,6 +169,74 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+
+	}
+
+	public static boolean isAlienSorted(String[] words, String order) {
+		if (words.length < 2) {
+			return true;
+		}
+		HashMap<Character, Integer> map = new HashMap<>();
+		isAlienSorted_SetOrder(order, map);
+		for (int i = 1; i < words.length; i++) {
+			if (!isAlienSorted_isLexicographicalySort(words[i - 1], words[i], map)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean isAlienSorted_isLexicographicalySort(String s1, String s2, HashMap<Character, Integer> map) {
+		int len = Math.min(s1.length(), s2.length());
+		if (s1.substring(0, len).equals(s2.substring(0, len)) && s1.length() > s2.length()) {
+			return false;
+		}
+		for (int i = 0; i < len; i++) {
+			if (map.get(s2.charAt(i)) > map.get(s1.charAt(i))) {
+				return true;
+			} else if (map.get(s2.charAt(i)).equals(map.get(s1.charAt(i)))) {
+				continue;
+			} else {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static void isAlienSorted_SetOrder(String order, HashMap<Character, Integer> map) {
+		for (int i = 0; i < order.length(); i++) {
+			map.put(order.charAt(i), i);
+		}
+	}
+
+	public static int minDeletionSize(String[] strs) {
+		String[] ans = new String[strs[0].length()];
+		for (int i = 0; i < strs[0].length(); i++) {
+			String cur = "";
+			for (String str : strs) {
+				cur += str.charAt(i);
+			}
+			ans[i] = cur;
+		}
+		int count = 0;
+		for (String an : ans) {
+			if (!minDeletionSize_isSorted(an)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	private static boolean minDeletionSize_isSorted(String s) {
+		if (s.length() < 2) {
+			return true;
+		}
+		for (int i = 1; i < s.length(); i++) {
+			if (s.charAt(i) < s.charAt(i - 1)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public static int[] diStringMatch(String S) {
