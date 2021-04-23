@@ -172,6 +172,63 @@ public class Solution {
 
 	}
 
+	public static int[] sumEvenAfterQueries(int[] A, int[][] queries) {
+		int sum = 0;
+		for (int i : A) {
+			sum += i % 2 == 0 ? i : 0;
+		}
+		int[] ans = new int[queries.length];
+		for (int i = 0; i < ans.length; i++) {
+			int val = queries[i][0], index = queries[i][1];
+			if (A[index] % 2 == 0) {
+				sum -= A[index];
+			}
+			A[index] += val;
+			if (A[index] % 2 == 0) {
+				sum += A[index];
+			}
+			ans[i] = sum;
+		}
+		return ans;
+	}
+
+	public static int[] sortedSquares(int[] nums) {
+		for (int i = 0; i < nums.length; i++) {
+			nums[i] *= nums[i];
+		}
+		Arrays.sort(nums);
+		return nums;
+	}
+
+	public static int largestPerimeter(int[] nums) {
+		Arrays.sort(nums);
+		for (int i = nums.length - 1; i >= 2; i--) {
+			if (nums[i] < nums[i - 1] + nums[i - 2]) {
+				return nums[i] + nums[i - 1] + nums[i - 2];
+			}
+		}
+		return 0;
+	}
+
+	public static boolean isUnivalTree(TreeNode root) {
+		if (root == null) {
+			return true;
+		}
+		Set<Integer> set = new HashSet<>();
+		isUnivalTree_AddNode(root, set);
+		return set.size() == 1;
+
+	}
+
+	private static void isUnivalTree_AddNode(TreeNode root, Set<Integer> set) {
+		if (root == null) {
+			return;
+		}
+		set.add(root.val);
+		isUnivalTree_AddNode(root.left, set);
+		isUnivalTree_AddNode(root.right, set);
+	}
+
 	public static int repeatedNTimes(int[] A) {
 		HashMap<Integer, Integer> map = new HashMap<>();
 		int repeat = A.length / 2;
