@@ -172,6 +172,22 @@ public class Solution {
 
 	}
 
+	public static int repeatedNTimes(int[] A) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		int repeat = A.length / 2;
+		for (int i : A) {
+			if (!map.containsKey(i)) {
+				map.put(i, 1);
+			} else {
+				map.put(i, map.get(i) + 1);
+			}
+			if (map.get(i) == repeat) {
+				return i;
+			}
+		}
+		return 0;
+	}
+
 	public static boolean isAlienSorted(String[] words, String order) {
 		if (words.length < 2) {
 			return true;
