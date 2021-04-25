@@ -171,6 +171,60 @@ public class Solution {
 //		 }
 	}
 
+	public static int findJudge(int N, int[][] trust) {
+		if (trust.length < N - 1) {
+			return -1;
+		}
+		int[] trustScores = new int[N + 1];
+		for (int[] relation : trust) {
+			trustScores[relation[0]]--;
+			trustScores[relation[1]]++;
+		}
+		for (int i = 1; i <= N; i++) {
+			if (trustScores[i] == N - 1) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public static boolean isCousins(TreeNode root, int x, int y) {
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+			boolean siblings = false;
+			boolean cousins = false;
+
+			int nodesAtDepth = queue.size();
+
+			for (int i = 0; i < nodesAtDepth; i++) {
+				TreeNode node = queue.remove();
+				if (node == null) {
+					siblings = false;
+				} else {
+					if (node.val == x || node.val == y) {
+						if (!cousins) {
+							siblings = cousins = true;
+						} else {
+							return !siblings;
+						}
+					}
+					if (node.left != null)
+						queue.add(node.left);
+					if (node.right != null)
+						queue.add(node.right);
+					queue.add(null);
+				}
+			}
+			if (cousins) {
+				return false;
+			}
+
+		}
+		return false;
+	}
+
 	public static List<Integer> addToArrayForm(int[] num, int k) {
 		int N = num.length, cur = k;
 		List<Integer> ans = new ArrayList<>();
