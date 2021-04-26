@@ -1,4 +1,3 @@
-import javax.swing.text.html.HTMLDocument;
 import java.math.BigInteger;
 import java.util.*;
 
@@ -167,6 +166,19 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
+
+	public static int sumBase(int n, int k) {
+		String base_k = sumBase_baseConversion(Integer.toString(n), k);
+		int ans = 0;
+		for (char c : base_k.toCharArray()) {
+			ans += Integer.parseInt(Character.toString(c));
+		}
+		return ans;
+	}
+
+	private static String sumBase_baseConversion(String number, int dBase) {
+		return Integer.toString(Integer.parseInt(number, 10), dBase);
 	}
 
 	public static int largestSumAfterKNegations(int[] A, int K) {
