@@ -7,7 +7,6 @@ public class Solution {
 	static Map<String, Integer> library = new HashMap<>();
 
 	static {
-
 		library.put("I", 1);
 		library.put("V", 5);
 		library.put("X", 10);
@@ -15,7 +14,6 @@ public class Solution {
 		library.put("C", 100);
 		library.put("D", 500);
 		library.put("M", 1000);
-
 	}
 
 	public static void main(String[] args) {
@@ -169,6 +167,38 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
+
+	public static int largestSumAfterKNegations(int[] A, int K) {
+		for (int i = 0; i < K; i++) {
+			int min = largestSumAfterKNegations_findMin(A);
+			largestSumAfterKNegations_modify(A, min);
+		}
+		int ans = 0;
+		for (int i : A) {
+			ans += i;
+		}
+		return ans;
+
+	}
+
+	private static int largestSumAfterKNegations_findMin(int[] A) {
+		int min = Integer.MAX_VALUE;
+		for (int i : A) {
+			if (i < min) {
+				min = i;
+			}
+		}
+		return min;
+	}
+
+	private static void largestSumAfterKNegations_modify(int[] A, int integer) {
+		for (int i = 0; i < A.length; i++) {
+			if (A[i] == integer) {
+				A[i] = -A[i];
+				return;
+			}
+		}
 	}
 
 	public static List<String> commonChars(String[] A) {
