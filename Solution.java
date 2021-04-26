@@ -171,6 +171,48 @@ public class Solution {
 //		 }
 	}
 
+	public static List<String> commonChars(String[] A) {
+		List<String> ans = new ArrayList<>();
+		if (A.length == 0) {
+			return ans;
+		}
+		String common = A[0];
+		for (String s : A) {
+			List<Character> list = new ArrayList<>();
+			for (char c : s.toCharArray()) {
+				list.add(c);
+			}
+			for (char c : common.toCharArray()) {
+				if (!list.contains(c)) {
+					common = commonChars_DeleteChars(common, c);
+				} else {
+					list.remove(c);
+				}
+			}
+		}
+		for (char c : common.toCharArray()) {
+			ans.add(Character.toString(c));
+		}
+		return ans;
+	}
+
+	private static String commonChars_DeleteChars(String s, char c) {
+		boolean remove = true;
+		String ans = "";
+		for (char ch : s.toCharArray()) {
+			if (ch == c) {
+				if (remove) {
+					remove = false;
+				} else {
+					ans += ch;
+				}
+			} else {
+				ans += ch;
+			}
+		}
+		return ans;
+	}
+
 	public static int findJudge(int N, int[][] trust) {
 		if (trust.length < N - 1) {
 			return -1;
