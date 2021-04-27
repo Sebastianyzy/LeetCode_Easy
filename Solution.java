@@ -168,6 +168,14 @@ public class Solution {
 //		 }
 	}
 
+	public static int bitwiseComplement(int N) {
+		String n = Integer.toBinaryString(N), comp = "";
+		for (char c : n.toCharArray()) {
+			comp += c == '1' ? '0' : '1';
+		}
+		return Integer.parseInt(comp, 2);
+	}
+
 	public static int sumBase(int n, int k) {
 		String base_k = sumBase_baseConversion(Integer.toString(n), k);
 		int ans = 0;
