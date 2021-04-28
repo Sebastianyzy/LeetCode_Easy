@@ -168,6 +168,22 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean canThreePartsEqualSum(int[] A) {
+		int sum = Arrays.stream(A).sum();
+		if (sum % 3 != 0) {
+			return false;
+		}
+		int each = sum / 3, temp = 0, found = 0;
+		for (int j : A) {
+			temp += j;
+			if (temp == each) {
+				temp = 0;
+				found++;
+			}
+		}
+		return found >= 3;
+	}
+
 	public static int bitwiseComplement(int N) {
 		String n = Integer.toBinaryString(N), comp = "";
 		for (char c : n.toCharArray()) {
