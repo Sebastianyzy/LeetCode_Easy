@@ -168,6 +168,36 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] searchRange(int[] nums, int target) {
+		List<Integer> position = new ArrayList<>();
+		int[] ans = { -1, -1 };
+		boolean on = true;
+		int size = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] == target && on) {
+				position.add(i);
+				on = false;
+				size++;
+			}
+			if (nums[i] == target && !on) {
+				size++;
+				int cur = i;
+				for (int j = i; j < nums.length; j++) {
+					if (nums[j] == target) {
+						cur = j;
+					}
+				}
+				position.add(cur);
+				break;
+			}
+		}
+		if (size != 0) {
+			ans[0] = position.get(0);
+			ans[1] = position.get(1);
+		}
+		return ans;
+	}
+
 	public static boolean canThreePartsEqualSum(int[] A) {
 		int sum = Arrays.stream(A).sum();
 		if (sum % 3 != 0) {
