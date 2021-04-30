@@ -168,6 +168,35 @@ public class Solution {
 //		 }
 	}
 
+	public static int sumRootToLeaf(TreeNode root) {
+		return sumRootToLeaf_Traversal(root, 0);
+	}
+
+	private static int sumRootToLeaf_Traversal(TreeNode node, int value) {
+		if (node == null)
+			return 0;
+
+		value = value * 2 + node.val;
+		if (node.left == null && node.right == null) {
+			return value;
+		}
+		return sumRootToLeaf_Traversal(node.left, value) + sumRootToLeaf_Traversal(node.right, value);
+	}
+
+	public static String removeOuterParentheses(String S) {
+		StringBuilder SB = new StringBuilder();
+		int currDepth = 0;
+		for (char curr : S.toCharArray()) {
+			if (curr == '(' && (currDepth += 1) > 1) {
+				SB.append(curr);
+			}
+			if (curr == ')' && (currDepth -= 1) >= 1) {
+				SB.append(curr);
+			}
+		}
+		return SB.toString();
+	}
+
 	public static List<Boolean> prefixesDivBy5(int[] A) {
 		List<Boolean> result = new ArrayList<>();
 		int s = 0;
