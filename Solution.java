@@ -168,6 +168,10 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean divisorGame(int n) {
+		return n % 2 == 0;
+	}
+
 	public static int sumRootToLeaf(TreeNode root) {
 		return sumRootToLeaf_Traversal(root, 0);
 	}
