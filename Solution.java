@@ -166,6 +166,19 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+
+	}
+
+	public static boolean isBoomerang(int[][] points) {
+		Set<int[]> set = new HashSet<>();
+		Collections.addAll(set, points);
+		return !collinear(points[0][0], points[0][1], points[1][0], points[1][1], points[2][0], points[2][1])
+				&& set.size() == 3;
+	}
+
+	private static boolean collinear(int x1, int y1, int x2, int y2, int x3, int y3) {
+		int a = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
+		return a == 0;
 	}
 
 	public static int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
