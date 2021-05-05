@@ -169,6 +169,21 @@ public class Solution {
 
 	}
 
+	public static int lastStoneWeight(int[] stones) {
+		if (stones.length == 1) {
+			return stones[0];
+		}
+		for (int i = 0; i < stones.length; i++) {
+			Arrays.sort(stones);
+			if (stones[stones.length - 1] >= stones[stones.length - 2]) {
+				int cur = stones[stones.length - 2];
+				stones[stones.length - 2] = 0;
+				stones[stones.length - 1] -= cur;
+			}
+		}
+		return stones[stones.length - 1];
+	}
+
 	public static boolean isBoomerang(int[][] points) {
 		Set<int[]> set = new HashSet<>();
 		Collections.addAll(set, points);
@@ -177,8 +192,7 @@ public class Solution {
 	}
 
 	private static boolean collinear(int x1, int y1, int x2, int y2, int x3, int y3) {
-		int a = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
-		return a == 0;
+		return x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2) == 0;
 	}
 
 	public static int[][] allCellsDistOrder(int R, int C, int r0, int c0) {
