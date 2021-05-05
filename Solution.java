@@ -169,6 +169,17 @@ public class Solution {
 
 	}
 
+	public static int heightChecker(int[] heights) {
+		int count = 0;
+		int[] expected = new int[heights.length];
+		System.arraycopy(heights, 0, expected, 0, heights.length);
+		Arrays.sort(expected);
+		for (int i = 0; i < heights.length; i++) {
+			count += heights[i] != expected[i] ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static String removeDuplicates(String S) {
 		if (S.length() < 2) {
 			return S;
@@ -202,6 +213,15 @@ public class Solution {
 			}
 		}
 		return stones[stones.length - 1];
+	}
+
+	public static int[] numMovesStones(int a, int b, int c) {
+		int[] s = { a, b, c };
+		Arrays.sort(s);
+		if (s[2] - s[0] == 2) {
+			return new int[] { 0, 0 };
+		}
+		return new int[] { Math.min(s[1] - s[0], s[2] - s[1]) <= 2 ? 1 : 2, s[2] - s[0] - 2 };
 	}
 
 	public static boolean isBoomerang(int[][] points) {
@@ -3573,27 +3593,7 @@ public class Solution {
 		return true;
 	}
 
-	public int heightChecker(int[] heights) {
-		int count = 0;
-		int[] expected = new int[heights.length];
-		System.arraycopy(heights, 0, expected, 0, heights.length);
-		Arrays.sort(expected);
-		for (int i = 0; i < heights.length; i++) {
-			count += heights[i] != expected[i] ? 1 : 0;
-		}
-		return count;
-	}
-
-	public int[] numMovesStones(int a, int b, int c) {
-		int[] s = { a, b, c };
-		Arrays.sort(s);
-		if (s[2] - s[0] == 2) {
-			return new int[] { 0, 0 };
-		}
-		return new int[] { Math.min(s[1] - s[0], s[2] - s[1]) <= 2 ? 1 : 2, s[2] - s[0] - 2 };
-	}
-
-	public int findSpecialInteger(int[] arr) {
+	public static int findSpecialInteger(int[] arr) {
 		Map<Integer, Integer> map = new HashMap<>();
 		double ans = 0.25 * arr.length;
 		for (int k : arr) {
@@ -3612,7 +3612,7 @@ public class Solution {
 
 	}
 
-	public ListNode reverseList(ListNode head) {
+	public static ListNode reverseList(ListNode head) {
 		List<Integer> l = new ArrayList<>();
 		while (head != null) {
 			l.add(head.val);
