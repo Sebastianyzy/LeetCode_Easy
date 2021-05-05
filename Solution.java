@@ -169,6 +169,26 @@ public class Solution {
 
 	}
 
+	public static String removeDuplicates(String S) {
+		if (S.length() < 2) {
+			return S;
+		}
+		Stack<Character> stack = new Stack<>();
+		stack.push(S.charAt(0));
+		for (int i = 1; i < S.length(); i++) {
+			if (!stack.isEmpty() && stack.peek() == S.charAt(i)) {
+				stack.pop();
+			} else {
+				stack.push(S.charAt(i));
+			}
+		}
+		StringBuilder sb = new StringBuilder();
+		while (!stack.isEmpty()) {
+			sb.append(stack.pop());
+		}
+		return sb.reverse().toString();
+	}
+
 	public static int lastStoneWeight(int[] stones) {
 		if (stones.length == 1) {
 			return stones[0];
@@ -3551,6 +3571,17 @@ public class Solution {
 			}
 		}
 		return true;
+	}
+
+	public int heightChecker(int[] heights) {
+		int count = 0;
+		int[] expected = new int[heights.length];
+		System.arraycopy(heights, 0, expected, 0, heights.length);
+		Arrays.sort(expected);
+		for (int i = 0; i < heights.length; i++) {
+			count += heights[i] != expected[i] ? 1 : 0;
+		}
+		return count;
 	}
 
 	public int[] numMovesStones(int a, int b, int c) {
