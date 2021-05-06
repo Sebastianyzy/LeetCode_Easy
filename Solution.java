@@ -169,6 +169,25 @@ public class Solution {
 
 	}
 
+	public static boolean confusingNumber(int N) {
+		String n = N + "";
+		int i = 0, j = n.length() - 1;
+		char[] num = n.toCharArray();
+		while (j >= i) {
+			char cur = n.charAt(i), curj = n.charAt(j);
+			if (cur == '2' || cur == '3' || cur == '4' || cur == '5' || cur == '7' || curj == '2' || curj == '3'
+					|| curj == '4' || curj == '5' || curj == '7') {
+				return false;
+			}
+			char temp = (num[j] == '6' || num[j] == '9') ? (num[j] == '6') ? '9' : '6' : num[j];
+			num[j] = (num[i] == '6' || num[i] == '9') ? (num[i] == '6') ? '9' : '6' : num[i];
+			num[i] = temp;
+			i++;
+			j--;
+		}
+		return Integer.parseInt(new String(num)) != N;
+	}
+
 	public static int heightChecker(int[] heights) {
 		int count = 0;
 		int[] expected = new int[heights.length];
