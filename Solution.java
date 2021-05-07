@@ -166,7 +166,33 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
 
+	public static int[][] indexPairs(String text, String[] words) {
+		List<int[]> store = new ArrayList<>();
+		List<String> dictionary = new ArrayList<>(Arrays.asList(words));
+		for (int i = 0; i < text.length(); i++) {
+			for (int j = i; j <= text.length(); j++) {
+				String cur = text.substring(i, j);
+				if (dictionary.contains(cur)) {
+					store.add(new int[] { i, j - 1 });
+				}
+			}
+		}
+		int[][] ans = new int[store.size()][2];
+		for (int i = 0; i < ans.length; i++) {
+			ans[i] = store.get(i);
+		}
+		return ans;
+	}
+
+	public static int fixedPoint(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			if (i == arr[i]) {
+				return arr[i];
+			}
+		}
+		return -1;
 	}
 
 	public static boolean confusingNumber(int N) {
