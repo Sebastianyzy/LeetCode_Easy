@@ -1,5 +1,6 @@
 import java.math.BigInteger;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Solution {
 
@@ -166,6 +167,33 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+
+	}
+
+	public static Boolean isDivide(String a, String b) {
+		if (a.equals("")) {
+			return true;
+		}
+		int times = (b.length()) / a.length();
+		StringBuilder tmp = new StringBuilder(a);
+		times--;
+		while (times > 0) {
+			tmp.append(a);
+			times--;
+		}
+		return tmp.toString().equals(b);
+	}
+
+	public static String gcdOfStrings(String str1, String str2) {
+		String ans = "";
+		String prev = "";
+		for (int i = 0; i < str2.length(); i++) {
+			ans += str2.charAt(i);
+			if (isDivide(ans, str1) && isDivide(ans, str2)) {
+				prev = ans;
+			}
+		}
+		return prev;
 	}
 
 	public static int[][] indexPairs(String text, String[] words) {
