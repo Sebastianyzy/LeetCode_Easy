@@ -170,6 +170,50 @@ public class Solution {
 
 	}
 
+	public static String stringShift(String string, int[][] shift) {
+		int len = string.length();
+		for (int[] move : shift) {
+			int direction = move[0];
+			int amount = move[1] % len;
+			if (direction == 0) {
+				string = string.substring(amount) + string.substring(0, amount);
+			} else {
+				string = string.substring(len - amount) + string.substring(0, len - amount);
+			}
+		}
+		return string;
+	}
+
+	public static int sumOfDigits(int[] A) {
+		Arrays.sort(A);
+		return sumOfDigits_getSum(A[0]) % 2 == 0 ? 1 : 0;
+	}
+
+	private static int sumOfDigits_getSum(int i) {
+		int count = 0;
+		String s = i + "";
+		for (int j = 0; j < s.length(); j++) {
+			count += Integer.parseInt(Character.toString(s.charAt(j)));
+		}
+		return count;
+	}
+
+	public static String[] findOcurrences(String text, String first, String second) {
+		String[] ans = text.split("\\s+");
+		List<String> list = new ArrayList<>();
+		for (int i = 1; i < ans.length - 1; i++) {
+			String fir = ans[i - 1], sec = ans[i], third = ans[i + 1];
+			if (fir.equals(first) && sec.equals(second)) {
+				list.add(third);
+			}
+		}
+		String[] output = new String[list.size()];
+		for (int i = 0; i < output.length; i++) {
+			output[i] = list.get(i);
+		}
+		return output;
+	}
+
 	public static Boolean isDivide(String a, String b) {
 		if (a.equals("")) {
 			return true;
