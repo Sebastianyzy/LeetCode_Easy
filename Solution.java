@@ -170,6 +170,46 @@ public class Solution {
 
 	}
 
+	public static void duplicateZeros(int[] arr) {
+		List<Integer> list = new ArrayList<>();
+		for (int j : arr) {
+			if (j == 0) {
+				list.add(0);
+				list.add(0);
+
+			} else {
+				list.add(j);
+			}
+		}
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = list.get(i);
+		}
+	}
+
+	public static int[][] highFive(int[][] items) {
+		int K = 5;
+		TreeMap<Integer, Queue<Integer>> allScores = new TreeMap<>();
+		for (int[] item : items) {
+			int id = item[0];
+			int score = item[1];
+			if (!allScores.containsKey(id))
+				allScores.put(id, new PriorityQueue<>((a, b) -> b - a));
+			allScores.get(id).add(score);
+		}
+
+		List<int[]> solution = new ArrayList<>();
+
+		for (int id : allScores.keySet()) {
+			int sum = 0;
+			// obtain the top k scores (k = 5)
+			for (int i = 0; i < K; ++i)
+				sum += allScores.get(id).poll();
+			solution.add(new int[] { id, sum / K });
+		}
+		int[][] solutionArray = new int[solution.size()][];
+		return solution.toArray(solutionArray);
+	}
+
 	public static String stringShift(String string, int[][] shift) {
 		int len = string.length();
 		for (int[] move : shift) {
