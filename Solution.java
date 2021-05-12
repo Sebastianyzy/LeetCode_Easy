@@ -167,7 +167,22 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
 
+	public static int[] distributeCandies(int candies, int num_people) {
+		int[] people = new int[num_people];
+		int numOfCandies = 1, i = 0;
+		while (candies > 0) {
+			if (candies - numOfCandies <= 0) {
+				people[i] += candies;
+				break;
+			}
+			people[i] += numOfCandies;
+			candies -= numOfCandies;
+			numOfCandies++;
+			i = i == people.length - 1 ? 0 : i + 1;
+		}
+		return people;
 	}
 
 	public static int twoSumLessThanK(int[] nums, int k) {
