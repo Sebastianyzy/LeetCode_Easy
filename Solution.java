@@ -169,6 +169,15 @@ public class Solution {
 //		 }
 	}
 
+	public static int balancedStringSplit(String s) {
+		int boo = 0, count = 0;
+		for (char c : s.toCharArray()) {
+			boo += c == 'R' ? 1 : -1;
+			count += boo == 0 ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static String defangIPaddr(String address) {
 		String ans = "";
 		for (char c : address.toCharArray()) {
