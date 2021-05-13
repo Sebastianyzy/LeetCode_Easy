@@ -169,6 +169,14 @@ public class Solution {
 //		 }
 	}
 
+	public static String defangIPaddr(String address) {
+		String ans = "";
+		for (char c : address.toCharArray()) {
+			ans += c == '.' ? "[.]" : Character.toString(c);
+		}
+		return ans;
+	}
+
 	public static int[] distributeCandies(int candies, int num_people) {
 		int[] people = new int[num_people];
 		int numOfCandies = 1, i = 0;
