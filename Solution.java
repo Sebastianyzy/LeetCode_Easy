@@ -169,6 +169,17 @@ public class Solution {
 //		 }
 	}
 
+	public static int arraySign(int[] nums) {
+		int neg = 0;
+		for (int i : nums) {
+			if (i == 0) {
+				return 0;
+			}
+			neg += i < 0 ? 1 : 0;
+		}
+		return neg % 2 == 0 ? 1 : -1;
+	}
+
 	public static int balancedStringSplit(String s) {
 		int boo = 0, count = 0;
 		for (char c : s.toCharArray()) {
