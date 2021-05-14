@@ -167,6 +167,12 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+
+	}
+
+	public static int numberOfDays(int Y, int M) {
+		return M == 4 || M == 6 || M == 9 || M == 11 ? 30
+				: M != 2 ? 31 : (Y % 4 == 0 && Y % 100 == 0 && Y % 400 == 0) || (Y % 4 == 0 && Y % 100 != 0) ? 29 : 28;
 	}
 
 	public static int arraySign(int[] nums) {
