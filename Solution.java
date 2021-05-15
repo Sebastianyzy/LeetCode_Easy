@@ -167,7 +167,14 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
 
+	public static String removeVowels(String s) {
+		String ans = "";
+		for (char c : s.toCharArray()) {
+			ans += c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ? "" : Character.toString(c);
+		}
+		return ans;
 	}
 
 	public static int numberOfDays(int Y, int M) {
