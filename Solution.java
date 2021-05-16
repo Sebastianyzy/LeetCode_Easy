@@ -169,6 +169,36 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] relativeSortArray(int[] arr1, int[] arr2) {
+		List<Integer> list = new ArrayList<>(), out = new ArrayList<>();
+		for (int i : arr2) {
+			list.add(i);
+		}
+		int[] ans = new int[arr1.length];
+		int j = 0;
+		for (int i : arr1) {
+			if (!list.contains(i)) {
+				out.add(i);
+			}
+		}
+		for (int temp : arr2) {
+			for (int integer : arr1) {
+				if (integer == temp) {
+					ans[j] = integer;
+					j++;
+				}
+			}
+		}
+		j = ans.length - 1;
+		List<Integer> list_sort = new ArrayList<Integer>(out);
+		Collections.sort(list_sort);
+		for (int i = list_sort.size() - 1; i >= 0; i--) {
+			ans[j] = list_sort.get(i);
+			j--;
+		}
+		return ans;
+	}
+
 	public static String removeVowels(String s) {
 		String ans = "";
 		for (char c : s.toCharArray()) {
