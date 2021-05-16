@@ -169,6 +169,46 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean isArmstrong(int n) {
+		String str = n + "";
+		int sum = 0;
+		for (int i = 0; i < str.length(); i++) {
+			int cur = (int) Math.pow(Integer.parseInt(Character.toString(str.charAt(i))), str.length());
+			sum += cur;
+		}
+		return sum == n;
+	}
+
+	public static int numEquivDominoPairs(int[][] dominoes) {
+		Map<Integer, Integer> map = new HashMap<>();
+		int result = 0;
+		for (int[] item : dominoes) {
+			int val = item[0] < item[1] ? item[0] * 10 + item[1] : item[1] * 10 + item[0];
+			int count = map.getOrDefault(val, 0);
+			map.put(val, count + 1);
+			result += count;
+		}
+		return result;
+	}
+
+	public static int largestUniqueNumber(int[] A) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for (int i : A) {
+			if (map.containsKey(i)) {
+				map.put(i, map.get(i) + 1);
+			} else {
+				map.put(i, 1);
+			}
+		}
+		Arrays.sort(A);
+		for (int i = A.length - 1; i >= 0; i--) {
+			if (map.get(A[i]) == 1) {
+				return A[i];
+			}
+		}
+		return -1;
+	}
+
 	public static int[] relativeSortArray(int[] arr1, int[] arr2) {
 		List<Integer> list = new ArrayList<>(), out = new ArrayList<>();
 		for (int i : arr2) {
