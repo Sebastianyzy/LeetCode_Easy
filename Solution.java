@@ -169,6 +169,36 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean isMajorityElement(int[] nums, int target) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for (int i : nums) {
+			if (map.containsKey(i)) {
+				map.put(i, map.get(i) + 1);
+			} else {
+				map.put(i, 1);
+			}
+		}
+		try {
+			return map.get(target) > nums.length / 2;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public static int tribonacci(int n) {
+		if (n < 3) {
+			return n == 0 ? 0 : 1;
+		}
+		int temp, x = 0, y = 1, z = 1;
+		for (int i = 3; i <= n; i++) {
+			temp = x + y + z;
+			x = y;
+			y = z;
+			z = temp;
+		}
+		return z;
+	}
+
 	public static boolean isArmstrong(int n) {
 		String str = n + "";
 		int sum = 0;
