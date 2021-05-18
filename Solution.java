@@ -169,6 +169,16 @@ public class Solution {
 //		 }
 	}
 
+	public static int dayOfYear(String date) {
+		String[] s = date.split("-");
+		int year = Integer.parseInt(s[0]), month = Integer.parseInt(s[1]), day = Integer.parseInt(s[2]), count = 0;
+		boolean leap = (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
+		for (int i = 1; i < month; i++) {
+			count += i == 4 || i == 6 || i == 9 || i == 11 ? 30 : i == 2 ? (leap ? 29 : 28) : 31;
+		}
+		return count + day;
+	}
+
 	public static boolean isMajorityElement(int[] nums, int target) {
 		HashMap<Integer, Integer> map = new HashMap<>();
 		for (int i : nums) {
