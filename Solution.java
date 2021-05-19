@@ -169,6 +169,46 @@ public class Solution {
 //		 }
 	}
 
+	public static int calculateTime(String keyboard, String word) {
+		HashMap<Character, Integer> map = new HashMap<>();
+		for (int i = 0; i <= 25; i++) {
+			map.put(keyboard.charAt(i), i);
+		}
+		char cur_pos = keyboard.charAt(0);
+		int time = 0;
+		for (int i = 0; i < word.length(); i++) {
+			char cur_word = word.charAt(i);
+			time += Math.abs(map.get(cur_word) - map.get(cur_pos));
+			cur_pos = cur_word;
+
+		}
+		return time;
+	}
+
+	public static int countCharacters(String[] words, String chars) {
+		List<Character> list = new ArrayList<>();
+		for (char c : chars.toCharArray()) {
+			list.add(c);
+		}
+		int ans = 0;
+		for (String s : words) {
+			ans += (s.length() > chars.length() || !countCharacters_contains(list, s)) ? 0 : s.length();
+		}
+		return ans;
+	}
+
+	private static boolean countCharacters_contains(List<Character> list0, String s) {
+		List<Character> list = new ArrayList<>();
+		list.addAll(list0);
+		for (int i = 0; i < s.length(); i++) {
+			if (!list.contains(s.charAt(i))) {
+				return false;
+			}
+			list.remove(s.charAt(i));
+		}
+		return true;
+	}
+
 	public static int dayOfYear(String date) {
 		String[] s = date.split("-");
 		int year = Integer.parseInt(s[0]), month = Integer.parseInt(s[1]), day = Integer.parseInt(s[2]), count = 0;
