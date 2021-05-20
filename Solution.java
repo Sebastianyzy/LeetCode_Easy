@@ -169,6 +169,50 @@ public class Solution {
 //		 }
 	}
 
+	public static int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
+		int start = 0, score = 0, cur = 0;
+		for (int end = 0; end < calories.length; end++) {
+			cur += calories[end];
+			score += end - start + 1 == k ? cur > upper ? 1 : cur < lower ? -1 : 0 : 0;
+			cur -= end - start + 1 == k ? calories[start++] : 0;
+		}
+		return score;
+	}
+
+	public static int numPrimeArrangements(int n) {
+		if (n < 2) {
+			return 1;
+		}
+		long res = 1;
+		int prime = 1;
+		int notPrime = 1;
+		for (int i = 3; i <= n; i++) {
+			if (numPrimeArrangements_isPrime(i)) {
+				prime++;
+			} else {
+				notPrime++;
+			}
+		}
+		for (int i = prime; i > 0; i--) {
+			res *= i;
+			res %= 1000000007;
+		}
+		for (int i = notPrime; i > 0; i--) {
+			res *= i;
+			res %= 1000000007;
+		}
+		return (int) res;
+	}
+
+	private static boolean numPrimeArrangements_isPrime(int num) {
+		for (int i = 2; i <= num / 2; i++) {
+			if (num % i == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static int calculateTime(String keyboard, String word) {
 		HashMap<Character, Integer> map = new HashMap<>();
 		for (int i = 0; i <= 25; i++) {
