@@ -169,6 +169,26 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean checkIfExist(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = i; j < arr.length; j++) {
+				if ((arr[i] == 2 * arr[j] || arr[j] == 2 * arr[i]) && i != j) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static int numberOfSteps(int num) {
+		int steps = 0;
+		while (num != 0) {
+			num = num % 2 == 0 ? num / 2 : num - 1;
+			steps++;
+		}
+		return steps;
+	}
+
 	public static int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
 		int start = 0, score = 0, cur = 0;
 		for (int end = 0; end < calories.length; end++) {
