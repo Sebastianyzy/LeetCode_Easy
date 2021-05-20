@@ -169,6 +169,14 @@ public class Solution {
 //		 }
 	}
 
+	public static int findNumbers(int[] nums) {
+		int ans = 0;
+		for (int i : nums) {
+			ans += String.valueOf(i).length() % 2 == 0 ? 1 : 0;
+		}
+		return ans;
+	}
+
 	public static boolean checkIfExist(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = i; j < arr.length; j++) {
