@@ -169,6 +169,21 @@ public class Solution {
 //		 }
 	}
 
+	public static int distanceBetweenBusStops(int[] distance, int start, int destination) {
+		int totalSum = 0;
+		int distanceSum = 0;
+		int min = Integer.MAX_VALUE;
+		int left = Math.min(start, destination);
+		int right = Math.max(start, destination);
+		for (int j : distance) {
+			totalSum += j;
+		}
+		for (int i = left; i < right; i++) {
+			distanceSum += distance[i];
+		}
+		return Math.min(distanceSum, totalSum - distanceSum);
+	}xk
+
 	public static int countLetters(String S) {
 		int total = 0;
 		for (int left = 0, right = 0; right <= S.length(); right++) {
