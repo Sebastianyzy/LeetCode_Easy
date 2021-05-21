@@ -182,7 +182,7 @@ public class Solution {
 			distanceSum += distance[i];
 		}
 		return Math.min(distanceSum, totalSum - distanceSum);
-	}xk
+	}
 
 	public static int countLetters(String S) {
 		int total = 0;
