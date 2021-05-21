@@ -169,11 +169,24 @@ public class Solution {
 //		 }
 	}
 
+	public static int countLetters(String S) {
+		int total = 0;
+		for (int left = 0, right = 0; right <= S.length(); right++) {
+			if (right == S.length() || S.charAt(left) != S.charAt(right)) {
+				int lenSubstring = right - left;
+				total += (1 + lenSubstring) * lenSubstring / 2;
+				left = right;
+			}
+		}
+		return total;
+	}
+
 	public static int findNumbers(int[] nums) {
 		int ans = 0;
 		for (int i : nums) {
 			ans += String.valueOf(i).length() % 2 == 0 ? 1 : 0;
 		}
+
 		return ans;
 	}
 
@@ -185,6 +198,7 @@ public class Solution {
 				}
 			}
 		}
+
 		return false;
 	}
 
@@ -194,6 +208,7 @@ public class Solution {
 			num = num % 2 == 0 ? num / 2 : num - 1;
 			steps++;
 		}
+
 		return steps;
 	}
 
