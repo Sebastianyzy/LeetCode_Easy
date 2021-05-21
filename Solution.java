@@ -201,7 +201,6 @@ public class Solution {
 		for (int i : nums) {
 			ans += String.valueOf(i).length() % 2 == 0 ? 1 : 0;
 		}
-
 		return ans;
 	}
 
@@ -213,7 +212,6 @@ public class Solution {
 				}
 			}
 		}
-
 		return false;
 	}
 
@@ -223,7 +221,6 @@ public class Solution {
 			num = num % 2 == 0 ? num / 2 : num - 1;
 			steps++;
 		}
-
 		return steps;
 	}
 
