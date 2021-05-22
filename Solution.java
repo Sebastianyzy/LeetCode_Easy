@@ -1,6 +1,9 @@
 import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class Solution {
 
@@ -167,6 +170,10 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
+
+	public static String dayOfTheWeek(int day, int month, int year) {
+		return LocalDate.of(year, month, day).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
 	}
 
 	public static int distanceBetweenBusStops(int[] distance, int start, int destination) {
