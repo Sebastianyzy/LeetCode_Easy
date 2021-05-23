@@ -172,6 +172,23 @@ public class Solution {
 //		 }
 	}
 
+	public static int maxNumberOfBalloons(String text) {
+		List<Character> list = new ArrayList<>();
+		for (char c : text.toCharArray()) {
+			list.add(c);
+		}
+		String balloon = "balloon";
+		int i = 0, count = 0;
+		char cur = balloon.charAt(i);
+		while (list.contains(cur)) {
+			list.remove(cur);
+			i = i + 1 == balloon.length() ? 0 : i + 1;
+			count += i == 0 ? 1 : 0;
+			cur = balloon.charAt(i);
+		}
+		return count;
+	}
+
 	public static String dayOfTheWeek(int day, int month, int year) {
 		return LocalDate.of(year, month, day).getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
 	}
