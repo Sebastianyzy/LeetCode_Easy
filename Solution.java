@@ -170,6 +170,20 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+
+	}
+
+	public static int maxNumberOfApples(int[] arr) {
+		int max = 5000, i = 0, count = 0;
+		Arrays.sort(arr);
+		while (max >= 0 && i < arr.length) {
+			if (max - arr[i] >= 0) {
+				max -= arr[i];
+				count++;
+			}
+			i++;
+		}
+		return count;
 	}
 
 	public static int maxNumberOfBalloons(String text) {
