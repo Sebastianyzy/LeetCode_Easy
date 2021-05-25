@@ -173,6 +173,25 @@ public class Solution {
 
 	}
 
+	public static List<List<Integer>> minimumAbsDifference(int[] arr) {
+		List<List<Integer>> ans = new ArrayList<>();
+		Arrays.sort(arr);
+		int cur = Integer.MAX_VALUE;
+		for (int i = 1; i < arr.length; i++) {
+			if (Math.abs(arr[i] - arr[i - 1]) <= cur) {
+				List<Integer> list = new ArrayList<>();
+				if (Math.abs(arr[i] - arr[i - 1]) < cur) {
+					cur = Math.abs(arr[i] - arr[i - 1]);
+					ans.clear();
+				}
+				list.add(arr[i - 1]);
+				list.add(arr[i]);
+				ans.add(list);
+			}
+		}
+		return ans;
+	}
+
 	public static int maxNumberOfApples(int[] arr) {
 		int max = 5000, i = 0, count = 0;
 		Arrays.sort(arr);
