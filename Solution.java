@@ -173,6 +173,22 @@ public class Solution {
 
 	}
 
+	public static boolean uniqueOccurrences(int[] arr) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		Set<Integer> set = new HashSet<>();
+		for (int i : arr) {
+			if (map.containsKey(i)) {
+				map.put(i, map.get(i) + 1);
+			} else {
+				map.put(i, 1);
+			}
+		}
+		for (int i : arr) {
+			set.add(map.get(i));
+		}
+		return set.size() == map.size();
+	}
+
 	public static List<List<Integer>> minimumAbsDifference(int[] arr) {
 		List<List<Integer>> ans = new ArrayList<>();
 		Arrays.sort(arr);
