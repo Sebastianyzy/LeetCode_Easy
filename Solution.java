@@ -173,6 +173,35 @@ public class Solution {
 
 	}
 
+	public static List<Integer> arraysIntersection(int[] arr1, int[] arr2, int[] arr3) {
+		List<Integer> ans = new ArrayList<>(), a1 = new ArrayList<>(), a2 = new ArrayList<>(), a3 = new ArrayList<>();
+		for (int i : arr1) {
+			a1.add(i);
+		}
+		for (int i : arr2) {
+			a2.add(i);
+		}
+		for (int i : arr3) {
+			a3.add(i);
+		}
+		for (int i : a1) {
+			if (a2.contains(i) && a3.contains(i) && !ans.contains(i)) {
+				ans.add(i);
+			}
+		}
+		for (int i : a2) {
+			if (a1.contains(i) && a3.contains(i) && !ans.contains(i)) {
+				ans.add(i);
+			}
+		}
+		for (int i : a3) {
+			if (a2.contains(i) && a1.contains(i) && !ans.contains(i)) {
+				ans.add(i);
+			}
+		}
+		return ans;
+	}
+
 	public static boolean uniqueOccurrences(int[] arr) {
 		HashMap<Integer, Integer> map = new HashMap<>();
 		Set<Integer> set = new HashSet<>();
