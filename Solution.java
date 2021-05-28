@@ -173,6 +173,15 @@ public class Solution {
 
 	}
 
+	public static int minCostToMoveChips(int[] position) {
+		int even = 0, odd = 0;
+		for (int i : position) {
+			even += i % 2 == 0 ? 1 : 0;
+			odd += i % 2 == 0 ? 0 : 1;
+		}
+		return Math.min(odd, even);
+	}
+
 	public static List<Integer> arraysIntersection(int[] arr1, int[] arr2, int[] arr3) {
 		List<Integer> ans = new ArrayList<>(), a1 = new ArrayList<>(), a2 = new ArrayList<>(), a3 = new ArrayList<>();
 		for (int i : arr1) {
