@@ -173,6 +173,19 @@ public class Solution {
 
 	}
 
+	public static boolean checkStraightLine(int[][] coordinates) {
+		int x = coordinates[0][0];
+		int y = coordinates[0][1];
+		for (int i = 1; i < coordinates.length; i++) {
+			if ((y - coordinates[i - 1][1]) * (coordinates[i][0] - coordinates[i - 1][0]) != (x - coordinates[i - 1][0])
+					* (coordinates[i][1] - coordinates[i - 1][1])) {
+				return false;
+			}
+
+		}
+		return true;
+	}
+
 	public static int minCostToMoveChips(int[] position) {
 		int even = 0, odd = 0;
 		for (int i : position) {
@@ -1276,7 +1289,6 @@ public class Solution {
 				// split each log into two parts: <identifier, content>
 				String[] split1 = log1.split(" ", 2);
 				String[] split2 = log2.split(" ", 2);
-
 				boolean isDigit1 = Character.isDigit(split1[1].charAt(0));
 				boolean isDigit2 = Character.isDigit(split2[1].charAt(0));
 				// case 1). both logs are letter-logs
@@ -1898,7 +1910,6 @@ public class Solution {
 				counts.put(cur, counts.getOrDefault(cur, 0) + count);
 			}
 		}
-
 		List<String> ans = new ArrayList();
 		for (String dom : counts.keySet())
 			ans.add("" + counts.get(dom) + " " + dom);
@@ -1915,7 +1926,6 @@ public class Solution {
 				width = w;
 			}
 		}
-
 		return new int[] { lines, width };
 	}
 
@@ -1958,7 +1968,6 @@ public class Solution {
 			}
 		}
 		return count;
-
 	}
 
 	private static boolean rotatedDigitsisGood(int n) {
@@ -1992,7 +2001,6 @@ public class Solution {
 			}
 		}
 		return (min == Integer.MAX_VALUE) ? 0 : min;
-
 	}
 
 	private static void minDiffInBSTPreOrder(TreeNode root, List<Integer> list) {
@@ -2037,7 +2045,6 @@ public class Solution {
 			j = 0;
 		}
 		return true;
-
 	}
 
 	public static int[] anagramMappings(int[] A, int[] B) {
@@ -2057,12 +2064,10 @@ public class Solution {
 		List<String> ans = new ArrayList<>();
 		for (int i = 0; i < words.length; i++) {
 			boolean fit = true;
-
 			List<Character> list = new ArrayList<>();
 			for (char c : words[i].toCharArray()) {
 				list.add(c);
 			}
-
 			for (int j = 0; j < licensePlate.length(); j++) {
 				char curr = licensePlate.charAt(j);
 
@@ -2074,7 +2079,6 @@ public class Solution {
 						fit = false;
 					}
 				}
-
 			}
 			if (fit) {
 				ans.add(words[i]);
@@ -2093,9 +2097,7 @@ public class Solution {
 
 	public static int dominantIndex(int[] nums) {
 		int[] arr = new int[nums.length];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = nums[i];
-		}
+		System.arraycopy(nums, 0, arr, 0, arr.length);
 		Arrays.sort(arr);
 		int max = arr[arr.length - 1];
 		int index = -1;
@@ -2113,11 +2115,10 @@ public class Solution {
 	public static char nextGreatestLetter(char[] letters, char target) {
 		int num = Integer.MAX_VALUE;
 		Arrays.sort(letters);
-		for (int i = 0; i < letters.length; i++) {
-			if (letters[i] > target) {
-				return letters[i];
+		for (char letter : letters) {
+			if (letter > target) {
+				return letter;
 			}
-
 		}
 		return letters[0];
 	}
