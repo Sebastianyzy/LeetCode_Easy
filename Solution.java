@@ -173,6 +173,114 @@ public class Solution {
 
 	}
 
+	public static int minTimeToVisitAllPoints(int[][] points) {
+		if (points.length <= 2) {
+			return minTimeToVisitAllPoints_timeCost(points[0][0], points[0][1], points[1][0], points[1][1]);
+		}
+		int time = 0;
+		for (int i = 1; i < points.length; i++) {
+			int x = points[i - 1][0], y = points[i - 1][1], fx = points[i][0], fy = points[i][1];
+			time += minTimeToVisitAllPoints_timeCost(x, y, fx, fy);
+		}
+		return time;
+	}
+
+	private static int minTimeToVisitAllPoints_timeCost(int x, int y, int fx, int fy) {
+		int time = 1;
+		while (x != fx || y != fy) {
+			if (x <= fx && y <= fy) {
+				x += x == fx ? 0 : 1;
+				y += y == fy ? 0 : 1;
+				time += x == fx && y == fy ? 0 : 1;
+			} else if (x >= fx && y <= fy) {
+				x -= x == fx ? 0 : 1;
+				y += y == fy ? 0 : 1;
+				time += x == fx && y == fy ? 0 : 1;
+			} else if (x >= fx && y >= fy) {
+				x -= x == fx ? 0 : 1;
+				y -= y == fy ? 0 : 1;
+				time += x == fx && y == fy ? 0 : 1;
+
+			} else {
+				x += x == fx ? 0 : 1;
+				y -= y == fy ? 0 : 1;
+				time += x == fx && y == fy ? 0 : 1;
+			}
+		}
+		return time;
+	}
+
+	public static List<List<Integer>> shiftGrid(int[][] grid, int k) {
+		for (; k > 0; k--) {
+			int[][] newGrid = new int[grid.length][grid[0].length];
+			for (int row = 0; row < grid.length; row++) {
+				if (grid[0].length - 1 >= 0)
+					System.arraycopy(grid[row], 0, newGrid[row], 1, grid[0].length - 1);
+			}
+			for (int row = 0; row < grid.length - 1; row++) {
+				newGrid[row + 1][0] = grid[row][grid[0].length - 1];
+			}
+			newGrid[0][0] = grid[grid.length - 1][grid[0].length - 1];
+			grid = newGrid;
+		}
+		List<List<Integer>> result = new ArrayList<>();
+		for (int[] row : grid) {
+			List<Integer> listRow = new ArrayList<>();
+			result.add(listRow);
+			for (int v : row)
+				listRow.add(v);
+		}
+		return result;
+	}
+
+	public static int oddCells(int m, int n, int[][] indices) {
+		int count = 0;
+		int[][] mat = new int[m][n];
+		for (int[] index : indices) {
+			for (int j = 0; j < n; j++) {
+				mat[index[0]][j]++;
+			}
+			for (int j = 0; j < m; j++) {
+				mat[j][index[1]]++;
+			}
+		}
+		for (int[] ints : mat) {
+			for (int anInt : ints) {
+				if (anInt % 2 == 1) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+
+	public static List<Integer> transformArray(int[] arr) {
+		List<Integer> res = new ArrayList<>();
+		while (true) {
+			boolean correct = true;
+			int prev = arr[0];
+			for (int i = 1; i < arr.length - 1; i++) {
+				if (prev > arr[i] && arr[i + 1] > arr[i]) {
+					prev = arr[i];
+					arr[i]++;
+					correct = false;
+				} else if (prev < arr[i] && arr[i + 1] < arr[i]) {
+					prev = arr[i];
+					arr[i]--;
+					correct = false;
+				} else {
+					prev = arr[i];
+				}
+			}
+			if (correct)
+				break;
+		}
+		for (int j : arr) {
+			res.add(j);
+		}
+		return res;
+	}
+
 	public static boolean checkStraightLine(int[][] coordinates) {
 		int x = coordinates[0][0];
 		int y = coordinates[0][1];
@@ -181,7 +289,6 @@ public class Solution {
 					* (coordinates[i][1] - coordinates[i - 1][1])) {
 				return false;
 			}
-
 		}
 		return true;
 	}
