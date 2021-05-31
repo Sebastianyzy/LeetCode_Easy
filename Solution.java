@@ -170,7 +170,28 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+	}
 
+	public static String toHexspeak(String num) {
+		Set<Character> set = new HashSet<>();
+		set.add('A');
+		set.add('B');
+		set.add('C');
+		set.add('D');
+		set.add('E');
+		set.add('F');
+		set.add('I');
+		set.add('O');
+		String ans = "";
+		for (char c : new BigInteger(num + "", 10).toString(16).toCharArray()) {
+			ans += c == '1' ? "I" : c == '0' ? "O" : Character.toString(Character.toUpperCase(c));
+		}
+		for (char c : ans.toCharArray()) {
+			if (!set.contains(c)) {
+				return "ERROR";
+			}
+		}
+		return ans;
 	}
 
 	public static int minTimeToVisitAllPoints(int[][] points) {
