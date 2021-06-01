@@ -172,6 +172,37 @@ public class Solution {
 //		 }
 	}
 
+	public static String tictactoe(int[][] moves) {
+		int n = moves[0].length + 1, diagSum = 0, antiDiagSum = 0, playerVal = 1;
+		int[] rowSum = new int[n], colSum = new int[n];
+		for (int[] move : moves) {
+			int row = move[0], col = move[1];
+			rowSum[row] += playerVal;
+			colSum[col] += playerVal;
+			if (row == col) {
+				diagSum = diagSum + playerVal;
+				if (diagSum == n) {
+					return "A";
+				}
+				if (diagSum == -n) {
+					return "B";
+				}
+			}
+			if (row + col + 1 == n) {
+				antiDiagSum += playerVal;
+			}
+			if (rowSum[row] == n || colSum[col] == n || diagSum == n || antiDiagSum == n) {
+				return "A";
+			}
+			if (rowSum[row] == -n || colSum[col] == -n || diagSum == -n || antiDiagSum == -n) {
+				return "B";
+			}
+			playerVal = playerVal == 1 ? -1 : 1;
+
+		}
+		return moves.length < n * n ? "Pending" : "Draw";
+	}
+
 	public static String toHexspeak(String num) {
 		Set<Character> set = new HashSet<>();
 		set.add('A');
