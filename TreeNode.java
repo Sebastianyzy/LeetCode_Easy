@@ -5,7 +5,6 @@ public class TreeNode {
 	TreeNode left;
 
 	TreeNode() {
-
 	}
 
 	TreeNode(int val) {
@@ -17,5 +16,4 @@ public class TreeNode {
 		this.right = right;
 		this.left = left;
 	}
-
 }
