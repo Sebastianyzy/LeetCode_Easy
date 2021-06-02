@@ -1,12 +1,10 @@
 import java.math.BigInteger;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.time.LocalDate;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
 public class Solution {
-
 	static Map<String, Integer> library = new HashMap<>();
 
 	static {
@@ -170,7 +168,6 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
-
 	}
 
 	public static int subtractProductAndSum(int n) {
