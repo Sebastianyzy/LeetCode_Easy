@@ -172,6 +172,42 @@ public class Solution {
 //		 }
 	}
 
+	public static int subtractProductAndSum(int n) {
+		String num = n + "";
+		int sum = 0, product = 1;
+		for (char c : num.toCharArray()) {
+			sum += Integer.parseInt(Character.toString(c));
+			product *= Integer.parseInt(Character.toString(c));
+		}
+		return product - sum;
+	}
+
+	public static int getDecimalValue(ListNode head) {
+		String ans = "";
+		while (head != null) {
+			ans += head.val;
+			head = head.next;
+		}
+		return Integer.parseInt(ans, 2);
+	}
+
+	public static int[] replaceElements(int[] arr) {
+		int[] ans = new int[arr.length];
+		for (int i = 0; i < arr.length - 1; i++) {
+			ans[i] = replaceElements_Max(arr, i + 1);
+		}
+		ans[ans.length - 1] = -1;
+		return ans;
+	}
+
+	private static int replaceElements_Max(int[] arr, int start) {
+		int max = Integer.MIN_VALUE;
+		for (int i = start; i < arr.length; i++) {
+			max = Math.max(arr[i], max);
+		}
+		return max;
+	}
+
 	public static String tictactoe(int[][] moves) {
 		int n = moves[0].length + 1, diagSum = 0, antiDiagSum = 0, playerVal = 1;
 		int[] rowSum = new int[n], colSum = new int[n];
