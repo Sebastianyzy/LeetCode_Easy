@@ -17,5 +17,4 @@ public class TreeNode {
 		this.right = right;
 		this.left = left;
 	}
-
 }
