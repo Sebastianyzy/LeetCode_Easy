@@ -171,6 +171,23 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] sumZero(int n) {
+		int[] ans = new int[n];
+		if (n % 2 == 0) {
+			for (int i = 0; i < ans.length; i += 2) {
+				ans[i] = i + 1;
+				ans[i + 1] = -i - 1;
+			}
+		} else {
+			ans[0] = 0;
+			for (int i = 1; i < ans.length; i += 2) {
+				ans[i] = i + 1;
+				ans[i + 1] = -i - 1;
+			}
+		}
+		return ans;
+	}
+
 	public static int subtractProductAndSum(int n) {
 		String num = n + "";
 		int sum = 0, product = 1;
