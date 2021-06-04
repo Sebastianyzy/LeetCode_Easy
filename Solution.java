@@ -170,6 +170,40 @@ public class Solution {
 //		 }
 	}
 
+	public static String freqAlphabets(String s) {
+		HashMap<String, String> map = new HashMap<>();
+		int i = 1;
+		for (char c = 'a'; c <= 'i'; c++) {
+			map.put(i + "", Character.toString(c));
+			i++;
+		}
+		for (char c = 'j'; c <= 'z'; c++) {
+			map.put(i + "#", Character.toString(c));
+			i++;
+		}
+		String ans = "";
+		for (int j = 0; j < s.length(); j++) {
+			String cur = "";
+			if (s.charAt(j) == '1' || s.charAt(j) == '2') {
+				if (j + 2 >= s.length()) {
+					cur = Character.toString(s.charAt(j));
+				} else {
+					if (s.charAt(j + 2) == '#') {
+						cur = Character.toString(s.charAt(j)) + s.charAt(j + 1) + "#";
+						j += 2;
+					} else {
+						cur = Character.toString(s.charAt(j));
+					}
+				}
+
+			} else {
+				cur = s.charAt(j) == '#' || s.charAt(j) == '0' ? "" : Character.toString(s.charAt(j));
+			}
+			ans += cur == "" ? "" : map.get(cur);
+		}
+		return ans;
+	}
+
 	public static int[] sumZero(int n) {
 		int[] ans = new int[n];
 		if (n % 2 == 0) {
