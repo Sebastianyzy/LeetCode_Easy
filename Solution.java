@@ -6,7 +6,6 @@ import java.util.Locale;
 
 public class Solution {
 	static Map<String, Integer> library = new HashMap<>();
-
 	static {
 		library.put("I", 1);
 		library.put("V", 5);
