@@ -170,6 +170,23 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] decompressRLElist(int[] nums) {
+		int len = 0;
+		for (int i = 0; i < nums.length; i += 2) {
+			len += nums[i];
+		}
+		int[] ans = new int[len];
+		int i = 0, j = 0;
+		while (j < ans.length) {
+			for (int cur = 0; cur < nums[i]; cur++) {
+				ans[j] = nums[i + 1];
+				j++;
+			}
+			i += 2;
+		}
+		return ans;
+	}
+
 	public static String freqAlphabets(String s) {
 		HashMap<String, String> map = new HashMap<>();
 		int i = 1;
