@@ -169,6 +169,26 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] getNoZeroIntegers(int n) {
+		for (int i = 1; i < n; i++) {
+			int part = n - i;
+			if (getNoZeroIntegers_noZero(i, part)) {
+				return new int[] { i, part };
+			}
+		}
+		return new int[] { 0, 0 };
+	}
+
+	private static boolean getNoZeroIntegers_noZero(int i, int j) {
+		String s = "" + i + j;
+		for (char c : s.toCharArray()) {
+			if (c == '0') {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static int[] decompressRLElist(int[] nums) {
 		int len = 0;
 		for (int i = 0; i < nums.length; i += 2) {
@@ -215,7 +235,7 @@ public class Solution {
 			} else {
 				cur = s.charAt(j) == '#' || s.charAt(j) == '0' ? "" : Character.toString(s.charAt(j));
 			}
-			ans += cur == "" ? "" : map.get(cur);
+			ans += cur.equals("") ? "" : map.get(cur);
 		}
 		return ans;
 	}
@@ -4474,4 +4494,5 @@ public class Solution {
 		}
 		return dummy.next.next;
 	}
+
 }
