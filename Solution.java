@@ -169,6 +169,10 @@ public class Solution {
 //		 }
 	}
 
+	public static int maximum69Number(int num) {
+		return Integer.parseInt((num + "").replaceFirst("6", "9"));
+	}
+
 	public static int[] getNoZeroIntegers(int n) {
 		for (int i = 1; i < n; i++) {
 			int part = n - i;
