@@ -169,6 +169,24 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] arrayRankTransform(int[] arr) {
+		int[] ans = new int[arr.length];
+		System.arraycopy(arr, 0, ans, 0, arr.length);
+		Arrays.sort(arr);
+		HashMap<Integer, Integer> map = new HashMap<>();
+		int j = 1;
+		for (int k : arr) {
+			if (!map.containsKey(k)) {
+				map.put(k, j);
+				j++;
+			}
+		}
+		for (int i = 0; i < ans.length; i++) {
+			ans[i] = map.get(ans[i]);
+		}
+		return ans;
+	}
+
 	public static int maximum69Number(int num) {
 		return Integer.parseInt((num + "").replaceFirst("6", "9"));
 	}
