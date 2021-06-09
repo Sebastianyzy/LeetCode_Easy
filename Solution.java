@@ -169,6 +169,16 @@ public class Solution {
 //		 }
 	}
 
+	public static int countNegatives(int[][] grid) {
+		int count = 0;
+		for (int[] i : grid) {
+			for (int num : i) {
+				count += num < 0 ? 1 : 0;
+			}
+		}
+		return count;
+	}
+
 	public static int[] arrayRankTransform(int[] arr) {
 		int[] ans = new int[arr.length];
 		System.arraycopy(arr, 0, ans, 0, arr.length);
