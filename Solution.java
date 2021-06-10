@@ -169,6 +169,35 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] sortByBits(int[] arr) {
+		HashMap<Integer, Integer> map = new HashMap<>();
+		for (int k : arr) {
+			map.put(k, sortByBits_numOfzero(Integer.toBinaryString(k)));
+		}
+		for (int i = 0; i < arr.length - 1; i++) {
+			int min = i;
+			for (int j = i + 1; j < arr.length; j++) {
+				if (map.get(arr[j]) < map.get(arr[min])
+						|| (map.get(arr[j]).equals(map.get(arr[min])) && arr[j] < arr[min])) {
+					min = j;
+				}
+
+			}
+			int temp = arr[min];
+			arr[min] = arr[i];
+			arr[i] = temp;
+		}
+		return arr;
+	}
+
+	private static int sortByBits_numOfzero(String s) {
+		int count = 0;
+		for (char c : s.toCharArray()) {
+			count += c == '1' ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static int countNegatives(int[][] grid) {
 		int count = 0;
 		for (int[] i : grid) {
