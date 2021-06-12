@@ -169,6 +169,22 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] smallerNumbersThanCurrent(int[] nums) {
+		int[] ans = new int[nums.length];
+		for (int i = 0; i < nums.length; i++) {
+			ans[i] = smallerNumbersThanCurrent_HowManyNumbers(nums, nums[i]);
+		}
+		return ans;
+	}
+
+	private static int smallerNumbersThanCurrent_HowManyNumbers(int[] nums, int i) {
+		int count = 0;
+		for (int integer : nums) {
+			count += integer < i ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static int daysBetweenDates(String date1, String date2) {
 		String[] d1 = date1.split("-");
 		String[] d2 = date2.split("-");
