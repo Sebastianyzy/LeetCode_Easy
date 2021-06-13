@@ -169,6 +169,37 @@ public class Solution {
 //		 }
 	}
 
+	public static String sortString(String s) {
+		int[] map = new int[26];
+		int len = 0;
+		for (char c : s.toCharArray()) {
+			map[c - 'a']++;
+			len++;
+		}
+		StringBuilder sb = new StringBuilder();
+		int i = 0, step = 1;
+		while (len-- > 0) {
+			while (map[i] == 0) {
+				if (i == 25)
+					step = -1;
+				if (i == 0)
+					step = 1;
+				i += step;
+			}
+			sb.append((char) ('a' + i));
+			map[i]--;
+			i += step;
+			if (i < 0) {
+				step = 1;
+				i = 0;
+			} else if (i > 25) {
+				step = -1;
+				i = 25;
+			}
+		}
+		return sb.toString();
+	}
+
 	public static int[] smallerNumbersThanCurrent(int[] nums) {
 		int[] ans = new int[nums.length];
 		for (int i = 0; i < nums.length; i++) {
