@@ -169,6 +169,14 @@ public class Solution {
 //		 }
 	}
 
+	public static String generateTheString(int n) {
+		String ans = "";
+		for (int i = 0; i < n - 1; i++) {
+			ans += 'a';
+		}
+		return n % 2 == 0 ? ans + "b" : ans + "a";
+	}
+
 	public static String sortString(String s) {
 		int[] map = new int[26];
 		int len = 0;
@@ -180,10 +188,12 @@ public class Solution {
 		int i = 0, step = 1;
 		while (len-- > 0) {
 			while (map[i] == 0) {
-				if (i == 25)
+				if (i == 25) {
 					step = -1;
-				if (i == 0)
+				}
+				if (i == 0) {
 					step = 1;
+				}
 				i += step;
 			}
 			sb.append((char) ('a' + i));
