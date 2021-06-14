@@ -170,10 +170,8 @@ public class Solution {
 	}
 
 	public static String generateTheString(int n) {
-		String ans = "";
-		for (int i = 0; i < n - 1; i++) {
-			ans += 'a';
-		}
+		StringBuilder ans = new StringBuilder();
+		ans.append("a".repeat(Math.max(0, n - 1)));
 		return n % 2 == 0 ? ans + "b" : ans + "a";
 	}
 
