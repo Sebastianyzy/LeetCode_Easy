@@ -169,6 +169,36 @@ public class Solution {
 //		 }
 	}
 
+	public static List<Integer> luckyNumbers(int[][] matrix) {
+		List<Integer> ans = new ArrayList<>();
+		for (int[] ints : matrix) {
+			for (int j = 0; j < ints.length; j++) {
+				if (luckyNumbers_CheckRow(ints, ints[j]) && luckyNumbers_CheckCol(matrix, j, ints[j])) {
+					ans.add(ints[j]);
+				}
+			}
+		}
+		return ans;
+	}
+
+	private static boolean luckyNumbers_CheckRow(int[] matrix, int num) {
+		for (int j : matrix) {
+			if (j < num) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static boolean luckyNumbers_CheckCol(int[][] matrix, int col, int num) {
+		for (int[] ints : matrix) {
+			if (ints[col] > num) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public static String generateTheString(int n) {
 		StringBuilder ans = new StringBuilder();
 		ans.append("a".repeat(Math.max(0, n - 1)));
