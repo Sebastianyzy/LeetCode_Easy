@@ -169,6 +169,19 @@ public class Solution {
 //		 }
 	}
 
+	public static int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+		int l1 = arr1.length, l2 = arr2.length, distance = l1;
+		for (int i : arr1) {
+			for (int j : arr2) {
+				if (Math.abs(i - j) <= d) {
+					distance -= 1;
+					break;
+				}
+			}
+		}
+		return distance;
+	}
+
 	public static List<Integer> luckyNumbers(int[][] matrix) {
 		List<Integer> ans = new ArrayList<>();
 		for (int[] ints : matrix) {
