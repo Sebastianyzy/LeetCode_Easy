@@ -169,6 +169,24 @@ public class Solution {
 //		 }
 	}
 
+	public static int findLucky(int[] arr) {
+		Arrays.sort(arr);
+		for (int i = arr.length - 1; i >= 0; i--) {
+			if (findLucky_frequency(arr, arr[i]) == arr[i]) {
+				return arr[i];
+			}
+		}
+		return -1;
+	}
+
+	private static int findLucky_frequency(int[] arr, int num) {
+		int count = 0;
+		for (int j : arr) {
+			count += j == num ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static int[] createTargetArray(int[] nums, int[] index) {
 		int[] target = new int[nums.length];
 		int i = 0, k = 0;
