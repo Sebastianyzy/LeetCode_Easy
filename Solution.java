@@ -169,6 +169,29 @@ public class Solution {
 //		 }
 	}
 
+	public static int countLargestGroup(int n) {
+		int[] ans = new int[n + 1];
+		for (int i = 1; i <= n; i++) {
+			int cur = countLargestGroup_Sum(i);
+			ans[cur]++;
+		}
+		Arrays.sort(ans);
+		int count = 0, max = ans[ans.length - 1];
+		for (int i = ans.length - 1; i >= 0; i--) {
+			count += ans[i] == max ? 1 : 0;
+		}
+		return count;
+	}
+
+	private static int countLargestGroup_Sum(int n) {
+		String s = n + "";
+		int sum = 0;
+		for (char c : s.toCharArray()) {
+			sum += Integer.parseInt(Character.toString(c));
+		}
+		return sum;
+	}
+
 	public static int findLucky(int[] arr) {
 		Arrays.sort(arr);
 		for (int i = arr.length - 1; i >= 0; i--) {
