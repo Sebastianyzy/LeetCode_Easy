@@ -169,6 +169,29 @@ public class Solution {
 //		 }
 	}
 
+	public static List<Integer> minSubsequence(int[] nums) {
+		int[] count = new int[101];
+		int totalSum = 0;
+		for (int currInt : nums) {
+			totalSum += currInt;
+			count[currInt]++;
+		}
+		List<Integer> currSubseq = new ArrayList<>();
+		int currSum = 0;
+		for (int i = count.length - 1; i >= 0; --i) {
+			while (count[i] > 0) {
+				currSubseq.add(i);
+				currSum += i;
+				count[i]--;
+				if (currSum > totalSum - currSum) {
+					i = -1;
+					break;
+				}
+			}
+		}
+		return currSubseq;
+	}
+
 	public static int countLargestGroup(int n) {
 		int[] ans = new int[n + 1];
 		for (int i = 1; i <= n; i++) {
