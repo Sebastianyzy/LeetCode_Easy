@@ -169,6 +169,21 @@ public class Solution {
 //		 }
 	}
 
+	public static List<String> stringMatching(String[] words) {
+		Set<String> ans = new HashSet<>();
+		for (int i = 0; i < words.length - 1; i++) {
+			for (int j = i + 1; j < words.length; j++) {
+				String a = words[i], b = words[j];
+				if (a.contains(b)) {
+					ans.add(b);
+				} else if (b.contains(a)) {
+					ans.add(a);
+				}
+			}
+		}
+		return new ArrayList<>(ans);
+	}
+
 	public static List<Integer> minSubsequence(int[] nums) {
 		int[] count = new int[101];
 		int totalSum = 0;
