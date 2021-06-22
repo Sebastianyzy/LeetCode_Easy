@@ -169,6 +169,16 @@ public class Solution {
 //		 }
 	}
 
+	public static int minStartValue(int[] nums) {
+		int sum = 0;
+		int minSum = 0;
+		for (int num : nums) {
+			sum += num;
+			minSum = Math.min(sum, minSum);
+		}
+		return 1 - minSum;
+	}
+
 	public static List<String> stringMatching(String[] words) {
 		Set<String> ans = new HashSet<>();
 		for (int i = 0; i < words.length - 1; i++) {
