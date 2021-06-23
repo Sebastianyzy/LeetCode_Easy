@@ -169,6 +169,34 @@ public class Solution {
 //		 }
 	}
 
+	public static String reformat(String s) {
+		if (s.length() == 0 || s.length() == 1) {
+			return s;
+		}
+		StringBuilder result = new StringBuilder();
+		Queue<Character> alphabets = new LinkedList<>();
+		Queue<Character> digits = new LinkedList<>();
+		for (int i = 0; i < s.length(); i++) {
+			char current = s.charAt(i);
+			if (Character.isDigit(current)) {
+				digits.add(current);
+			} else {
+				alphabets.add(current);
+			}
+		}
+		int diff = digits.size() - alphabets.size();
+		if (diff < -1 || diff > 1) {
+			return result.toString();
+		}
+		char prev = digits.size() > alphabets.size() ? digits.poll() : alphabets.poll();
+		result.append(prev);
+		while (!alphabets.isEmpty() || !digits.isEmpty()) {
+			result.append(prev = (Character.isDigit(prev) ? alphabets.poll() : digits.poll()));
+		}
+
+		return result.toString();
+	}
+
 	public static int minStartValue(int[] nums) {
 		int sum = 0;
 		int minSum = 0;
