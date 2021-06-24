@@ -169,6 +169,25 @@ public class Solution {
 //		 }
 	}
 
+	public static int maxScore(String s) {
+		int max = Integer.MIN_VALUE;
+		for (int i = 1; i <= s.length(); i++) {
+			String l = s.substring(0, i), r = s.substring(i);
+			if (l.length() > 0 && r.length() > 0) {
+				max = Math.max(maxScore(l, '0') + maxScore(r, '1'), max);
+			}
+		}
+		return max;
+	}
+
+	private static int maxScore(String s, char c) {
+		int count = 0;
+		for (char ch : s.toCharArray()) {
+			count += ch == c ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static String reformat(String s) {
 		if (s.length() == 0 || s.length() == 1) {
 			return s;
