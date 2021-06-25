@@ -169,6 +169,23 @@ public class Solution {
 //		 }
 	}
 
+	public static int countElements(int[] arr) {
+		int count = 0;
+		for (int i : arr) {
+			count += countElements_exist(arr, i) ? 1 : 0;
+		}
+		return count;
+	}
+
+	private static boolean countElements_exist(int[] arr, int num) {
+		for (int j : arr) {
+			if (j == num + 1) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static int maxScore(String s) {
 		int max = Integer.MIN_VALUE;
 		for (int i = 1; i <= s.length(); i++) {
