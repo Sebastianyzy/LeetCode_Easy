@@ -169,6 +169,18 @@ public class Solution {
 //		 }
 	}
 
+	public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+		int max = Integer.MIN_VALUE;
+		for (int i : candies) {
+			max = Math.max(max, i);
+		}
+		List<Boolean> ans = new ArrayList<>();
+		for (int candy : candies) {
+			ans.add(candy + extraCandies >= max);
+		}
+		return ans;
+	}
+
 	public static int countElements(int[] arr) {
 		int count = 0;
 		for (int i : arr) {
