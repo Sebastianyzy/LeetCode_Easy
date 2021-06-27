@@ -169,6 +169,19 @@ public class Solution {
 //		 }
 	}
 
+	public static String destCity(List<List<String>> paths) {
+		HashMap<String, String> map = new HashMap<>();
+		for (List<String> path : paths) {
+			map.put(path.get(0), path.get(1));
+		}
+		for (List<String> path : paths) {
+			if (!map.containsKey(path.get(1))) {
+				return path.get(1);
+			}
+		}
+		return "";
+	}
+
 	public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
 		int max = Integer.MIN_VALUE;
 		for (int i : candies) {
