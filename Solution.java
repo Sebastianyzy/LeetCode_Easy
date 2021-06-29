@@ -169,6 +169,21 @@ public class Solution {
 //		 }
 	}
 
+	public static int maxPower(String s) {
+		int count = 0, max_count = 0;
+		char prev = ' ';
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == prev) {
+				count++;
+			} else {
+				count = 1;
+				prev = s.charAt(i);
+			}
+			max_count = Math.max(max_count, count);
+		}
+		return max_count;
+	}
+
 	public static List<String> buildArray(int[] target, int n) {
 		List<String> list = new ArrayList();
 		int i = 0;
@@ -181,7 +196,6 @@ public class Solution {
 				list.add("Pop");
 			}
 		}
-
 		return list;
 	}
 
