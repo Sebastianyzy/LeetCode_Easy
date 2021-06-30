@@ -169,6 +169,14 @@ public class Solution {
 //		 }
 	}
 
+	public static int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+		int count = 0;
+		for (int i = 0; i < endTime.length; i++) {
+			count += (startTime[i] <= queryTime && endTime[i] >= queryTime) ? 1 : 0;
+		}
+		return count;
+	}
+
 	public static int maxPower(String s) {
 		int count = 0, max_count = 0;
 		char prev = ' ';
