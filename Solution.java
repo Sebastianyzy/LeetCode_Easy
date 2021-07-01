@@ -169,6 +169,16 @@ public class Solution {
 //		 }
 	}
 
+	public static int isPrefixOfWord(String sentence, String searchWord) {
+		for (int i = 0; i < sentence.split("\\s+").length; i++) {
+			if (sentence.split("\\s+")[i].length() >= searchWord.length()
+					&& searchWord.equals(sentence.split("\\s+")[i].substring(0, searchWord.length()))) {
+				return i + 1;
+			}
+		}
+		return -1;
+	}
+
 	public static int busyStudent(int[] startTime, int[] endTime, int queryTime) {
 		int count = 0;
 		for (int i = 0; i < endTime.length; i++) {
