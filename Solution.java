@@ -169,6 +169,21 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] shuffle(int[] nums, int n) {
+		int max = 1001;
+		for (int i = n; i < nums.length; i++) {
+			nums[i] = max * nums[i] + nums[i - n];
+		}
+		int ind = 0;
+		for (int i = n; i < nums.length; i++) {
+			nums[ind] = nums[i] % max;
+			nums[ind + 1] = nums[i] / max;
+			ind += 2;
+		}
+
+		return nums;
+	}
+
 	public static int maxProduct(int[] nums) {
 		Arrays.sort(nums);
 		return (nums[nums.length - 1] - 1) * (nums[nums.length - 2] - 1);
