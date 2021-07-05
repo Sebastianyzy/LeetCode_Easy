@@ -169,6 +169,26 @@ public class Solution {
 //		 }
 	}
 
+	public static int[] finalPrices(int[] prices) {
+		int[] out = new int[prices.length];
+		for (int i = 0; i < prices.length; i++) {
+			out[i] = finalPrices_findDiscount(prices, i);
+		}
+		return out;
+	}
+
+	private static int finalPrices_findDiscount(int[] arr, int i) {
+		if (i == arr.length - 1) {
+			return arr[i];
+		}
+		for (int j = i + 1; j < arr.length; j++) {
+			if (arr[j] <= arr[i]) {
+				return arr[i] - arr[j];
+			}
+		}
+		return arr[i];
+	}
+
 	public static int[] shuffle(int[] nums, int n) {
 		int max = 1001;
 		for (int i = n; i < nums.length; i++) {
@@ -180,7 +200,6 @@ public class Solution {
 			nums[ind + 1] = nums[i] / max;
 			ind += 2;
 		}
-
 		return nums;
 	}
 
