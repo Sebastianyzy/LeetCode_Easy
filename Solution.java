@@ -169,6 +169,14 @@ public class Solution {
 //		 }
 	}
 
+	public static int xorOperation(int n, int start) {
+		int ans = 0;
+		for (int i = 0; i < n; i++) {
+			ans ^= (start + 2 * i);
+		}
+		return ans;
+	}
+
 	public static int[] finalPrices(int[] prices) {
 		int[] out = new int[prices.length];
 		for (int i = 0; i < prices.length; i++) {
