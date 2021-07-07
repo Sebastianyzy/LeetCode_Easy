@@ -169,6 +169,16 @@ public class Solution {
 //		 }
 	}
 
+	public static double average(int[] salary) {
+		double max = Integer.MIN_VALUE, min = Integer.MAX_VALUE, sum = 0;
+		for (int i : salary) {
+			sum += i;
+			max = Math.max(max, i);
+			min = Math.min(min, i);
+		}
+		return (sum - max - min) / (salary.length - 2);
+	}
+
 	public static int xorOperation(int n, int start) {
 		int ans = 0;
 		for (int i = 0; i < n; i++) {
