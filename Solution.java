@@ -169,6 +169,50 @@ public class Solution {
 //		 }
 	}
 
+	public static ListNode deleteNodes(ListNode head, int m, int n) {
+		List<Integer> list = new ArrayList<>();
+		while (head != null) {
+			int M = m, N = n;
+			while (M != 0 && head != null) {
+				list.add(head.val);
+				M--;
+				head = head.next;
+			}
+			while (N != 0 && head != null) {
+				head = head.next;
+				N--;
+			}
+		}
+		ListNode dummy = new ListNode(list.get(0));
+		ListNode newHead = dummy;
+		for (int i = 1; i < list.size(); i++) {
+			newHead.next = new ListNode(list.get(i));
+			newHead = newHead.next;
+		}
+		return dummy;
+	}
+
+	public static List<Integer> getLonelyNodes(TreeNode root) {
+		List<Integer> lonely = new ArrayList<>();
+		getLonelyNodeHelper(root, lonely, null);
+		return lonely;
+	}
+
+	public static void getLonelyNodeHelper(TreeNode root, List<Integer> lonely, TreeNode parent) {
+		if (root == null) {
+			return;
+		}
+		if (parent != null) {
+			if (parent.left == null && parent.right == null) {
+
+			} else if (parent.left == null || parent.right == null) {
+				lonely.add(parent.left == null ? parent.right.val : parent.left.val);
+			}
+		}
+		getLonelyNodeHelper(root.left, lonely, root);
+		getLonelyNodeHelper(root.right, lonely, root);
+	}
+
 	public static double average(int[] salary) {
 		double max = Integer.MIN_VALUE, min = Integer.MAX_VALUE, sum = 0;
 		for (int i : salary) {
