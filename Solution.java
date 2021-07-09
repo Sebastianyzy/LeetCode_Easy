@@ -169,6 +169,24 @@ public class Solution {
 //		 }
 	}
 
+	public static boolean isPathCrossing(String path) {
+		Set<String> set = new HashSet<>();
+		int x = 0, y = 0;
+		set.add("(0,0)");
+		char[] arr = path.toCharArray();
+		for (char c : arr) {
+			x += c == 'W' ? -1 : c == 'E' ? 1 : 0;
+			y += c == 'S' ? -1 : c == 'N' ? 1 : 0;
+			String cur = "(" + x + "," + y + ")";
+			if (set.contains(cur)) {
+				return true;
+			} else {
+				set.add(cur);
+			}
+		}
+		return false;
+	}
+
 	public static ListNode deleteNodes(ListNode head, int m, int n) {
 		List<Integer> list = new ArrayList<>();
 		while (head != null) {
