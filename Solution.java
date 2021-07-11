@@ -169,6 +169,28 @@ public class Solution {
 //		 }
 	}
 
+	public static String reformatDate(String date) {
+		HashMap<String, String> map = new HashMap<>();
+		map.put("Jan", "01");
+		map.put("Feb", "02");
+		map.put("Mar", "03");
+		map.put("Apr", "04");
+		map.put("May", "05");
+		map.put("Jun", "06");
+		map.put("Jul", "07");
+		map.put("Aug", "08");
+		map.put("Sep", "09");
+		map.put("Oct", "10");
+		map.put("Nov", "11");
+		map.put("Dec", "12");
+		String[] splited = date.split("\\s+");
+		String year = splited[splited.length - 1], month = map.get(splited[splited.length - 2]),
+				day = Character.isDigit(splited[0].charAt(1))
+						? Character.toString(splited[0].charAt(0)) + splited[0].charAt(1)
+						: "0" + splited[0].charAt(0);
+		return year + "-" + month + "-" + day;
+	}
+
 	public static boolean canMakeArithmeticProgression(int[] arr) {
 		Arrays.sort(arr);
 		int diff = arr[1] - arr[0];
