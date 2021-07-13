@@ -169,6 +169,16 @@ public class Solution {
 //		 }
 	}
 
+	public static int numWaterBottles(int numBottles, int numExchange) {
+		int drink = numBottles, numFull = 0;
+		while (numBottles >= numExchange) {
+			numFull = numBottles / numExchange;
+			drink += numFull;
+			numBottles = numFull + (numBottles % numExchange);
+		}
+		return drink;
+	}
+
 	public static int numIdenticalPairs(int[] nums) {
 		int count = 0;
 		for (int i = 0; i < nums.length - 1; i++) {
