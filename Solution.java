@@ -4958,8 +4958,7 @@ public class Solution {
 	}
 
 	public static boolean isValid(String s) {
-
-		Stack<Character> bracketsStack = new Stack();
+		Stack<Character> bracketsStack = new Stack<>();
 		for (char c : s.toCharArray()) {
 			if (c == '(' || c == '[' || c == '{') {
 				bracketsStack.push(c);
@@ -4974,7 +4973,6 @@ public class Solution {
 			}
 		}
 		return bracketsStack.isEmpty();
-
 	}
 
 	public static String longestCommonPrefix(String[] strs) {
