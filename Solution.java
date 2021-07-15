@@ -162,6 +162,7 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+        System.out.println("dfsdfa");
     }
 
     public static String restoreString(String s, int[] indices) {
