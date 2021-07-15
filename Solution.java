@@ -169,6 +169,18 @@ public class Solution {
 //		 }
 	}
 
+	public static String restoreString(String s, int[] indices) {
+		HashMap<Integer, Character> map = new HashMap<>();
+		for (int i = 0; i < indices.length; i++) {
+			map.put(indices[i], s.charAt(i));
+		}
+		String temp = "";
+		for (int i = 0; i < indices.length; i++) {
+			temp += Character.toString(map.get(i));
+		}
+		return temp;
+	}
+
 	public static int countOdds(int low, int high) {
 		return (high + 1) / 2 - low / 2;
 	}
