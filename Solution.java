@@ -174,11 +174,11 @@ public class Solution {
 		for (int i = 0; i < indices.length; i++) {
 			map.put(indices[i], s.charAt(i));
 		}
-		String temp = "";
+		StringBuilder temp = new StringBuilder();
 		for (int i = 0; i < indices.length; i++) {
-			temp += Character.toString(map.get(i));
+			temp.append(map.get(i));
 		}
-		return temp;
+		return temp.toString();
 	}
 
 	public static int countOdds(int low, int high) {
