@@ -162,6 +162,11 @@ public class Solution {
 //				map.put(i, map.get(i + 1));
 //			}
 //		 }
+        System.out.println("dsfa");
+        System.out.println("dsfa");
+        System.out.println("dsfa");
+        System.out.println("dsfa");
+
     }
 
     public static String restoreString(String s, int[] indices) {
