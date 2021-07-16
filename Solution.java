@@ -164,6 +164,41 @@ public class Solution {
 //		 }
     }
 
+    public static int findKthPositive(int[] arr, int k) {
+        if (arr.length < 1 || arr.length > 1000) {
+            return 0;
+        }
+        int[] missingArr = new int[k + 1];
+        HashSet<Integer> map = new HashSet<Integer>();
+        for (int value : arr) {
+            map.add(value);
+        }
+        int j = 0;
+        int m = 1;
+        while (j < missingArr.length) {
+            if (!map.contains(m)) {
+                missingArr[j] = m;
+                m++;
+                j++;
+            } else {
+                m++;
+            }
+        }
+        return missingArr[k - 1];
+    }
+
+    public static int countGoodTriplets(int[] arr, int a, int b, int c) {
+        int ans = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                for (int k = j + 1; k < arr.length; k++) {
+                    ans += (Math.abs(arr[i] - arr[j]) <= a && Math.abs(arr[j] - arr[k]) <= b && Math.abs(arr[i] - arr[k]) <= c) ? 1 : 0;
+                }
+            }
+        }
+        return ans;
+    }
+
     public static String restoreString(String s, int[] indices) {
         HashMap<Integer, Character> map = new HashMap<>();
         for (int i = 0; i < indices.length; i++) {
