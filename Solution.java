@@ -164,6 +164,21 @@ public class Solution {
 //		 }
     }
 
+    public static String makeGood(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (!stack.empty() && Math.abs((int) stack.peek() - (int) ch) == 32) {
+                stack.pop();
+            } else {
+                stack.push(ch);
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) sb.append(stack.pop());
+        return sb.reverse().toString();
+    }
+
     public static int findKthPositive(int[] arr, int k) {
         if (arr.length < 1 || arr.length > 1000) {
             return 0;
