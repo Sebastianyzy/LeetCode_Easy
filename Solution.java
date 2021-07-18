@@ -164,6 +164,17 @@ public class Solution {
 //		 }
     }
 
+    public static boolean threeConsecutiveOdds(int[] arr) {
+        int pass = 0;
+        for (int i = 0; i < arr.length; i++) {
+            pass = arr[i] % 2 == 0 ? 0 : pass + 1;
+            if (pass >= 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static String makeGood(String s) {
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
