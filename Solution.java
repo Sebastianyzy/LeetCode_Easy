@@ -164,6 +164,24 @@ public class Solution {
 //		 }
     }
 
+    public static String thousandSeparator(int n) {
+        String s = n + "";
+        if (s.length() <= 3) {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            count++;
+            sb.append(s.charAt(i));
+            if (count == 3 && i != 0) {
+                sb.append(".");
+                count = 0;
+            }
+        }
+        return sb.reverse().toString();
+    }
+
     public static boolean threeConsecutiveOdds(int[] arr) {
         int pass = 0;
         for (int i = 0; i < arr.length; i++) {
