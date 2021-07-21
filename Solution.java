@@ -164,6 +164,21 @@ public class Solution {
 //		 }
     }
 
+    public static boolean containsPattern(int[] arr, int m, int k) {
+        int count = 0;
+        for (int i = 0; i + m < arr.length; i++) {
+            if (arr[i] == arr[i + m]) {
+                count++;
+            } else {
+                count = 0;
+            }
+            if (count == (k - 1) * m) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static List<Integer> mostVisited(int n, int[] rounds) {
         var start = rounds[0];
         var end = rounds[rounds.length - 1];
