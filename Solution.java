@@ -164,6 +164,16 @@ public class Solution {
 //		 }
     }
 
+    public static int diagonalSum(int[][] mat) {
+        int sum = 0;
+        int j = mat.length - 1;
+        for (int i = 0; i < mat.length; i++) {
+            sum += mat[i][i] + mat[i][j];
+            j--;
+        }
+        return mat.length % 2 == 0 ? sum : sum - mat[mat.length / 2][mat.length / 2];
+    }
+
     public static boolean containsPattern(int[] arr, int m, int k) {
         int count = 0;
         for (int i = 0; i + m < arr.length; i++) {
