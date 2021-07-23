@@ -163,6 +163,17 @@ public class Solution {
 //			}
     }
 
+    public static String modifyString(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '?') {
+                char ch = 'a';
+                while ((i != 0 && s.charAt(i - 1) == ch) || (i != s.length() - 1 && s.charAt(i + 1) == ch)) ch++;
+                s = s.substring(0, i) + ch + s.substring(i + 1);
+            }
+        }
+        return s;
+    }
+
     public static int diagonalSum(int[][] mat) {
         int sum = 0;
         int j = mat.length - 1;
