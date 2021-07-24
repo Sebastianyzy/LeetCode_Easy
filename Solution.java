@@ -163,6 +163,34 @@ public class Solution {
 //			}
     }
 
+    public static int numSpecial(int[][] mat) {
+        int count = 0;
+        for (int i = 0; i < mat.length; i++) {
+            for (int j = 0; j < mat[i].length; j++) {
+                if (mat[i][j] == 1) {
+                    count += numSpecial_checkCol(mat, j) && numSpecial_checkRow(mat, i) ? 1 : 0;
+                }
+            }
+        }
+        return count;
+    }
+
+    private static boolean numSpecial_checkRow(int[][] mat, int row) {
+        int count = 0;
+        for (int i = 0; i < mat[row].length; i++) {
+            count += mat[row][i] == 1 ? 1 : 0;
+        }
+        return count == 1;
+    }
+
+    private static boolean numSpecial_checkCol(int[][] mat, int col) {
+        int count = 0;
+        for (int[] ints : mat) {
+            count += ints[col] == 1 ? 1 : 0;
+        }
+        return count == 1;
+    }
+
     public static String modifyString(String s) {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '?') {
