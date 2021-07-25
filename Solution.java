@@ -163,6 +163,19 @@ public class Solution {
 //			}
     }
 
+    public static int sumOddLengthSubarrays(int[] arr) {
+        int totalSum = 0;
+        for (int i = 0; i < arr.length; i += 1) {
+            for (int j = i + 1; j <= arr.length; j += 2) {
+                int[] subArray = Arrays.copyOfRange(arr, i, j);
+                for (int value : subArray) {
+                    totalSum += value;
+                }
+            }
+        }
+        return totalSum;
+    }
+
     public static int numSpecial(int[][] mat) {
         int count = 0;
         for (int i = 0; i < mat.length; i++) {
