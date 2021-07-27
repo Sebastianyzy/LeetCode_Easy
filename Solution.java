@@ -165,6 +165,15 @@ public class Solution {
 //			}
     }
 
+    public static int minOperations(String[] logs) {
+        int depth = 0;
+        for (String s : logs) {
+            depth -= s.charAt(0) == '.' ? depth == 0 || s.charAt(1) == '/' ? 0 : 1 : -1;
+        }
+        return depth;
+    }
+
+
     public static String reorderSpaces(String text) {
         List<String> words = Stream.of(text.split(" ")).filter(word -> !"".endsWith(word)).collect(Collectors.toList());
         int space = 0;
