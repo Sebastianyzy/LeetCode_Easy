@@ -165,6 +165,23 @@ public class Solution {
 //			}
     }
 
+    public static int specialArray(int[] nums) {
+        for (int i = 0; i <= nums.length; i++) {
+            if (specialArray_greater(nums, i) == i) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static int specialArray_greater(int[] nums, int x) {
+        int count = 0;
+        for (int i : nums) {
+            count += i >= x ? 1 : 0;
+        }
+        return count;
+    }
+
     public static int minOperations(String[] logs) {
         int depth = 0;
         for (String s : logs) {
