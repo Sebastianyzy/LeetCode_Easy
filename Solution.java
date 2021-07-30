@@ -165,6 +165,20 @@ public class Solution {
 //			}
     }
 
+    public static int maxDepth(String s) {
+        int depth = 0;
+        int max_count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                max_count++;
+            } else if (s.charAt(i) == ')') {
+                max_count--;
+            }
+            depth = Math.max(depth, max_count);
+        }
+        return depth;
+    }
+
     public static int specialArray(int[] nums) {
         for (int i = 0; i <= nums.length; i++) {
             if (specialArray_greater(nums, i) == i) {
