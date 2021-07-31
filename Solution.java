@@ -165,6 +165,16 @@ public class Solution {
 //			}
     }
 
+    public static double trimMean(int[] arr) {
+        Arrays.sort(arr);
+        double count = 0;
+        int begin = (int) (arr.length * 0.05), end = (int) (arr.length - arr.length * 0.05);
+        for (int i = begin; i < end; i++) {
+            count += arr[i];
+        }
+        return count / (arr.length - 2 * (arr.length * 0.05));
+    }
+
     public static int maxDepth(String s) {
         int depth = 0;
         int max_count = 0;
