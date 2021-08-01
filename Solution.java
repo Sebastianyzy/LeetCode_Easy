@@ -165,6 +165,17 @@ public class Solution {
 //			}
     }
 
+    public static int maxLengthBetweenEqualCharacters(String s) {
+        int max = 0, flag = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int x = s.lastIndexOf(ch);
+            flag = x != i ? 1 : flag;
+            max = Math.max((x - i - 1), max);
+        }
+        return flag == 0 ? -1 : max;
+    }
+
     public static double trimMean(int[] arr) {
         Arrays.sort(arr);
         double count = 0;
@@ -213,7 +224,6 @@ public class Solution {
         }
         return depth;
     }
-
 
     public static String reorderSpaces(String text) {
         List<String> words = Stream.of(text.split(" ")).filter(word -> !"".endsWith(word)).collect(Collectors.toList());
@@ -433,7 +443,6 @@ public class Solution {
         }
         return temp.toString();
     }
-
 
     public static int countOdds(int low, int high) {
         return (high + 1) / 2 - low / 2;
@@ -2304,7 +2313,8 @@ public class Solution {
         return true;
     }
 
-    private static boolean isAlienSorted_isLexicographicalySort(String s1, String s2, HashMap<Character, Integer> map) {
+    private static boolean isAlienSorted_isLexicographicalySort(String s1, String
+            s2, HashMap<Character, Integer> map) {
         int len = Math.min(s1.length(), s2.length());
         if (s1.substring(0, len).equals(s2.substring(0, len)) && s1.length() > s2.length()) {
             return false;
@@ -3250,7 +3260,8 @@ public class Solution {
         return letters[0];
     }
 
-    public static boolean areSentencesSimilar(String[] sentence1, String[] sentence2, List<List<String>> similarPairs) {
+    public static boolean areSentencesSimilar(String[] sentence1, String[]
+            sentence2, List<List<String>> similarPairs) {
         if (sentence1.length != sentence2.length) {
             return false;
         }
