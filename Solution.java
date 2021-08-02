@@ -165,6 +165,24 @@ public class Solution {
 //			}
     }
 
+    public static char slowestKey(int[] releaseTimes, String keysPressed) {
+        int maxTime = -1;
+        int lastReleaseTime = 0;
+        char slowestKey = keysPressed.charAt(0);
+        for (int i = 0; i < releaseTimes.length; i++) {
+            int duration = releaseTimes[i] - lastReleaseTime;
+            if (duration > maxTime) {
+                slowestKey = keysPressed.charAt(i);
+                maxTime = duration;
+            } else if (duration == maxTime) {
+                slowestKey = keysPressed.charAt(i) - slowestKey > 0
+                        ? keysPressed.charAt(i) : slowestKey;
+            }
+            lastReleaseTime = releaseTimes[i];
+        }
+        return slowestKey;
+    }
+
 
     public static int maxLengthBetweenEqualCharacters(String s) {
         int max = 0, flag = 0;
