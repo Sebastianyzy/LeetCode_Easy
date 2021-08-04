@@ -165,6 +165,28 @@ public class Solution {
 //			}
     }
 
+    public static boolean canFormArray(int[] arr, int[][] pieces) {
+        HashMap<Integer, int[]> Map = new HashMap<Integer, int[]>();
+        for (int[] i : pieces) {
+            Map.put(i[0], i);
+        }
+        int i = 0;
+        while (i < arr.length) {
+            if (Map.containsKey(arr[i])) {
+                int[] temp = Map.get(arr[i]);
+                for (int j = 0; j < temp.length; j++) {
+                    if (temp[j] != arr[i]) {
+                        return false;
+                    }
+                    i++;
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static int[] frequencySort(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         Arrays.stream(nums).forEach(n -> map.put(n, map.getOrDefault(n, 0) + 1));
