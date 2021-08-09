@@ -165,6 +165,18 @@ public class Solution {
 //			}
     }
 
+    public static int maximumWealth(int[][] accounts) {
+        int ans = 0;
+        for (int[] i : accounts) {
+            int temp = 0;
+            for (int integer : i) {
+                temp += integer;
+            }
+            ans = Math.max(temp, ans);
+        }
+        return ans;
+    }
+
     public static int maxRepeating(String sequence, String word) {
         int count = 0;
         String temp = word;
