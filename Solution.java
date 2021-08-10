@@ -165,6 +165,10 @@ public class Solution {
 //			}
     }
 
+    public static String interpret(String command) {
+        return command.replaceAll("\\(\\)", "o").replaceAll("\\(al\\)", "al");
+    }
+
     public static int maximumWealth(int[][] accounts) {
         int ans = 0;
         for (int[] i : accounts) {
