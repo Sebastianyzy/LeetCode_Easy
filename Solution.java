@@ -165,6 +165,28 @@ public class Solution {
 //			}
     }
 
+    public static int countConsistentStrings(String allowed, String[] words) {
+        HashSet<Character> set = new HashSet<>();
+        int count = 0;
+        for (char c : allowed.toCharArray()) {
+            set.add(c);
+        }
+        for (String s : words) {
+            count += countConsistentStrings_consistent(s, set) ? 1 : 0;
+        }
+        return count;
+
+    }
+
+    private static boolean countConsistentStrings_consistent(String s, HashSet<Character> set) {
+        for (char c : s.toCharArray()) {
+            if (!set.contains(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static String interpret(String command) {
         return command.replaceAll("\\(\\)", "o").replaceAll("\\(al\\)", "al");
     }
