@@ -165,6 +165,27 @@ public class Solution {
 //			}
     }
 
+    public static String reformatNumber(String number) {
+        number = number.replace("-", "").replace(" ", "");
+        int len = number.length();
+        if (len == 0 || len == 1 || len == 2 || len == 3) {
+            return number;
+        }
+        StringBuffer sb = new StringBuffer(number);
+        int i = 3;
+        while (len > 4) {
+            sb.insert(i, "-");
+            len -= 3;
+            i += 4;
+        }
+        while (len == 4) {
+            i -= 1;
+            sb.insert(i, "-");
+            len -= 2;
+        }
+        return sb.toString();
+    }
+
     public static int numberOfMatches(int n) {
         int count = 0;
         while (n > 1) {
