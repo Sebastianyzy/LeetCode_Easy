@@ -165,6 +165,18 @@ public class Solution {
 //			}
     }
 
+    public static boolean halvesAreAlike(String s) {
+        int j = s.length() / 2;
+        int a = 0, b = 0;
+        for (int i = 0; i < s.length() / 2; i++) {
+            char cur_a = s.charAt(i), cur_b = s.charAt(j);
+            a += cur_a == 'a' || cur_a == 'e' || cur_a == 'i' || cur_a == 'o' || cur_a == 'u' || cur_a == 'A' || cur_a == 'E' || cur_a == 'I' || cur_a == 'O' || cur_a == 'U' ? 1 : 0;
+            b += cur_b == 'a' || cur_b == 'e' || cur_b == 'i' || cur_b == 'o' || cur_b == 'u' || cur_b == 'A' || cur_b == 'E' || cur_b == 'I' || cur_b == 'O' || cur_b == 'U' ? 1 : 0;
+            j++;
+        }
+        return a == b;
+    }
+
     public static int countStudents(int[] students, int[] sandwiches) {
         int[] a = {0, 0};
         for (int i = 0; i < students.length; i++) {
