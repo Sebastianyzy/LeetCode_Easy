@@ -166,8 +166,7 @@ public class Solution {
     }
 
     public static boolean halvesAreAlike(String s) {
-        int j = s.length() / 2;
-        int a = 0, b = 0;
+        int j = s.length() / 2, a = 0, b = 0;
         for (int i = 0; i < s.length() / 2; i++) {
             char cur_a = s.charAt(i), cur_b = s.charAt(j);
             a += cur_a == 'a' || cur_a == 'e' || cur_a == 'i' || cur_a == 'o' || cur_a == 'u' || cur_a == 'A' || cur_a == 'E' || cur_a == 'I' || cur_a == 'O' || cur_a == 'U' ? 1 : 0;
