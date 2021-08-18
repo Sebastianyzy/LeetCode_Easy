@@ -321,6 +321,20 @@ public class Solution {
         return ans;
     }
 
+    public static int[] largestSubarray(int[] nums, int k) {
+        int length = nums.length;
+        int maxIdx = 0;
+        for (int windowEnd = 0; windowEnd < length - k + 1; windowEnd++) {
+            maxIdx = nums[maxIdx] > nums[windowEnd] ? maxIdx : windowEnd;
+        }
+        int[] resultArr = new int[k];
+        int counter = 0;
+        for (int res = maxIdx; res < maxIdx + k; res++) {
+            resultArr[counter++] = nums[res];
+        }
+        return resultArr;
+    }
+
     public static boolean canFormArray(int[] arr, int[][] pieces) {
         HashMap<Integer, int[]> Map = new HashMap<Integer, int[]>();
         for (int[] i : pieces) {
