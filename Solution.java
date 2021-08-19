@@ -165,6 +165,16 @@ public class Solution {
 //			}
     }
 
+    public static int totalMoney(int n) {
+        int finalResult = 1;
+        int count = 1;
+        for (int i = 1; i < n; i++) {
+            count = (i % 7 == 0) ? (i / 7) + 1 : count + 1;
+            finalResult += count;
+        }
+        return finalResult;
+    }
+
     public static int maximumUnits(int[][] boxTypes, int truckSize) {
         int unitCount = 0;
         int remainingTruckSize = truckSize;
