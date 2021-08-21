@@ -165,6 +165,20 @@ public class Solution {
 //			}
     }
 
+    public static int countGoodRectangles(int[][] rectangles) {
+        int[] temp = new int[rectangles.length];
+        int i = 0, count = 0, maxLen = 0;
+        for (int[] rec : rectangles) {
+            temp[i] = Math.min(rec[0], rec[1]);
+            maxLen = Math.max(temp[i], maxLen);
+            i++;
+        }
+        for (int k : temp) {
+            count += k == maxLen ? 1 : 0;
+        }
+        return count;
+    }
+
     public static int[] decode(int[] encoded, int first) {
         int[] arr = new int[encoded.length + 1];
         arr[0] = first;
