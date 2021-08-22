@@ -165,6 +165,15 @@ public class Solution {
 //			}
     }
 
+    public static int largestAltitude(int[] gain) {
+        int max = 0, height = 0;
+        for (int i : gain) {
+            height += i;
+            max = Math.max(max, height);
+        }
+        return max;
+    }
+
     public static int countGoodRectangles(int[][] rectangles) {
         int[] temp = new int[rectangles.length];
         int i = 0, count = 0, maxLen = 0;
