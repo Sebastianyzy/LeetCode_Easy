@@ -165,6 +165,23 @@ public class Solution {
 //			}
     }
 
+    public static String maximumTime(String time) {
+        char[] ti = time.toCharArray();
+        if (ti[0] == '?') {
+            ti[0] = (ti[1] == '?' || ti[1] <= '3') ? '2' : '1';
+        }
+        if (ti[1] == '?') {
+            ti[1] = ti[0] == '2' ? '3' : '9';
+        }
+        if (ti[3] == '?') {
+            ti[3] = '5';
+        }
+        if (ti[4] == '?') {
+            ti[4] = '9';
+        }
+        return String.valueOf(ti);
+    }
+
     public static int largestAltitude(int[] gain) {
         int max = 0, height = 0;
         for (int i : gain) {
