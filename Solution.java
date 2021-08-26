@@ -165,6 +165,30 @@ public class Solution {
 //			}
     }
 
+    public static boolean check(int[] nums) {
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            count += nums[i] > nums[(i + 1) % nums.length] ? 1 : 0;
+        }
+        return count <= 1;
+    }
+
+    public static int sumOfUnique(int[] nums) {
+        int sum = 0;
+        for (int i : nums) {
+            sum += sumOfUnique_isUnique(nums, i) ? i : 0;
+        }
+        return sum;
+    }
+
+    private static boolean sumOfUnique_isUnique(int[] nums, int i) {
+        int j = 0;
+        for (int k : nums) {
+            j += k == i ? 1 : 0;
+        }
+        return j == 1;
+    }
+
     public static int countBalls(int lowLimit, int highLimit) {
         int[] arr = new int[46];
         int digit = lowLimit;
