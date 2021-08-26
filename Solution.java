@@ -202,8 +202,8 @@ public class Solution {
         for (int i = lowLimit + 1; i <= highLimit; i++) {
             digit = i;
             while (digit % 10 == 0) {
-                id -= 9;
                 digit /= 10;
+                id -= 9;
             }
             ++arr[++id];
             max = Math.max(max, arr[id]);
