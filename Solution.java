@@ -165,6 +165,15 @@ public class Solution {
 //			}
     }
 
+    public static int minOperations(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int numeric = Character.getNumericValue(s.charAt(i));
+            count += (numeric == i % 2) ? 1 : 0;
+        }
+        return Math.min(count, s.length() - count);
+    }
+
     public static boolean check(int[] nums) {
         int count = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -517,7 +526,6 @@ public class Solution {
         }
         return slowestKey;
     }
-
 
     public static int maxLengthBetweenEqualCharacters(String s) {
         int max = 0, flag = 0;
