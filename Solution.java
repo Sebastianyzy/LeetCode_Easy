@@ -4016,20 +4016,20 @@ public class Solution {
     }
 
     public static void printCharArray(char[] c) {
-        for (char value : c) {
-            System.out.println(value);
+        for (int i = 0; i < c.length; i++) {
+            System.out.println(c[i]);
         }
     }
 
     public static void printStringArray(String[] c) {
-        for (String s : c) {
-            System.out.println(s);
+        for (int i = 0; i < c.length; i++) {
+            System.out.println(c[i]);
         }
     }
 
     public static void printIntArray(int[] a) {
-        for (int j : a) {
-            System.out.println(j);
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
         }
     }
 
