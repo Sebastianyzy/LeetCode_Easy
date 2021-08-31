@@ -3951,7 +3951,7 @@ public class Solution {
                 A++;
             }
         }
-        return A <= 1 && !s.contains("LLL");
+        return A <= 1 && s.indexOf("LLL") < 0;
     }
 
     public static int findLUSlength(String a, String b) {
