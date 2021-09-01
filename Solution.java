@@ -165,6 +165,33 @@ public class Solution {
 //			}
     }
 
+    public static String longestNiceSubstring(String s) {
+        String ans = "", temp = "";
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i + ans.length(); j < s.length(); j++) {
+                temp = s.substring(i, j + 1);
+                if (longestNiceSubstring_isNice(temp)) {
+                    ans = temp;
+                }
+            }
+        }
+        return ans;
+    }
+
+    private static boolean longestNiceSubstring_isNice(String s) {
+        int lower = 0;
+        int upper = 0;
+        for (char c : s.toCharArray()) {
+            if (c < 'a') {
+                upper |= 1 << (c - 'A');
+            } else {
+                lower |= 1 << (c - 'a');
+            }
+        }
+        return (lower ^ upper) == 0;
+    }
+
+
     public static int minOperations(String s) {
         int count = 0;
         for (int i = 0; i < s.length(); i++) {
