@@ -165,6 +165,21 @@ public class Solution {
 //			}
     }
 
+    public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
+        if (items.size() == 0) return 0;
+        int j = switch (ruleKey) {
+            case "type" -> 0;
+            case "color" -> 1;
+            case "name" -> 2;
+            default -> 0;
+        };
+        int count = 0;
+        for (List<String> item : items) {
+            count += (item.get(j).equals(ruleValue)) ? 1 : 0;
+        }
+        return count;
+    }
+
     public static String mergeAlternately(String word1, String word2) {
         StringBuilder sb = new StringBuilder();
         int length = Math.min(word1.length(), word2.length());
