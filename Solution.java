@@ -165,6 +165,21 @@ public class Solution {
 //			}
     }
 
+    public static int nearestValidPoint(int x, int y, int[][] points) {
+        int distance = Integer.MAX_VALUE;
+        for (int[] point : points) {
+            if (point[0] == x || point[1] == y) {
+                distance = Math.min(distance, Math.abs(x - point[0]) + Math.abs(y - point[1]));
+            }
+        }
+        for (int i = 0; i < points.length; i++) {
+            if (Math.abs(x - points[i][0]) + Math.abs(y - points[i][1]) == distance && (points[i][0] == x || points[i][1] == y)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
         if (items.size() == 0) return 0;
         int j = switch (ruleKey) {
