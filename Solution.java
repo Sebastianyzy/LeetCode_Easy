@@ -165,6 +165,10 @@ public class Solution {
 //			}
     }
 
+    public static boolean checkOnesSegment(String s) {
+        return !s.contains("01");
+    }
+
     public static int nearestValidPoint(int x, int y, int[][] points) {
         int distance = Integer.MAX_VALUE;
         for (int[] point : points) {
