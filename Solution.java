@@ -165,6 +165,29 @@ public class Solution {
 //			}
     }
 
+    public static boolean areAlmostEqual(String s1, String s2) {
+        if (s1.length() != s2.length()) {
+            return false;
+        }
+        int count = 0;
+        for (int i = 0; i < s1.length(); i++) {
+            char temp = s1.charAt(i);
+            if (areAlmostEqual_NumOfChar(s1, temp) != areAlmostEqual_NumOfChar(s2, temp)) {
+                return false;
+            }
+            count += s1.charAt(i) == s2.charAt(i) ? 0 : 1;
+        }
+        return count <= 2;
+    }
+
+    private static int areAlmostEqual_NumOfChar(String s, char c) {
+        int count = 0;
+        for (char cc : s.toCharArray()) {
+            count += cc == c ? 1 : 0;
+        }
+        return count;
+    }
+
     public static boolean checkOnesSegment(String s) {
         return !s.contains("01");
     }
