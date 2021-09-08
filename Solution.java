@@ -165,6 +165,18 @@ public class Solution {
 //			}
     }
 
+    public static int secondHighest(String s) {
+        Set<Integer> set = new HashSet<>();
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                set.add(Integer.parseInt(Character.toString(c)));
+            }
+        }
+        List<Integer> list = new ArrayList<>(set);
+        Collections.sort(list);
+        return (set.size() < 2) ? -1 : list.get(list.size() - 2);
+    }
+
     public static int findCenter(int[][] edges) {
         return (edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1]) ? edges[0][0] : edges[0][1];
     }
