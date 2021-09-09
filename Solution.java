@@ -165,6 +165,23 @@ public class Solution {
 //			}
     }
 
+    public static int maxAscendingSum(int[] nums) {
+        int sum = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int cur = 0;
+            if (nums[i] > nums[i - 1]) {
+                cur += nums[i - 1];
+                int j = i;
+                while (j < nums.length && nums[j] > nums[j - 1]) {
+                    cur += nums[j];
+                    j++;
+                }
+                sum = Math.max(sum, cur);
+            }
+        }
+        return sum;
+    }
+
     public static int secondHighest(String s) {
         Set<Integer> set = new HashSet<>();
         for (char c : s.toCharArray()) {
