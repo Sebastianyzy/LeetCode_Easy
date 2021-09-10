@@ -165,6 +165,17 @@ public class Solution {
 //			}
     }
 
+    public static int numDifferentIntegers(String word) {
+        String replaced = word.replaceAll("[a-z]", " ");
+        Set<String> nums = new HashSet<>();
+        String[] words = replaced.split(" ");
+        for (String s : words) {
+            if (s.trim().length() > 0)
+                nums.add(s.replaceAll("^0*", ""));
+        }
+        return nums.size();
+    }
+
     public static int maxAscendingSum(int[] nums) {
         int sum = nums[0];
         for (int i = 1; i < nums.length; i++) {
