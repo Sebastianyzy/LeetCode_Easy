@@ -165,6 +165,10 @@ public class Solution {
 //			}
     }
 
+    public static boolean squareIsWhite(String coordinates) {
+        return ((coordinates.charAt(0) - 'a') % 2 == 0 && Integer.parseInt(Character.toString(coordinates.charAt(1))) % 2 == 0) || ((coordinates.charAt(0) - 'a') % 2 != 0 && Integer.parseInt(Character.toString(coordinates.charAt(1))) % 2 != 0);
+    }
+
     public static int numDifferentIntegers(String word) {
         String replaced = word.replaceAll("[a-z]", " ");
         Set<String> nums = new HashSet<>();
