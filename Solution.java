@@ -165,6 +165,15 @@ public class Solution {
 //			}
     }
 
+    public static String truncateSentence(String s, int k) {
+        String[] splited = s.split("\\s+");
+        String ans = "";
+        for (int i = 0; i < k; i++) {
+            ans += splited[i] + " ";
+        }
+        return ans.substring(0, ans.length() - 1);
+    }
+
     public static boolean squareIsWhite(String coordinates) {
         return ((coordinates.charAt(0) - 'a') % 2 == 0 && Integer.parseInt(Character.toString(coordinates.charAt(1))) % 2 == 0) || ((coordinates.charAt(0) - 'a') % 2 != 0 && Integer.parseInt(Character.toString(coordinates.charAt(1))) % 2 != 0);
     }
