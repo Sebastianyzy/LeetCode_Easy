@@ -165,6 +165,7 @@ public class Solution {
 //			}
     }
 
+
     public static String truncateSentence(String s, int k) {
         String[] splited = s.split("\\s+");
         String ans = "";
