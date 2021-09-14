@@ -165,6 +165,52 @@ public class Solution {
 //			}
     }
 
+    public static int badSensor(int[] sensor1, int[] sensor2) {
+        int i = 0;
+        while (i < sensor1.length) {
+            if (sensor1[i] != sensor2[i]) {
+                break;
+            }
+            i++;
+        }
+        if (i == sensor1.length) {
+            return -1;
+        }
+        if (i == sensor1.length - 1) {
+            return -1;
+        }
+        int j = i;
+        while (j < sensor1.length - 1) {
+            if (sensor1[j] != sensor2[j + 1]) {
+                break;
+            }
+            j++;
+        }
+        boolean sensor1CouldBeDefective = false;
+        if (j == sensor1.length - 1) {
+            sensor1CouldBeDefective = true;
+        }
+        j = i;
+        while (j < sensor1.length - 1) {
+            if (sensor2[j] != sensor1[j + 1]) {
+                break;
+            }
+            j++;
+        }
+        boolean sensor2CouldBeDefective = false;
+        if (j == sensor2.length - 1) {
+            sensor2CouldBeDefective = true;
+        }
+        if (sensor1CouldBeDefective && sensor2CouldBeDefective) {
+            return -1;
+        } else if (sensor1CouldBeDefective) {
+            return 1;
+        } else {
+            return 2;
+        }
+
+    }
+
 
     public static String truncateSentence(String s, int k) {
         String[] splited = s.split("\\s+");
