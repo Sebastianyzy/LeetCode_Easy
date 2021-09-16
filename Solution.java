@@ -165,6 +165,14 @@ public class Solution {
 //			}
     }
 
+    public static boolean checkIfPangram(String sentence) {
+        Set<Character> set = new HashSet<>();
+        for (char c : sentence.toCharArray()) {
+            set.add(c);
+        }
+        return set.size() == 26;
+    }
+
     public static int minOperations(int[] nums) {
         int count = 0;
         for (int i = 1; i < nums.length; i++) {
