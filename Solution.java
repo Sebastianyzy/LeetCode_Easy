@@ -165,6 +165,25 @@ public class Solution {
 //			}
     }
 
+    public static String replaceDigits(String s) {
+        String ans = "";
+        int i = 0;
+        while (i < s.length()) {
+            try {
+                String temp = replaceDigits_shift(s.charAt(i), Integer.parseInt(Character.toString(s.charAt(i + 1))));
+                ans += s.charAt(i) + temp;
+                i += 2;
+            } catch (Exception e) {
+                break;
+            }
+        }
+        return Character.isDigit(s.charAt(s.length() - 1)) ? ans : ans + s.charAt(s.length() - 1);
+    }
+
+    private static String replaceDigits_shift(char c, int i) {
+        return Character.toString(c + i);
+    }
+
     public static boolean checkIfPangram(String sentence) {
         Set<Character> set = new HashSet<>();
         for (char c : sentence.toCharArray()) {
