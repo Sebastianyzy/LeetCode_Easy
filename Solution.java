@@ -165,6 +165,14 @@ public class Solution {
 //			}
     }
 
+    public static int getMinDistance(int[] nums, int target, int start) {
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            ans = nums[i] == target ? Math.min(ans, Math.abs(i - start)) : ans;
+        }
+        return ans;
+    }
+
     public static String replaceDigits(String s) {
         String ans = "";
         int i = 0;
