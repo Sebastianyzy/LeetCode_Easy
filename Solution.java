@@ -165,6 +165,23 @@ public class Solution {
 //			}
     }
 
+    public static String sortSentence(String s) {
+        String[] splited = s.split("\\s+"), ans = new String[splited.length];
+        for (String str : splited) {
+            int pos = sortSentence_Position(str);
+            ans[pos - 1] = str.substring(0, str.length() - 1);
+        }
+        String sentence = "";
+        for (String str : ans) {
+            sentence += str + " ";
+        }
+        return sentence.substring(0, sentence.length() - 1);
+    }
+
+    private static int sortSentence_Position(String s) {
+        return Integer.parseInt(Character.toString(s.charAt(s.length() - 1)));
+    }
+
     public static int maximumPopulation(int[][] logs) {
         int[] year = new int[101];
         for (int[] log : logs) {
