@@ -165,6 +165,14 @@ public class Solution {
 //			}
     }
 
+    public static int subsetXORSum(int[] nums) {
+        int res = 0;
+        for (int num : nums) {
+            res |= num;
+        }
+        return res * (int) Math.pow(2, nums.length - 1);
+    }
+
     public static String sortSentence(String s) {
         String[] splited = s.split("\\s+"), ans = new String[splited.length];
         for (String str : splited) {
