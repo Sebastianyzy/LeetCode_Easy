@@ -165,6 +165,22 @@ public class Solution {
 //			}
     }
 
+    public static boolean checkZeroOnes(String s) {
+        int maxZero = 0, countZero = 0, maxOne = 0, countOne = 0;
+        for (char c : s.toCharArray()) {
+            if (c == '1') {
+                countOne++;
+                countZero = 0;
+                maxOne = Math.max(countOne, maxOne);
+            } else {
+                countZero++;
+                countOne = 0;
+                maxZero = Math.max(countZero, maxZero);
+            }
+        }
+        return maxOne > maxZero;
+    }
+
     public static int subsetXORSum(int[] nums) {
         int res = 0;
         for (int num : nums) {
