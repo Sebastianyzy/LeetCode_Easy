@@ -165,6 +165,22 @@ public class Solution {
 //			}
     }
 
+    public static int countGoodSubstrings(String s) {
+        int count = 0;
+        for (int i = 0; i < s.length() - 2; i++) {
+            count += countGoodSubstrings_isGood(s.substring(i, i + 3)) ? 1 : 0;
+        }
+        return count;
+    }
+
+    private static boolean countGoodSubstrings_isGood(String s) {
+        Set<Character> set = new HashSet<>();
+        for (char c : s.toCharArray()) {
+            set.add(c);
+        }
+        return set.size() == s.length();
+    }
+
     public static boolean checkZeroOnes(String s) {
         int maxZero = 0, countZero = 0, maxOne = 0, countOne = 0;
         for (char c : s.toCharArray()) {
