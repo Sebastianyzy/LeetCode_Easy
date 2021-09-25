@@ -165,6 +165,26 @@ public class Solution {
 //			}
     }
 
+    public static boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int i = 0;
+        for (char c = 'a'; c <= 'z'; c++) {
+            map.put(c, i);
+            i++;
+        }
+        String f = "", s = "", t = "";
+        for (char c : firstWord.toCharArray()) {
+            f += map.get(c);
+        }
+        for (char c : secondWord.toCharArray()) {
+            s += map.get(c);
+        }
+        for (char c : targetWord.toCharArray()) {
+            t += map.get(c);
+        }
+        return Integer.parseInt(f) + Integer.parseInt(s) == Integer.parseInt(t);
+    }
+
     public static int countGoodSubstrings(String s) {
         int count = 0;
         for (int i = 0; i < s.length() - 2; i++) {
