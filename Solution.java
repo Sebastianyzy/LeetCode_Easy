@@ -165,30 +165,40 @@ public class Solution {
 //			}
     }
 
+    public static boolean isCovered(int[][] ranges, int left, int right) {
+        List<Integer> list = new ArrayList<>();
+        for (int[] arr : ranges) {
+            for (int i = arr[0]; i <= arr[1]; i++) {
+                list.add(i);
+            }
+        }
+        for (int i = left; i <= right; i++) {
+            if (!list.contains(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean findRotation(int[][] mat, int[][] target) {
         int n = mat.length;
-        int[] res[] = new int[n][n];
+        int[] res[] = new int[n][n], res2[] = new int[n][n], res3[] = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 res[i][j] = mat[n - 1 - j][i];
             }
         }
-        int[] res2[] = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 res2[i][j] = res[n - 1 - j][i];
             }
         }
-        int[] res3[] = new int[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 res3[i][j] = res2[n - 1 - j][i];
             }
         }
-        if (Arrays.deepEquals(target, res) || Arrays.deepEquals(target, res2) || Arrays.deepEquals(target, res3) || Arrays.deepEquals(target, mat)) {
-            return true;
-        }
-        return false;
+        return (Arrays.deepEquals(target, res) || Arrays.deepEquals(target, res2) || Arrays.deepEquals(target, res3) || Arrays.deepEquals(target, mat));
     }
 
     public static boolean isSumEqual(String firstWord, String secondWord, String targetWord) {
