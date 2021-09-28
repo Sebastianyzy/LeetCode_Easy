@@ -165,6 +165,22 @@ public class Solution {
 //			}
     }
 
+    public static boolean makeEqual(String[] words) {
+        int[] alph = new int[26];
+        for (int i = 0; i < words.length; i++) {
+            for (int j = 0; j < words[i].length(); j++) {
+                alph[words[i].charAt(j) - 'a']++;
+            }
+        }
+        for (int i = 0; i < 26; i++) {
+            if (alph[i] % words.length != 0) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
     public static boolean isCovered(int[][] ranges, int left, int right) {
         List<Integer> list = new ArrayList<>();
         for (int[] arr : ranges) {
