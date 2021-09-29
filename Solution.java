@@ -165,6 +165,20 @@ public class Solution {
 //			}
     }
 
+    public static String largestOddNumber(String num) {
+        int l = num.length();
+        for (int i = l - 1; i >= 0; i--) {
+            char ch = num.charAt(i);
+            if (ch == '1' || ch == '3' || ch == '5' || ch == '7' || ch == '9') {
+                if (i == l - 1) {
+                    return num;
+                }
+                return num.substring(0, i + 1);
+            }
+        }
+        return "";
+    }
+
     public static boolean makeEqual(String[] words) {
         int[] alph = new int[26];
         for (int i = 0; i < words.length; i++) {
