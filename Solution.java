@@ -165,6 +165,11 @@ public class Solution {
 //			}
     }
 
+    public static int maxProductDifference(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length - 1] * nums[nums.length - 2] - nums[0] * nums[1];
+    }
+
     public static boolean canBeIncreasing(int[] nums) {
         int infractionA = 0, infractionB = 0, size = nums.length;
         int prevA = nums[0], prevB = nums[size - 1];
