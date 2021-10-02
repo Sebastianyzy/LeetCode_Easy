@@ -165,6 +165,14 @@ public class Solution {
 //			}
     }
 
+    public static int[] buildArray(int[] nums) {
+        int[] ans = new int[nums.length];
+        for (int i = 0; i < ans.length; i++) {
+            ans[i] = nums[nums[i]];
+        }
+        return ans;
+    }
+
     public static int maxProductDifference(int[] nums) {
         Arrays.sort(nums);
         return nums[nums.length - 1] * nums[nums.length - 2] - nums[0] * nums[1];
