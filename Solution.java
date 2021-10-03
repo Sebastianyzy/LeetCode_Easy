@@ -165,6 +165,21 @@ public class Solution {
 //			}
     }
 
+    public static int countTriples(int n) {
+        int count = 0;
+        for (int i = 1; i < n; i++) {
+            for (int j = i + 1; j <= n; j++) {
+                int x = (i * i) + (j * j);
+                int c = (int) Math.sqrt(x);
+                if (c > n) {
+                    break;
+                }
+                count += (c * c == x) ? 2 : 0;
+            }
+        }
+        return count;
+    }
+
     public static int[] buildArray(int[] nums) {
         int[] ans = new int[nums.length];
         for (int i = 0; i < ans.length; i++) {
