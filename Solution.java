@@ -165,6 +165,17 @@ public class Solution {
 //			}
     }
 
+    public static int[] getConcatenation(int[] nums) {
+        int[] ans = new int[2 * nums.length];
+        System.arraycopy(nums, 0, ans, 0, nums.length);
+        int j = 0;
+        for (int i = nums.length; i < ans.length; i++) {
+            ans[i] = nums[j];
+            j++;
+        }
+        return ans;
+    }
+
     public static int countTriples(int n) {
         int count = 0;
         for (int i = 1; i < n; i++) {
