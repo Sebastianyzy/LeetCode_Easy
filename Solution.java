@@ -165,6 +165,21 @@ public class Solution {
 //			}
     }
 
+    public static boolean isDecomposable(String s) {
+        int countLenTwo = 0;
+        for (int i = 0; i < s.length(); ) {
+            if ((i < s.length() - 2) && (s.charAt(i) == s.charAt(i + 1)) && (s.charAt(i) == s.charAt(i + 2))) {
+                i = i + 3;
+            } else if ((i < s.length() - 1) && (s.charAt(i) == s.charAt(i + 1))) {
+                i = i + 2;
+                countLenTwo++;
+            } else {
+                return false;
+            }
+        }
+        return countLenTwo == 1;
+    }
+
     public static int[] getConcatenation(int[] nums) {
         int[] ans = new int[2 * nums.length];
         System.arraycopy(nums, 0, ans, 0, nums.length);
