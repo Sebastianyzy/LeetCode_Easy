@@ -165,6 +165,28 @@ public class Solution {
 //			}
     }
 
+    public static int canBeTypedWords(String text, String brokenLetters) {
+        String[] splitted = text.split("\\s+");
+        Set<Character> set = new HashSet<>();
+        for (char c : brokenLetters.toCharArray()) {
+            set.add(c);
+        }
+        int count = 0;
+        for (String s : splitted) {
+            count += canBeTypedWords_canType(s, set) ? 1 : 0;
+        }
+        return count;
+    }
+
+    private static boolean canBeTypedWords_canType(String s, Set<Character> set) {
+        for (char c : s.toCharArray()) {
+            if (set.contains(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean isDecomposable(String s) {
         int countLenTwo = 0;
         for (int i = 0; i < s.length(); ) {
