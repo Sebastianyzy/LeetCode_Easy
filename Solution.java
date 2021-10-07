@@ -165,6 +165,24 @@ public class Solution {
 //			}
     }
 
+    public static boolean areOccurrencesEqual(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) + 1);
+            } else {
+                map.put(c, 1);
+            }
+        }
+        int compare = map.get(s.charAt(0));
+        for (char c : s.toCharArray()) {
+            if (map.get(c) != compare) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static int canBeTypedWords(String text, String brokenLetters) {
         String[] splitted = text.split("\\s+");
         Set<Character> set = new HashSet<>();
