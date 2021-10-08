@@ -165,6 +165,30 @@ public class Solution {
 //			}
     }
 
+    public static int getLucky(String s, int k) {
+        int num = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int e = (int) s.charAt(i) - 'a' + 1;
+            num += e / 10 + e % 10;
+        }
+        int sum = num;
+        for (int i = 1; i < k; i++) {
+            sum = getLucky_transform(num);
+            num = sum;
+        }
+        return sum;
+    }
+
+    private static int getLucky_transform(int num) {
+        int sum = 0;
+        while (num != 0) {
+            int rem = num % 10;
+            sum += rem;
+            num /= 10;
+        }
+        return sum;
+    }
+
     public static boolean areOccurrencesEqual(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
         for (char c : s.toCharArray()) {
