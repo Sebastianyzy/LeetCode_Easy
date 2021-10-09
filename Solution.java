@@ -165,6 +165,14 @@ public class Solution {
 //			}
     }
 
+    public static boolean isThree(int n) {
+        int numOfdiv = 0;
+        for (int i = 1; i <= n; i++) {
+            numOfdiv += n % i == 0 ? 1 : 0;
+        }
+        return numOfdiv == 3;
+    }
+
     public static int getLucky(String s, int k) {
         int num = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
