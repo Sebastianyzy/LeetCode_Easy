@@ -165,6 +165,20 @@ public class Solution {
 //			}
     }
 
+    public static String makeFancyString(String s) {
+        char[] arr = s.toCharArray();
+        for (int i = 0; i < arr.length - 2; i++) {
+            if (arr[i] == arr[i + 1] && arr[i + 1] == arr[i + 2]) {
+                arr[i] = ' ';
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char c : arr) {
+            if (c != ' ') sb.append(c);
+        }
+        return sb.toString();
+    }
+
     public static boolean isThree(int n) {
         int numOfdiv = 0;
         for (int i = 1; i <= n; i++) {
