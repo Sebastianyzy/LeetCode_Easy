@@ -180,11 +180,11 @@ public class Solution {
     }
 
     public static boolean isThree(int n) {
-        int numOfdiv = 0;
+        int numOfDiv = 0;
         for (int i = 1; i <= n; i++) {
-            numOfdiv += n % i == 0 ? 1 : 0;
+            numOfDiv += n % i == 0 ? 1 : 0;
         }
-        return numOfdiv == 3;
+        return numOfDiv == 3;
     }
 
     public static int getLucky(String s, int k) {
