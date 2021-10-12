@@ -165,6 +165,24 @@ public class Solution {
 //			}
     }
 
+    public static boolean isPrefixString(String s, String[] words) {
+        for (int i = 0; i < words.length; i++) {
+            if (s.equals("")) {
+                return true;
+            }
+            if (s.indexOf(words[i]) == 0) {
+                s = s.substring(words[i].length(), s.length());
+                if (i == words.length - 1 && !s.equals("")) {
+                    return false;
+                }
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static String makeFancyString(String s) {
         char[] arr = s.toCharArray();
         for (int i = 0; i < arr.length - 2; i++) {
