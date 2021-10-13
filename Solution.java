@@ -165,6 +165,14 @@ public class Solution {
 //			}
     }
 
+    public static int numOfStrings(String[] patterns, String word) {
+        int count = 0;
+        for (String s : patterns) {
+            count += word.contains(s) ? 1 : 0;
+        }
+        return count;
+    }
+
     public static boolean isPrefixString(String s, String[] words) {
         for (int i = 0; i < words.length; i++) {
             if (s.equals("")) {
