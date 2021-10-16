@@ -217,7 +217,7 @@ public class Solution {
         int num = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             int e = (int) s.charAt(i) - 'a' + 1;
-            num += (e / 10) + (e % 10);
+            num += e / 10 + e % 10;
         }
         int sum = num;
         for (int i = 1; i < k; i++) {
