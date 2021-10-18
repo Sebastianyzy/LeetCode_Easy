@@ -165,6 +165,17 @@ public class Solution {
 //			}
     }
 
+    public static int minTimeToType(String word) {
+        char curr = 'a';
+        int count = 0;
+        for (char c : word.toCharArray()) {
+            int temp = Math.abs(curr - c);
+            count += Math.min(temp, 26 - temp) + 1;
+            curr = c;
+        }
+        return count;
+    }
+
     public static int numOfStrings(String[] patterns, String word) {
         int count = 0;
         for (String s : patterns) {
