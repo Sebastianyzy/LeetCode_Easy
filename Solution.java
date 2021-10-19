@@ -194,7 +194,7 @@ public class Solution {
                 if (i == words.length - 1 && !s.equals("")) {
                     return false;
                 }
-                continue;
+
             } else {
                 return false;
             }
