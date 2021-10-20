@@ -747,7 +747,7 @@ public class Solution {
     }
 
     public static String longestNiceSubstring(String s) {
-        String ans = "", temp = "";
+        String ans = "", temp;
         for (int i = 0; i < s.length(); i++) {
             for (int j = i + ans.length(); j < s.length(); j++) {
                 temp = s.substring(i, j + 1);
