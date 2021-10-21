@@ -760,8 +760,7 @@ public class Solution {
     }
 
     private static boolean longestNiceSubstring_isNice(String s) {
-        int lower = 0;
-        int upper = 0;
+        int lower = 0, upper = 0;
         for (char c : s.toCharArray()) {
             if (c < 'a') {
                 upper |= 1 << (c - 'A');
