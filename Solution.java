@@ -1026,8 +1026,8 @@ public class Solution {
         for (String s : word1) {
             s1 += s;
         }
-        for (String st : word2) {
-            s2 += st;
+        for (String s : word2) {
+            s2 += s;
         }
         return s1.equals(s2);
     }
