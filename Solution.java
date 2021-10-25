@@ -1012,8 +1012,8 @@ public class Solution {
     }
 
     public static int maxRepeating(String sequence, String word) {
-        int count = 0;
         String temp = word;
+        int count = 0;
         while (sequence.contains(temp)) {
             count++;
             temp += word;
@@ -1022,8 +1022,7 @@ public class Solution {
     }
 
     public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
-        String s1 = "";
-        String s2 = "";
+        String s1 = "", s2 = "";
         for (String s : word1) {
             s1 += s;
         }
