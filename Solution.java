@@ -1117,8 +1117,7 @@ public class Solution {
     }
 
     public static char slowestKey(int[] releaseTimes, String keysPressed) {
-        int maxTime = -1;
-        int lastReleaseTime = 0;
+        int maxTime = -1, lastReleaseTime = 0;
         char slowestKey = keysPressed.charAt(0);
         for (int i = 0; i < releaseTimes.length; i++) {
             int duration = releaseTimes[i] - lastReleaseTime;
