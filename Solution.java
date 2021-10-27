@@ -1155,8 +1155,7 @@ public class Solution {
     }
 
     public static int maxDepth(String s) {
-        int depth = 0;
-        int max_count = 0;
+        int depth = 0, max_count = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 max_count++;
