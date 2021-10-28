@@ -1199,6 +1199,7 @@ public class Solution {
             if (' ' == c) {
                 space++;
             } else {
+                continue;
             }
         }
         if (space == 0) {
