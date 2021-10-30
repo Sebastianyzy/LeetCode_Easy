@@ -1322,11 +1322,11 @@ public class Solution {
 
     public static String thousandSeparator(int n) {
         String s = n + "";
+        int count = 0;
         if (s.length() <= 3) {
             return s;
         }
         StringBuilder sb = new StringBuilder();
-        int count = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             count++;
             sb.append(s.charAt(i));
