@@ -1360,7 +1360,9 @@ public class Solution {
             }
         }
         StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) sb.append(stack.pop());
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
         return sb.reverse().toString();
     }
 
