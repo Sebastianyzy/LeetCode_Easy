@@ -1414,7 +1414,7 @@ public class Solution {
     }
 
     public static int countOdds(int low, int high) {
-        return (high + 1) / 2 - low / 2;
+        return (high + 1) / 2 - (low / 2);
     }
 
     public static int numWaterBottles(int numBottles, int numExchange) {
