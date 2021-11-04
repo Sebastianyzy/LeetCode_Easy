@@ -1754,13 +1754,12 @@ public class Solution {
 
     public static List<Integer> minSubsequence(int[] nums) {
         int[] count = new int[101];
-        int totalSum = 0;
+        int totalSum = 0, currSum = 0;
         for (int currInt : nums) {
             totalSum += currInt;
             count[currInt]++;
         }
         List<Integer> currSubseq = new ArrayList<>();
-        int currSum = 0;
         for (int i = count.length - 1; i >= 0; --i) {
             while (count[i] > 0) {
                 currSubseq.add(i);
