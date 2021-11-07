@@ -165,6 +165,7 @@ public class Solution {
 //			}
     }
 
+
     public static int minTimeToType(String word) {
         char curr = 'a';
         int count = 0;
