@@ -4486,13 +4486,8 @@ public class Solution {
     }
 
     public static int distributeCandies(int[] candyType) {
-        int canEat = candyType.length / 2;
-        int type = numOfTypeCandy(candyType);
-        if (type >= canEat) {
-            return canEat;
-        } else {
-            return type;
-        }
+        int canEat = candyType.length / 2, type = numOfTypeCandy(candyType);
+        return Math.min(type, canEat);
     }
 
     private static int numOfTypeCandy(int[] c) {
