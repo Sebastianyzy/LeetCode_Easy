@@ -4504,14 +4504,13 @@ public class Solution {
         }
         int[] element = new int[r * c];
         int[][] matrix = new int[r][c];
-        int k = 0;
+        int k = 0, e = 0;
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums[i].length; j++) {
                 element[k] = nums[i][j];
                 k++;
             }
         }
-        int e = 0;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = element[e];
@@ -4522,8 +4521,8 @@ public class Solution {
     }
 
     public static int arrayPairSum(int[] nums) {
-        Arrays.sort(nums);
         int sum = 0;
+        Arrays.sort(nums);
         for (int i = 0; i < nums.length; i += 2) {
             sum += nums[i];
         }
