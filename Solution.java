@@ -4562,7 +4562,7 @@ public class Solution {
 
     public static String[] findRelativeRanks(int[] score) {
         String[] result = new String[score.length];
-        if (score.length < 3) {
+        if (score.length <= 3) {
             if (score.length == 1) {
                 result[0] = "Gold Medal";
             }
@@ -4615,20 +4615,20 @@ public class Solution {
     }
 
     public static void printCharArray(char[] c) {
-        for (int i = 0; i < c.length; i++) {
-            System.out.println(c[i]);
+        for (char value : c) {
+            System.out.println(value);
         }
     }
 
     public static void printStringArray(String[] c) {
-        for (int i = 0; i < c.length; i++) {
-            System.out.println(c[i]);
+        for (String s : c) {
+            System.out.println(s);
         }
     }
 
     public static void printIntArray(int[] a) {
-        for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i]);
+        for (int j : a) {
+            System.out.println(j);
         }
     }
 
