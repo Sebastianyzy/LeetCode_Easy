@@ -4900,8 +4900,8 @@ public class Solution {
         int i = 0, j = 0;
         while (i < word.length() && j < abbr.length()) {
             if (word.charAt(i) == abbr.charAt(j)) {
-                ++i;
                 ++j;
+                ++i;
                 continue;
             }
             if (abbr.charAt(j) <= '0' || abbr.charAt(j) > '9') {
