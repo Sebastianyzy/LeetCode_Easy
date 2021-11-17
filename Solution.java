@@ -4934,8 +4934,7 @@ public class Solution {
         if (s.length() > t.length()) {
             return false;
         }
-        Stack<Character> stacks = new Stack<>();
-        Stack<Character> stackt = new Stack<>();
+        Stack<Character> stacks = new Stack<>(), stackt = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             stacks.add(s.charAt(i));
         }
