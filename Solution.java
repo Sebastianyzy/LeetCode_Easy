@@ -4990,8 +4990,7 @@ public class Solution {
             return false;
         }
         char[] r = ransomNote.toCharArray(), m = magazine.toCharArray();
-        Stack<Character> ranStack = putOnStack(r);
-        Stack<Character> magStack = putOnStack(m);
+        Stack<Character> ranStack = putOnStack(r), magStack = putOnStack(m);
         while (!ranStack.isEmpty()) {
             if (!ranStack.isEmpty() && magStack.isEmpty()) {
                 return false;
