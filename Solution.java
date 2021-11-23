@@ -5085,8 +5085,7 @@ public class Solution {
     }
 
     public static void reverseStringRedo(char[] s) {
-        int i = 0;
-        int j = s.length - 1;
+        int i = 0, j = s.length - 1;
         char temp;
         while (j > i) {
             temp = s[j];
