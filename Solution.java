@@ -5321,12 +5321,9 @@ public class Solution {
     }
 
     public static int Merge(int[] arr, int start, int mid, int end) {
-        int n1 = mid - start + 1;
-        int n2 = end - mid;
-        int inversion = 0;
+        int n1 = mid - start + 1, n2 = end - mid, inversion = 0;
         /* Create temp arrays */
-        int[] L = new int[n1];
-        int[] R = new int[n2];
+        int[] L = new int[n1], R = new int[n2];
 
         /* Copy data to temp arrays */
         for (int i = 0; i < n1; ++i) {
