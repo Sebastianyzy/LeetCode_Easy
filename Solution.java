@@ -165,6 +165,15 @@ public class Solution {
 //			}
     }
 
+    public static int findGCD(int[] nums) {
+        int ans = 1;
+        Arrays.sort(nums);
+        for (int i = 1; i <= nums[0]; i++) {
+            ans = nums[0] % i == 0 && nums[nums.length - 1] % i == 0 ? Math.max(ans, i) : ans;
+        }
+        return ans;
+    }
+
 
     public static int minTimeToType(String word) {
         char curr = 'a';
