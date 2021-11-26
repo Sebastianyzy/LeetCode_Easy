@@ -165,6 +165,24 @@ public class Solution {
 //			}
     }
 
+    public static boolean checkAlmostEquivalent(String word1, String word2) {
+        for (int i = 0; i < word1.length(); i++) {
+            char cur1 = word1.charAt(i), cur2 = word2.charAt(i);
+            if (Math.abs(checkAlmostEquivalent_checkNumber(word1, cur1) - checkAlmostEquivalent_checkNumber(word2, cur1)) > 3 || (Math.abs(checkAlmostEquivalent_checkNumber(word1, cur2) - checkAlmostEquivalent_checkNumber(word2, cur2)) > 3)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static int checkAlmostEquivalent_checkNumber(String s, char c) {
+        int i = 0;
+        for (char ch : s.toCharArray()) {
+            i += ch == c ? 1 : 0;
+        }
+        return i;
+    }
+
     public static int findGCD(int[] nums) {
         int ans = 1;
         Arrays.sort(nums);
