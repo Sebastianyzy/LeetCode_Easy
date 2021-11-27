@@ -5708,8 +5708,7 @@ public class Solution {
 
     public static void InsertionSort(int[] num) {
         for (int i = 1; i < num.length; i++) {
-            int key = num[i];
-            int j = i - 1;
+            int key = num[i], j = i - 1;
             while (j >= 0 && num[j] > key) {
                 num[j + 1] = num[j];
                 j--;
