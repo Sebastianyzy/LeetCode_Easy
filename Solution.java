@@ -5901,8 +5901,7 @@ public class Solution {
         if (x <= 0) {
             return 0;
         }
-        long l = 0;
-        long r = x;
+        long l = 0, r = x;
         while (l + 1 < r) {
             long mid = l + (r - l) / 2;
             long sqr = (long) Math.pow(mid, 2);
