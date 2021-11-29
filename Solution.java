@@ -5938,8 +5938,7 @@ public class Solution {
             a = x.toString();
         }
         StringBuilder sb = new StringBuilder();
-        int Length = a.length() - 1;
-        int carry = 0;
+        int Length = a.length() - 1, carry = 0;
         while (Length >= 0) {
             int sum = a.charAt(Length) + b.charAt(Length);
             if (sum == 98 && carry == 1) {
