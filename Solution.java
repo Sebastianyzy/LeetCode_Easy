@@ -6059,8 +6059,7 @@ public class Solution {
         if (needle == "") {
             return -1;
         }
-        int haystackLength = haystack.length();
-        int needleLength = needle.length();
+        int haystackLength = haystack.length(), needleLength = needle.length();
         for (int count = 0; count < haystackLength - needleLength + 1; count++) {
             if (haystack.substring(count, count + needleLength).equals(needle)) {
                 return count;
