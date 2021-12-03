@@ -165,7 +165,6 @@ public class Solution {
 //			}
     }
 
-
     public static boolean checkAlmostEquivalent(String word1, String word2) {
         for (int i = 0; i < word1.length(); i++) {
             char cur1 = word1.charAt(i), cur2 = word2.charAt(i);
