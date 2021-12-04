@@ -5687,8 +5687,7 @@ public class Solution{
 
     public static boolean isPalindrome(String s){
         String s1 = removeNonAlphanumeric(s);
-        int i = 0;
-        int j = s1.length() - 1;
+        int i = 0, j = s1.length() - 1;
         while (j >= i){
             if(Character.toLowerCase(s1.charAt(i)) != Character.toLowerCase(s1.charAt(j))){
                 System.out.println("i is: " + Character.toLowerCase(s1.charAt(i)));
