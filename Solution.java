@@ -165,6 +165,29 @@ public class Solution{
 //			}
     }
 
+    public static boolean areNumbersAscending(String s){
+        int min = -1;
+        String[] arr = s.split("\\s+");
+        for(String value : arr){
+            if(areNumbersAscending_isInteger(value)){
+                if(min - Integer.parseInt(value) >= 0){
+                    return false;
+                }
+                min = Integer.parseInt(value);
+            }
+        }
+        return true;
+    }
+
+    private static boolean areNumbersAscending_isInteger(String str){
+        try{
+            Integer.parseInt(str);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
     public static boolean checkAlmostEquivalent(String word1, String word2){
         for(int i = 0; i < word1.length(); i++){
             char cur1 = word1.charAt(i), cur2 = word2.charAt(i);
@@ -191,7 +214,6 @@ public class Solution{
         }
         return ans;
     }
-
 
     public static int minTimeToType(String word){
         char curr = 'a';
