@@ -393,8 +393,7 @@ public class Solution{
     }
 
     public static boolean canBeIncreasing(int[] nums){
-        int infractionA = 0, infractionB = 0, size = nums.length;
-        int prevA = nums[0], prevB = nums[size - 1];
+        int infractionA = 0, infractionB = 0, size = nums.length, prevA = nums[0], prevB = nums[size - 1];
         for(int i = 0; i < size - 1; i++){
             if(prevA < nums[i + 1]){
                 prevA = nums[i + 1];
