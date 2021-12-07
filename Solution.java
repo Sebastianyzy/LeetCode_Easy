@@ -165,6 +165,7 @@ public class Solution{
 //			}
     }
 
+
     public static boolean areNumbersAscending(String s){
         int min = -1;
         String[] arr = s.split("\\s+");
@@ -183,7 +184,7 @@ public class Solution{
         try{
             Integer.parseInt(str);
             return true;
-        } catch (Exception e){
+        } catch(Exception e){
             return false;
         }
     }
@@ -290,7 +291,7 @@ public class Solution{
 
     private static int getLucky_transform(int num){
         int sum = 0;
-        while (num != 0){
+        while(num != 0){
             int rem = num % 10;
             sum += rem;
             num /= 10;
@@ -583,12 +584,12 @@ public class Solution{
     public static String replaceDigits(String s){
         String ans = "";
         int i = 0;
-        while (i < s.length()){
+        while(i < s.length()){
             try{
                 String temp = replaceDigits_shift(s.charAt(i), Integer.parseInt(Character.toString(s.charAt(i + 1))));
                 ans += s.charAt(i) + temp;
                 i += 2;
-            } catch (Exception e){
+            } catch(Exception e){
                 break;
             }
         }
@@ -621,7 +622,7 @@ public class Solution{
 
     public static int badSensor(int[] sensor1, int[] sensor2){
         int i = 0;
-        while (i < sensor1.length){
+        while(i < sensor1.length){
             if(sensor1[i] != sensor2[i]){
                 break;
             }
@@ -634,7 +635,7 @@ public class Solution{
             return -1;
         }
         int j = i;
-        while (j < sensor1.length - 1){
+        while(j < sensor1.length - 1){
             if(sensor1[j] != sensor2[j + 1]){
                 break;
             }
@@ -645,7 +646,7 @@ public class Solution{
             sensor1CouldBeDefective = true;
         }
         j = i;
-        while (j < sensor1.length - 1){
+        while(j < sensor1.length - 1){
             if(sensor2[j] != sensor1[j + 1]){
                 break;
             }
@@ -697,7 +698,7 @@ public class Solution{
             if(nums[i] > nums[i - 1]){
                 cur += nums[i - 1];
                 int j = i;
-                while (j < nums.length && nums[j] > nums[j - 1]){
+                while(j < nums.length && nums[j] > nums[j - 1]){
                     cur += nums[j];
                     j++;
                 }
@@ -767,7 +768,7 @@ public class Solution{
 
     public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue){
         if(items.size() == 0) return 0;
-        int j = switch (ruleKey){
+        int j = switch(ruleKey){
             case "type" -> 0;
             case "color" -> 1;
             case "name" -> 2;
@@ -859,14 +860,14 @@ public class Solution{
         int digit = lowLimit;
         int id = 0;
         int max = 1;
-        while (digit != 0){
+        while(digit != 0){
             id += digit % 10;
             digit /= 10;
         }
         ++arr[id];
         for(int i = lowLimit + 1; i <= highLimit; i++){
             digit = i;
-            while (digit % 10 == 0){
+            while(digit % 10 == 0){
                 id -= 9;
                 digit /= 10;
             }
@@ -939,7 +940,7 @@ public class Solution{
     public static int maximumUnits(int[][] boxTypes, int truckSize){
         int unitCount = 0;
         int remainingTruckSize = truckSize;
-        while (remainingTruckSize > 0){
+        while(remainingTruckSize > 0){
             int maxUnitBoxIndex = findMaxUnitBox(boxTypes);
             if(maxUnitBoxIndex == -1){
                 break;
@@ -981,7 +982,7 @@ public class Solution{
             a[students[i]] += 1;
         }
         int k = 0;
-        while (k < sandwiches.length){
+        while(k < sandwiches.length){
             if(a[sandwiches[k]] > 0){
                 a[sandwiches[k]] -= 1;
             } else{
@@ -1000,12 +1001,12 @@ public class Solution{
         }
         StringBuffer sb = new StringBuffer(number);
         int i = 3;
-        while (len > 4){
+        while(len > 4){
             sb.insert(i, "-");
             len -= 3;
             i += 4;
         }
-        while (len == 4){
+        while(len == 4){
             i -= 1;
             sb.insert(i, "-");
             len -= 2;
@@ -1015,7 +1016,7 @@ public class Solution{
 
     public static int numberOfMatches(int n){
         int count = 0;
-        while (n > 1){
+        while(n > 1){
             count += (n % 2 == 0) ? n / 2 : (n - 1) / 2;
             n = (n % 2 == 0) ? n / 2 : (n + 1) / 2;
         }
@@ -1063,7 +1064,7 @@ public class Solution{
     public static int maxRepeating(String sequence, String word){
         String temp = word;
         int count = 0;
-        while (sequence.contains(temp)){
+        while(sequence.contains(temp)){
             count++;
             temp += word;
         }
@@ -1140,7 +1141,7 @@ public class Solution{
             Map.put(i[0], i);
         }
         int i = 0;
-        while (i < arr.length){
+        while(i < arr.length){
             if(Map.containsKey(arr[i])){
                 int[] temp = Map.get(arr[i]);
                 for(int j = 0; j < temp.length; j++){
@@ -1325,7 +1326,7 @@ public class Solution{
         for(int i = 0; i < s.length(); i++){
             if(s.charAt(i) == '?'){
                 char ch = 'a';
-                while ((i != 0 && s.charAt(i - 1) == ch) || (i != s.length() - 1 && s.charAt(i + 1) == ch)) ch++;
+                while((i != 0 && s.charAt(i - 1) == ch) || (i != s.length() - 1 && s.charAt(i + 1) == ch)) ch++;
                 s = s.substring(0, i) + ch + s.substring(i + 1);
             }
         }
@@ -1409,7 +1410,7 @@ public class Solution{
             }
         }
         StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()){
+        while(!stack.isEmpty()){
             sb.append(stack.pop());
         }
         return sb.reverse().toString();
@@ -1426,7 +1427,7 @@ public class Solution{
         }
         int j = 0;
         int m = 1;
-        while (j < missingArr.length){
+        while(j < missingArr.length){
             if(!map.contains(m)){
                 missingArr[j] = m;
                 m++;
@@ -1468,7 +1469,7 @@ public class Solution{
 
     public static int numWaterBottles(int numBottles, int numExchange){
         int drink = numBottles, numFull = 0;
-        while (numBottles >= numExchange){
+        while(numBottles >= numExchange){
             numFull = numBottles / numExchange;
             drink += numFull;
             numBottles = numFull + (numBottles % numExchange);
@@ -1539,14 +1540,14 @@ public class Solution{
 
     public static ListNode deleteNodes(ListNode head, int m, int n){
         List<Integer> list = new ArrayList<>();
-        while (head != null){
+        while(head != null){
             int M = m, N = n;
-            while (M != 0 && head != null){
+            while(M != 0 && head != null){
                 list.add(head.val);
                 M--;
                 head = head.next;
             }
-            while (N != 0 && head != null){
+            while(N != 0 && head != null){
                 head = head.next;
                 N--;
             }
@@ -1678,7 +1679,7 @@ public class Solution{
     public static List<String> buildArray(int[] target, int n){
         List<String> list = new ArrayList();
         int i = 0, j = 0;
-        while (i++ <= n && j < target.length){
+        while(i++ <= n && j < target.length){
             list.add("Push");
             if(target[j] == i){
                 j++;
@@ -1771,7 +1772,7 @@ public class Solution{
         }
         char prev = digits.size() > alphabets.size() ? digits.poll() : alphabets.poll();
         result.append(prev);
-        while (!alphabets.isEmpty() || !digits.isEmpty()){
+        while(!alphabets.isEmpty() || !digits.isEmpty()){
             result.append(prev = (Character.isDigit(prev) ? alphabets.poll() : digits.poll()));
         }
         return result.toString();
@@ -1810,7 +1811,7 @@ public class Solution{
         }
         List<Integer> currSubseq = new ArrayList<>();
         for(int i = count.length - 1; i >= 0; --i){
-            while (count[i] > 0){
+            while(count[i] > 0){
                 currSubseq.add(i);
                 currSum += i;
                 count[i]--;
@@ -1867,7 +1868,7 @@ public class Solution{
     public static int[] createTargetArray(int[] nums, int[] index){
         int[] target = new int[nums.length];
         int i = 0, k = 0;
-        while (i < index.length){
+        while(i < index.length){
             for(k = target.length - 1; k > index[i]; k--)
                 target[k] = target[k - 1];
             target[index[i]] = nums[i];
@@ -1934,8 +1935,8 @@ public class Solution{
         }
         StringBuilder sb = new StringBuilder();
         int i = 0, step = 1;
-        while (len-- > 0){
-            while (map[i] == 0){
+        while(len-- > 0){
+            while(map[i] == 0){
                 if(i == 25){
                     step = -1;
                 }
@@ -2100,7 +2101,7 @@ public class Solution{
         }
         int[] ans = new int[len];
         int i = 0, j = 0;
-        while (j < ans.length){
+        while(j < ans.length){
             for(int cur = 0; cur < nums[i]; cur++){
                 ans[j] = nums[i + 1];
                 j++;
@@ -2172,7 +2173,7 @@ public class Solution{
 
     public static int getDecimalValue(ListNode head){
         String ans = "";
-        while (head != null){
+        while(head != null){
             ans += head.val;
             head = head.next;
         }
@@ -2262,7 +2263,7 @@ public class Solution{
 
     private static int minTimeToVisitAllPoints_timeCost(int x, int y, int fx, int fy){
         int time = 1;
-        while (x != fx || y != fy){
+        while(x != fx || y != fy){
             if(x <= fx && y <= fy){
                 x += x == fx ? 0 : 1;
                 y += y == fy ? 0 : 1;
@@ -2330,7 +2331,7 @@ public class Solution{
 
     public static List<Integer> transformArray(int[] arr){
         List<Integer> res = new ArrayList<>();
-        while (true){
+        while(true){
             boolean correct = true;
             int prev = arr[0];
             for(int i = 1; i < arr.length - 1; i++){
@@ -2443,7 +2444,7 @@ public class Solution{
     public static int maxNumberOfApples(int[] arr){
         int max = 5000, i = 0, count = 0;
         Arrays.sort(arr);
-        while (max >= 0 && i < arr.length){
+        while(max >= 0 && i < arr.length){
             if(max - arr[i] >= 0){
                 max -= arr[i];
                 count++;
@@ -2461,7 +2462,7 @@ public class Solution{
         String balloon = "balloon";
         int i = 0, count = 0;
         char cur = balloon.charAt(i);
-        while (list.contains(cur)){
+        while(list.contains(cur)){
             list.remove(cur);
             i = i + 1 == balloon.length() ? 0 : i + 1;
             count += i == 0 ? 1 : 0;
@@ -2522,7 +2523,7 @@ public class Solution{
 
     public static int numberOfSteps(int num){
         int steps = 0;
-        while (num != 0){
+        while(num != 0){
             num = num % 2 == 0 ? num / 2 : num - 1;
             steps++;
         }
@@ -2633,7 +2634,7 @@ public class Solution{
         }
         try{
             return map.get(target) > nums.length / 2;
-        } catch (Exception e){
+        } catch(Exception e){
             return false;
         }
     }
@@ -2766,7 +2767,7 @@ public class Solution{
     public static int[] distributeCandies(int candies, int num_people){
         int[] people = new int[num_people];
         int numOfCandies = 1, i = 0;
-        while (candies > 0){
+        while(candies > 0){
             if(candies - numOfCandies <= 0){
                 people[i] += candies;
                 break;
@@ -2880,7 +2881,7 @@ public class Solution{
         int times = (b.length()) / a.length();
         StringBuilder tmp = new StringBuilder(a);
         times--;
-        while (times > 0){
+        while(times > 0){
             tmp.append(a);
             times--;
         }
@@ -2930,7 +2931,7 @@ public class Solution{
         String n = N + "";
         int i = 0, j = n.length() - 1;
         char[] num = n.toCharArray();
-        while (j >= i){
+        while(j >= i){
             char cur = n.charAt(i), curj = n.charAt(j);
             if(cur == '2' || cur == '3' || cur == '4' || cur == '5' || cur == '7' || curj == '2' || curj == '3'
                     || curj == '4' || curj == '5' || curj == '7'){
@@ -2970,7 +2971,7 @@ public class Solution{
             }
         }
         StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()){
+        while(!stack.isEmpty()){
             sb.append(stack.pop());
         }
         return sb.reverse().toString();
@@ -3197,7 +3198,7 @@ public class Solution{
     public static boolean isCousins(TreeNode root, int x, int y){
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        while (!queue.isEmpty()){
+        while(!queue.isEmpty()){
             boolean siblings = false;
             boolean cousins = false;
             int nodesAtDepth = queue.size();
@@ -3231,7 +3232,7 @@ public class Solution{
         int N = num.length, cur = k;
         List<Integer> ans = new ArrayList<>();
         int i = N;
-        while (--i >= 0 || cur > 0){
+        while(--i >= 0 || cur > 0){
             if(i >= 0){
                 cur += num[i];
             }
@@ -3405,7 +3406,7 @@ public class Solution{
             return false;
         }
         int i = 1;
-        while (i < arr.length && arr[i] != max){
+        while(i < arr.length && arr[i] != max){
             if(arr[i] <= arr[i - 1]){
                 return false;
             }
@@ -3502,10 +3503,10 @@ public class Solution{
                     sb.append(cur);
                 } else if(cur == '+' && end_loop){
                     int j = i;
-                    while (s.charAt(j) != '@'){
+                    while(s.charAt(j) != '@'){
                         j++;
                     }
-                    while (j < s.length()){
+                    while(j < s.length()){
                         sb.append(s.charAt(j));
                         j++;
                     }
@@ -3531,7 +3532,7 @@ public class Solution{
             typed_stack.push(c);
         }
         char last_pop_type = ' ';
-        while (!name_stack.isEmpty() && !typed_stack.isEmpty()){
+        while(!name_stack.isEmpty() && !typed_stack.isEmpty()){
             char cur_name = name_stack.peek(), cur_type = typed_stack.peek();
             if(cur_name == cur_type){
                 name_stack.pop();
@@ -3540,7 +3541,7 @@ public class Solution{
                 if(cur_type != last_pop_type){
                     return false;
                 }
-                while (cur_type == last_pop_type){
+                while(cur_type == last_pop_type){
                     last_pop_type = typed_stack.pop();
                     cur_type = typed_stack.peek();
                 }
@@ -3549,7 +3550,7 @@ public class Solution{
                 }
             }
         }
-        while (!typed_stack.isEmpty()){
+        while(!typed_stack.isEmpty()){
             char cur = typed_stack.peek();
             if(last_pop_type != cur){
                 return false;
@@ -3801,7 +3802,7 @@ public class Solution{
 
     public static ListNode middleNode(ListNode head){
         List<ListNode> list = new ArrayList<>();
-        while (head != null){
+        while(head != null){
             list.add(head);
             head = head.next;
         }
@@ -3914,7 +3915,7 @@ public class Solution{
 
     public static int peakIndexInMountainArray(int[] arr){
         int i = 0;
-        while (arr[i] < arr[i + 1]){
+        while(arr[i] < arr[i + 1]){
             i++;
         }
         return i;
@@ -3958,7 +3959,7 @@ public class Solution{
     private static void flipAndInvertImage_flip(int[] image){
         int i = 0;
         int j = image.length - 1;
-        while (j >= i){
+        while(j >= i){
             int cur = image[i];
             image[i] = image[j];
             image[j] = cur;
@@ -4106,7 +4107,7 @@ public class Solution{
             return false;
         }
         String s = A.substring(1) + A.charAt(0);
-        while (!s.equals(A)){
+        while(!s.equals(A)){
             if(s.equals(B)){
                 return true;
             }
@@ -4184,14 +4185,14 @@ public class Solution{
     public static boolean isToeplitzMatrix(int[][] matrix){
         int i = 0;
         int j = 0;
-        while (i < matrix.length){
-            while (j < matrix[i].length){
+        while(i < matrix.length){
+            while(j < matrix[i].length){
                 try{
                     if(matrix[i][j] != matrix[i + 1][j + 1]){
                         return false;
                     }
                     j++;
-                } catch (Exception e){
+                } catch(Exception e){
                     break;
                 }
             }
@@ -4302,7 +4303,7 @@ public class Solution{
         List<Integer> list = new ArrayList<>();
         int i = 0;
         int j = 0;
-        while (i < m && j < n){
+        while(i < m && j < n){
             if(A[i] <= B[j]){
                 if(!set.contains(A[i])){
                     list.add(A[i]);
@@ -4425,7 +4426,7 @@ public class Solution{
         int j = 1;
         int count = 0;
         int cur = 1;
-        while (j < nums.length){
+        while(j < nums.length){
             if(nums[j] > nums[j - 1]){
                 cur++;
                 j++;
@@ -4852,7 +4853,7 @@ public class Solution{
 
     public static int arrangeCoins(int n){
         int i = 0;
-        while (n != 0){
+        while(n != 0){
             n -= i;
             if(n < i + 1){
                 return i;
@@ -4876,7 +4877,7 @@ public class Solution{
             for(int j = 0; j < words.get(i).length(); j++){
                 try{
                     col.append(words.get(j).charAt(i));
-                } catch (Exception e){
+                } catch(Exception e){
                     return false;
                 }
             }
@@ -4900,7 +4901,7 @@ public class Solution{
         StringBuilder s = new StringBuilder();
         int i = num1.length() - 1;
         int carry = 0;
-        while (i >= 0){
+        while(i >= 0){
             int add = carry + Integer.parseInt(String.valueOf(num1.charAt(i)))
                     + Integer.parseInt(String.valueOf(num2.charAt(i)));
             carry = 0;
@@ -4946,7 +4947,7 @@ public class Solution{
 
     public static boolean validWordAbbreviation(String word, String abbr){
         int i = 0, j = 0;
-        while (i < word.length() && j < abbr.length()){
+        while(i < word.length() && j < abbr.length()){
             if(word.charAt(i) == abbr.charAt(j)){
                 ++j;
                 ++i;
@@ -4956,7 +4957,7 @@ public class Solution{
                 return false;
             }
             int start = j;
-            while (j < abbr.length() && abbr.charAt(j) >= '0' && abbr.charAt(j) <= '9'){
+            while(j < abbr.length() && abbr.charAt(j) >= '0' && abbr.charAt(j) <= '9'){
                 ++j;
             }
             int num = Integer.valueOf(abbr.substring(start, j));
@@ -4971,7 +4972,7 @@ public class Solution{
             return "0";
         }
         String result = "";
-        while (num != 0){
+        while(num != 0){
             result = map[(num & 15)] + result;
             num = (num >>> 4);
         }
@@ -4989,7 +4990,7 @@ public class Solution{
         for(int i = 0; i < t.length(); i++){
             stackt.add(t.charAt(i));
         }
-        while (!stackt.isEmpty() && !stacks.isEmpty()){
+        while(!stackt.isEmpty() && !stacks.isEmpty()){
             if(stacks.peek() == stackt.peek()){
                 stacks.pop();
                 stackt.pop();
@@ -5039,7 +5040,7 @@ public class Solution{
         }
         char[] r = ransomNote.toCharArray(), m = magazine.toCharArray();
         Stack<Character> ranStack = putOnStack(r), magStack = putOnStack(m);
-        while (!ranStack.isEmpty()){
+        while(!ranStack.isEmpty()){
             if(!ranStack.isEmpty() && magStack.isEmpty()){
                 return false;
             } else if(magStack.peek() == ranStack.peek()){
@@ -5105,7 +5106,7 @@ public class Solution{
     public static String reverseVowels(String s){
         char[] arr = s.toCharArray();
         int i = 0, j = arr.length - 1;
-        while (j > i){
+        while(j > i){
             char temp = ' ';
             if(isVowel(arr[i]) && isVowel(arr[j])){
                 temp = arr[j];
@@ -5135,7 +5136,7 @@ public class Solution{
     public static void reverseStringRedo(char[] s){
         int i = 0, j = s.length - 1;
         char temp;
-        while (j > i){
+        while(j > i){
             temp = s[j];
             s[j] = s[i];
             s[i] = temp;
@@ -5148,7 +5149,7 @@ public class Solution{
         if(n < 1){
             return false;
         }
-        while (n % 4 == 0){
+        while(n % 4 == 0){
             n /= 4;
         }
         return n == 1;
@@ -5158,7 +5159,7 @@ public class Solution{
         if(n < 1){
             return false;
         }
-        while (n % 3 == 0){
+        while(n % 3 == 0){
             n /= 3;
         }
         return n == 1;
@@ -5192,7 +5193,7 @@ public class Solution{
                 j++;
             }
         }
-        while (j < copy.length){
+        while(j < copy.length){
             copy[j] = 0;
             j++;
         }
@@ -5272,13 +5273,13 @@ public class Solution{
         if(num <= 0){
             return false;
         }
-        while (num % 5 == 0){
+        while(num % 5 == 0){
             num /= 5;
         }
-        while (num % 3 == 0){
+        while(num % 3 == 0){
             num /= 3;
         }
-        while (num % 2 == 0){
+        while(num % 2 == 0){
             num /= 2;
         }
         return num == 1;
@@ -5286,7 +5287,7 @@ public class Solution{
 
     public static int addDigits(int num){
         int n = 0;
-        while (num > 0){
+        while(num > 0){
             n += num % 10;
             num /= 10;
             if(num == 0 && n > 9){
@@ -5384,7 +5385,7 @@ public class Solution{
         // Initial indexes of first and second subarrays
         // Initial index of merged subarry array
         int i = 0, j = 0, k = start;
-        while (i < n1 && j < n2){
+        while(i < n1 && j < n2){
             if(L[i] <= R[j]){
                 arr[k] = L[i];
                 i++;
@@ -5396,13 +5397,13 @@ public class Solution{
             k++;
         }
         /* Copy remaining elements of L[] if any */
-        while (i < n1){
+        while(i < n1){
             arr[k] = L[i];
             i++;
             k++;
         }
         /* Copy remaining elements of R[] if any */
-        while (j < n2){
+        while(j < n2){
             arr[k] = R[j];
             j++;
             k++;
@@ -5436,7 +5437,7 @@ public class Solution{
         int i = 0, j = 0;
         // Initial index of merged subarry array
         int k = start;
-        while (i < n1 && j < n2){
+        while(i < n1 && j < n2){
             if(L[i] <= R[j]){
                 arr[k] = L[i];
                 System.out.println("arr[k] is " + arr[k]);
@@ -5451,7 +5452,7 @@ public class Solution{
         }
 
         /* Copy remaining elements of L[] if any */
-        while (i < n1){
+        while(i < n1){
             arr[k] = L[i];
             System.out.println("L remaining is " + L[i]);
             i++;
@@ -5459,7 +5460,7 @@ public class Solution{
         }
 
         /* Copy remaining elements of R[] if any */
-        while (j < n2){
+        while(j < n2){
             arr[k] = R[j];
             System.out.println("R remaining is " + R[j]);
             j++;
@@ -5524,7 +5525,7 @@ public class Solution{
         if(n == 0){
             return false;
         }
-        while (n % 2 == 0){
+        while(n % 2 == 0){
             n /= 2;
         }
         return (n == 1);
@@ -5609,7 +5610,7 @@ public class Solution{
         dummy.next = head;
         ListNode cur = head;
         ListNode pre = dummy;
-        while (cur != null){
+        while(cur != null){
             if(cur.val == val){
                 pre.next = cur.next;
             } else{
@@ -5709,7 +5710,7 @@ public class Solution{
     public static boolean isPalindrome(String s){
         String s1 = removeNonAlphanumeric(s);
         int i = 0, j = s1.length() - 1;
-        while (j >= i){
+        while(j >= i){
             if(Character.toLowerCase(s1.charAt(i)) != Character.toLowerCase(s1.charAt(j))){
                 System.out.println("i is: " + Character.toLowerCase(s1.charAt(i)));
                 System.out.println("j is: " + Character.toLowerCase(s1.charAt(j)));
@@ -5729,7 +5730,7 @@ public class Solution{
     public static void InsertionSort(int[] num){
         for(int i = 1; i < num.length; i++){
             int key = num[i], j = i - 1;
-            while (j >= 0 && num[j] > key){
+            while(j >= 0 && num[j] > key){
                 num[j + 1] = num[j];
                 j--;
             }
@@ -5813,7 +5814,7 @@ public class Solution{
         ArrayDeque<TreeNode> currentLevel = new ArrayDeque<TreeNode>();
         ArrayDeque<TreeNode> nextLevel = new ArrayDeque<TreeNode>();
         nextLevel.push(root);
-        while (!nextLevel.isEmpty()){
+        while(!nextLevel.isEmpty()){
             currentLevel = nextLevel.clone();
             nextLevel.clear();
             level.add(new ArrayList<Integer>());
@@ -5870,7 +5871,7 @@ public class Solution{
         }
         ListNode p = head;
         HashSet<Integer> Set = new HashSet<Integer>();
-        while (p != null){
+        while(p != null){
             if(p.next != null && p.val == p.next.val){
                 Set.add(p.val);
                 p.next = p.next.next;
@@ -5878,11 +5879,11 @@ public class Solution{
                 p = p.next;
             }
         }
-        while (head != null && Set.contains(head.val)){
+        while(head != null && Set.contains(head.val)){
             head = head.next;
         }
         ListNode dummy = head;
-        while (dummy != null){
+        while(dummy != null){
             if(dummy.next != null && Set.contains(dummy.next.val)){
                 dummy.next = dummy.next.next;
             } else{
@@ -5922,7 +5923,7 @@ public class Solution{
             return 0;
         }
         long l = 0, r = x;
-        while (l + 1 < r){
+        while(l + 1 < r){
             long mid = l + (r - l) / 2;
             long sqr = (long) Math.pow(mid, 2);
             if(sqr == x){
@@ -5959,7 +5960,7 @@ public class Solution{
         }
         StringBuilder sb = new StringBuilder();
         int Length = a.length() - 1, carry = 0;
-        while (Length >= 0){
+        while(Length >= 0){
             int sum = a.charAt(Length) + b.charAt(Length);
             if(sum == 98 && carry == 1){
                 carry = 1;
@@ -6002,7 +6003,7 @@ public class Solution{
         } else{
             digits[digits.length - 1] = 0;
             int end = digits.length - 2;
-            while (digits[end] == 9 && end >= 0){
+            while(digits[end] == 9 && end >= 0){
                 digits[end] = 0;
                 end--;
             }
@@ -6022,10 +6023,10 @@ public class Solution{
 
     public static int lengthOfLastWord(String s){
         int count = 0, i = s.length() - 1;
-        while (i >= 0 && s.charAt(i) == ' '){
+        while(i >= 0 && s.charAt(i) == ' '){
             i--;
         }
-        while (i >= 0 && s.charAt(i) != ' '){
+        while(i >= 0 && s.charAt(i) != ' '){
             count++;
             i--;
         }
@@ -6047,7 +6048,7 @@ public class Solution{
         }
         String s = "1";
         int i = 1;
-        while (i < n){
+        while(i < n){
             StringBuilder new_string = new StringBuilder();
             int count = 1;
             for(int j = 1; j < s.length(); j++){
@@ -6069,7 +6070,7 @@ public class Solution{
 
     public static int searchInsert(int[] nums, int target){
         int i = 0;
-        while (i < nums.length && target != nums[i] && nums[i] < target){
+        while(i < nums.length && target != nums[i] && nums[i] < target){
             i++;
         }
         return i;
@@ -6123,7 +6124,7 @@ public class Solution{
         }
         String prefix = strs[0];
         for(int i = 0; i < strs.length; i++){
-            while (strs[i].indexOf(prefix) != 0){
+            while(strs[i].indexOf(prefix) != 0){
                 prefix = prefix.substring(0, prefix.length() - 1);
                 if(prefix.isEmpty()){
                     return "";
@@ -6136,7 +6137,7 @@ public class Solution{
     public static int romanToInt(String s){
         int i = 0;
         int ans = 0;
-        while (i < s.length()){
+        while(i < s.length()){
             String currSt = s.substring(i, i + 1);
             int currVal = library.get(currSt);
             int nextVal = 0;
@@ -6163,7 +6164,7 @@ public class Solution{
 
     public static int reverse(int x){
         int result = 0;
-        while (x != 0){
+        while(x != 0){
             int cur = x % 10;
             int NewResult = result * 10 + cur;
             if((NewResult - cur) / 10 != result){
@@ -6226,7 +6227,7 @@ public class Solution{
 
     public static ListNode reverseList(ListNode head){
         List<Integer> l = new ArrayList<>();
-        while (head != null){
+        while(head != null){
             l.add(head.val);
             head = head.next;
         }
