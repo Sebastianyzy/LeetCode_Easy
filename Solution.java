@@ -165,6 +165,31 @@ public class Solution{
 //			}
     }
 
+    public static int countValidWords(String sentence){
+        String[] splitted = sentence.trim().split("\\s+");
+        int ans = 0;
+        for(String s : splitted){
+            char[] c = s.toCharArray();
+            boolean isHypen = false, isPunctuation = false, isNumber = false;
+            int hypen_count = 0, punctuation_count = 0;
+            for(int i = 0; i < c.length; i++){
+                if(c[i] == '-'){
+                    isHypen = (i == 0 || i == c.length - 1 || !Character.isLetter(c[i - 1]) || !Character.isLetter(c[i + 1]) || hypen_count >= 1);
+                    hypen_count++;
+                } else if(c[i] == '!' || c[i] == '.' || c[i] == ','){
+                    isPunctuation = i != c.length - 1 || isPunctuation || punctuation_count >= 1;
+                    punctuation_count++;
+                } else if(c[i] >= '0' && c[i] <= '9'){
+                    isNumber = true;
+                }
+            }
+            ans += !isHypen && !isPunctuation && !isNumber ? 1 : 0;
+
+        }
+        return ans;
+
+    }
+
     public static int maximumDifference(int[] nums){
         int max = -1;
         for(int i = 0; i < nums.length - 1; i++){
