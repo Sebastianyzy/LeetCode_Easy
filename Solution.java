@@ -165,6 +165,24 @@ public class Solution{
 //			}
     }
 
+    public static String kthDistinct(String[] arr, int k){
+        HashMap<String, Integer> map = new HashMap<>();
+        ArrayList<String> ans = new ArrayList<>();
+        for(String s : arr){
+            if(map.containsKey(s)){
+                map.put(s, map.get(s) + 1);
+            } else{
+                map.put(s, 1);
+            }
+        }
+        for(String s : arr){
+            if(map.get(s) == 1){
+                ans.add(s);
+            }
+        }
+        return ans.size() < k ? "" : ans.get(k - 1);
+    }
+
     public static int countValidWords(String sentence){
         String[] splitted = sentence.trim().split("\\s+");
         int ans = 0;
