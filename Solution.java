@@ -165,6 +165,31 @@ public class Solution{
 //			}
     }
 
+    public static int timeRequiredToBuy(int[] tickets, int k){
+        int ans = 0;
+        while(tickets[k] != 0){
+            for(int j = 0; j < tickets.length; j++){
+                if(tickets[j] != 0 && tickets[k] != 0){
+                    tickets[j]--;
+                    ans++;
+                }
+
+            }
+        }
+        return ans;
+    }
+
+    public static List<Integer> targetIndices(int[] nums, int target){
+        Arrays.sort(nums);
+        List<Integer> ans = new ArrayList<>();
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == target){
+                ans.add(i);
+            }
+        }
+        return ans;
+    }
+
     public static List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3){
         List<Integer> ans = new ArrayList<>();
         for(int i : nums1){
