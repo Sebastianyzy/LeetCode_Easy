@@ -165,6 +165,40 @@ public class Solution{
 //			}
     }
 
+    public static List<Integer> twoOutOfThree(int[] nums1, int[] nums2, int[] nums3){
+        List<Integer> ans = new ArrayList<>();
+        for(int i : nums1){
+            if(!ans.contains(i) && twoOutOfThree_CheckTwoOutOfThree(i, nums2, nums3)){
+                ans.add(i);
+            }
+        }
+        for(int i : nums2){
+            if(!ans.contains(i) && twoOutOfThree_CheckTwoOutOfThree(i, nums1, nums3)){
+                ans.add(i);
+            }
+        }
+        for(int i : nums3){
+            if(!ans.contains(i) && twoOutOfThree_CheckTwoOutOfThree(i, nums1, nums2)){
+                ans.add(i);
+            }
+        }
+        return ans;
+    }
+
+    private static boolean twoOutOfThree_CheckTwoOutOfThree(int i, int[] a, int[] b){
+        for(int val : a){
+            if(val == i){
+                return true;
+            }
+        }
+        for(int val : b){
+            if(val == i){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static String kthDistinct(String[] arr, int k){
         HashMap<String, Integer> map = new HashMap<>();
         ArrayList<String> ans = new ArrayList<>();
