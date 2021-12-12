@@ -165,6 +165,14 @@ public class Solution{
 //			}
     }
 
+    public static int finalValueAfterOperations(String[] operations){
+        int X = 0;
+        for(String s : operations){
+            X += s.charAt(1) == '+' ? 1 : -1;
+        }
+        return X;
+    }
+
     public static int timeRequiredToBuy(int[] tickets, int k){
         int ans = 0;
         while(tickets[k] != 0){
