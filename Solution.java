@@ -165,6 +165,7 @@ public class Solution{
 //			}
     }
 
+
     public static int finalValueAfterOperations(String[] operations){
         int X = 0;
         for(String s : operations){
