@@ -165,6 +165,26 @@ public class Solution{
 //			}
     }
 
+    public static int countPoints(String rings){
+        int ans = 0, i = 0;
+        HashMap<Character, Set<Character>> map = new HashMap<>();
+        while(i < rings.length() - 1){
+            char color = rings.charAt(i), rod = rings.charAt(i + 1);
+            if(map.containsKey(rod)){
+                map.get(rod).add(color);
+            } else{
+                Set<Character> temp = new HashSet<>();
+                temp.add(color);
+                map.put(rod, temp);
+            }
+            i += 2;
+        }
+        for(char c = '0'; c <= '9'; c++){
+            ans += map.containsKey(c) && map.get(c).size() == 3 ? 1 : 0;
+        }
+        return ans;
+    }
+
 
     public static int finalValueAfterOperations(String[] operations){
         int X = 0;
