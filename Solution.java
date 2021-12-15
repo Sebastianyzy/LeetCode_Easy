@@ -165,6 +165,25 @@ public class Solution{
 //			}
     }
 
+    public static int minimumMoves(String s){
+        int count = 0;
+        for(int i = 0; i < s.length(); ){
+            count += (s.charAt(i) == 'X') ? 1 : 0;
+            i += (s.charAt(i) == 'X') ? 3 : 1;
+        }
+        return count;
+    }
+
+    public static int countKDifference(int[] nums, int k){
+        int count = 0;
+        for(int i = 0; i < nums.length - 1; i++){
+            for(int j = i + 1; j < nums.length; j++){
+                count += Math.abs(nums[i] - nums[j]) == k ? 1 : 0;
+            }
+        }
+        return count;
+    }
+
     public static int countPoints(String rings){
         int ans = 0, i = 0;
         HashMap<Character, Set<Character>> map = new HashMap<>();
