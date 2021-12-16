@@ -165,6 +165,28 @@ public class Solution{
 //			}
     }
 
+    public static String reversePrefix(String word, char ch){
+        String replace = "";
+        if(!word.contains(Character.toString(ch))){
+            return word;
+        }
+        for(int i = 0; i < word.length(); i++){
+            if(word.charAt(i) == ch){
+                for(int j = i; j >= 0; j--){
+                    replace += Character.toString(word.charAt(j));
+                }
+                if(i == word.length() - 1){
+                    return replace;
+                }
+                for(int k = i + 1; k < word.length(); k++){
+                    replace += Character.toString(word.charAt(k));
+                }
+                break;
+            }
+        }
+        return replace;
+    }
+
     public static int minimumMoves(String s){
         int count = 0;
         for(int i = 0; i < s.length(); ){
