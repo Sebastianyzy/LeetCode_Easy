@@ -165,6 +165,23 @@ public class Solution{
 //			}
     }
 
+    public static int countVowelSubstrings(String word){
+        int count = 0;
+        Set<Character> set = new HashSet<>();
+        for(int i = 0; i < word.length() - 4; i++){
+            set.clear();
+            for(int j = i; j < word.length(); j++){
+                if(isVowel(word.charAt(j))){
+                    set.add(word.charAt(j));
+                    count += set.size() == 5 ? 1 : 0;
+                } else{
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
     public static String reversePrefix(String word, char ch){
         StringBuilder replace = new StringBuilder();
         for(int i = 0; i < word.length(); i++){
@@ -222,7 +239,6 @@ public class Solution{
         }
         return ans;
     }
-
 
     public static int finalValueAfterOperations(String[] operations){
         int X = 0;
@@ -348,7 +364,6 @@ public class Solution{
         }
         return max;
     }
-
 
     public static boolean areNumbersAscending(String s){
         int min = -1;
@@ -850,7 +865,6 @@ public class Solution{
 
     }
 
-
     public static String truncateSentence(String s, int k){
         String[] splited = s.split("\\s+");
         String ans = "";
@@ -1004,7 +1018,6 @@ public class Solution{
         }
         return (lower ^ upper) == 0;
     }
-
 
     public static int minOperations(String s){
         int count = 0;
@@ -6426,4 +6439,5 @@ public class Solution{
         }
         return dummy.next.next;
     }
+
 }
