@@ -241,11 +241,11 @@ public class Solution{
     }
 
     public static int finalValueAfterOperations(String[] operations){
-        int X = 0;
+        int x = 0;
         for(String s : operations){
-            X += s.charAt(1) == '+' ? 1 : -1;
+            x += s.charAt(1) == '+' ? 1 : -1;
         }
-        return X;
+        return x;
     }
 
     public static int timeRequiredToBuy(int[] tickets, int k){
