@@ -165,7 +165,6 @@ public class Solution{
 //			}
     }
 
-
     public static int countVowelSubstrings(String word){
         Set<Character> set = new HashSet<>();
         int count = 0;
