@@ -163,6 +163,7 @@ public class Solution{
 //			} else {
 //				map.put(i, map.get(i + 1));
 //			}
+        //https://nrml.ca/products/air-force-1-experimental-cz1526-202
     }
 
     public static int countVowelSubstrings(String word){
