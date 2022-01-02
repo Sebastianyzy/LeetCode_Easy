@@ -163,8 +163,6 @@ public class Solution{
 //			} else {
 //				map.put(i, map.get(i + 1));
 //			}
-        System.out.println("HAPPY NEW YEAR!");
-
     }
 
     public static int countVowelSubstrings(String word){
