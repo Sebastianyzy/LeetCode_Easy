@@ -166,8 +166,8 @@ public class Solution{
     }
 
     public static int countVowelSubstrings(String word){
-        int count = 0;
         Set<Character> set = new HashSet<>();
+        int count = 0;
         for(int i = 0; i < word.length() - 4; i++){
             set.clear();
             for(int j = i; j < word.length(); j++){
