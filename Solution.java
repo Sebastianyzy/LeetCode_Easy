@@ -221,8 +221,8 @@ public class Solution{
     }
 
     public static int countPoints(String rings){
-        int ans = 0, i = 0;
         HashMap<Character, Set<Character>> map = new HashMap<>();
+        int ans = 0, i = 0;
         while(i < rings.length() - 1){
             char color = rings.charAt(i), rod = rings.charAt(i + 1);
             if(map.containsKey(rod)){
