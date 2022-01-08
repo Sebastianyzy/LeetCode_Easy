@@ -38,6 +38,8 @@ public class Solution{
 //			System.out.println(list.get(i));
 //		}
 //		System.out.println(minDiffInBST(tree));
+//
+//
 //		List<Integer> list = new ArrayList<>();
         // System.out.println(sumOfLeftLeaves(tree));
         // System.out.println(lowestCommonAncestor(tree, tree.left, tree.right).val);
