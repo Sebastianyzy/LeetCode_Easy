@@ -168,41 +168,6 @@ public class Solution{
 //
     }
 
-    public static boolean detectCapitalUse_(String word){
-        return detectCapitalUse_case_one(word) || detectCapitalUse_case_two(word) || detectCapitalUse_case_three(word);
-    }
-
-    private static boolean detectCapitalUse_case_one(String s){
-        for(char c : s.toCharArray()){
-            if(Character.isLowerCase(c)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static boolean detectCapitalUse_case_two(String s){
-        for(char c : s.toCharArray()){
-            if(Character.isUpperCase(c)){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static boolean detectCapitalUse_case_three(String s){
-        if(!Character.isUpperCase(s.charAt(0))){
-            return false;
-        }
-        if(s.length() > 1){
-            for(int i = 1; i < s.length(); i++){
-                if(Character.isUpperCase(s.charAt(i))){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
 
     public static int countVowelSubstrings(String word){
         Set<Character> set = new HashSet<>();
