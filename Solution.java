@@ -23,6 +23,7 @@ public class Solution{
         // System.out.println(mySqrt(11));
         // System.out.println(11 / 2);
         // System.out.println((int) Math.floor(2.35));
+        //
 //		TreeNode tree = new TreeNode(3);
 //		tree.left = new TreeNode(5);
 //		tree.left.left = new TreeNode(6);
@@ -170,7 +171,6 @@ public class Solution{
 //
 //
     }
-
 
     public static int countVowelSubstrings(String word){
         Set<Character> set = new HashSet<>();
