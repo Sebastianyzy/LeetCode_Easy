@@ -19,6 +19,8 @@ public class Solution{
         library.put("M", 1000);
     }
 
+    private String cgsdfgasdfgs;
+
     public static void main(String[] args){
         // System.out.println(mySqrt(11));
         // System.out.println(11 / 2);
@@ -166,6 +168,7 @@ public class Solution{
 //			} else {
 //				map.put(i, map.get(i + 1));
 //			}
+        System.out.println("dafgsfdvasdsdfasdfasdfg");
     }
 
     public static int countVowelSubstrings(String word){
