@@ -22,6 +22,7 @@ public class Solution{
     private String cgsdfgasdfgs;
 
     public static void main(String[] args){
+        System.out.println("");
         //
         // System.out.println(mySqrt(11));
         // System.out.println(11 / 2);
